@@ -1,7 +1,13 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* ALL : BACKGROUND */
+
+body {
+    overflow-x: hidden;
 }
 
 div.myBackground {
@@ -31,13 +37,59 @@ div.myBackground {
     }
 }
 
+/* ALL : MENU */
+header div.myNavigationPanel img.myLogo {
+    height: 75px;
+    width: 68px;
 
-div.myBackground div.myContainer {
-    max-width: 400px;
 }
 
-div.myBackground div.myContainer img.myLogo {
-   background-color: red;
+
+header div.myNavigationPanel nav.myMenu a.myMenuItem:hover {
+    background-color: whitesmoke;
+
 }
 
+header div.myNavigationPanel nav.myMenu a.myMenuItem img {
+    height: 30px;
+    width: 68px;
 
+}
+
+/* BIENVENIDA */
+main div.myContainer {
+    width: 350px;
+}
+
+/* PRODUCTOS */
+main section div.myProductsContainer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+
+}
+
+main section div.myProductsContainer div.myProductItem {
+    height: 450px;
+    cursor: pointer;
+}
+
+main section div.myProductsContainer div.myProductItem:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+main section div.myProductsContainer div.myProductItem div.myProductItemImg{
+    height: 270px; /* 60% */
+    background-color: whitesmoke;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main section div.myProductsContainer div.myProductItem div.myProductItemImg img{
+    height: 100%;
+    width: auto;
+    
+}
