@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+div.myBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+
+    background-image: url('../../assets/background.png');
+    background-repeat: repeat;
+    background-size: 150px 150px;
+    opacity: 0.08;
+
+    animation: moverFondo 30s linear infinite;
+
+}
+
+@keyframes moverFondo {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 1550px -1000px;
+    }
+}
+
+
+div.myBackground div.myContainer {
+    max-width: 400px;
+}
+
+div.myBackground div.myContainer img.myLogo {
+   background-color: red;
+}
+
+
