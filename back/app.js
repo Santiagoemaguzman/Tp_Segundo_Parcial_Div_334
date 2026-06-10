@@ -1,7 +1,7 @@
 //////////////////
 // Importaciones
 // Esta es la sintaxis nueva de importar y exportar modulos de ESM -> type: module en el package.jjson
-import express from "express"; 
+import express from "express";
 import environments from "./api/config/environment/environment.js";
 import connection from "./api/config/database/database.js";
 import cors from "cors";
@@ -40,8 +40,63 @@ app.get("/", (req, res) => {
 
 // GET all products
 app.get("/api/productos", async (req, res) => {
+
+    const { producto, tipoProducto, orderBy } = req.query;
+
+    let query = 'SELECT * FROM Productos WHERE 1 = 1'
+
+    if (producto !== '') {
+        // Por si se busca algo con comilla, escapamos la comilla
+        query += ` AND Producto LIKE '%${producto.replace(/'/g, "\\'")}%'`
+    }
+
+    //--
+
+    const TIPOPRODUCTO_TODOS = 1;
+    const TIPOPRODUCTO_BOOSTERS = 2;
+    const TIPOPRODUCTO_SINGLES = 3;
+
+    switch (parseInt(tipoProducto, 10)) {
+        case TIPOPRODUCTO_BOOSTERS:
+            query += " AND IDTipoProducto = 1"
+            break;
+        case TIPOPRODUCTO_SINGLES:
+            query += " AND IDTipoProducto = 2"
+            break;
+        case TIPOPRODUCTO_TODOS:
+        default:
+            break;
+    }
+
+    //--
+
+    const ORDEN_ALFA_ASC = 1;
+    const ORDEN_ALFA_DESC = 2;
+    const ORDEN_PRECIO_ASC = 3;
+    const ORDEN_PRECIO_DESC = 4;
+
+    switch (parseInt(orderBy, 10)) {
+        case ORDEN_ALFA_DESC:
+            query += " ORDER BY Producto DESC"
+            break;
+        case ORDEN_PRECIO_ASC:
+            query += " ORDER BY Importe ASC"
+            break;
+        case ORDEN_PRECIO_DESC:
+            query += " ORDER BY Importe DESC"
+            break;
+        case ORDEN_ALFA_ASC:
+        default:
+            query += " ORDER BY Producto ASC"
+            break;
+    }
+
+    //--
+
+    query += ' LIMIT 10'
+
     try {
-        const sql = "SELECT * FROM Productos";
+        const sql = query;
         const [rows] = await connection.query(sql); // En rows guardamos los resultados de nuestra sentencia SQL
         // console.log(rows);
 

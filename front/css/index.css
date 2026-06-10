@@ -62,6 +62,13 @@ main div.myContainer {
 }
 
 /* PRODUCTOS */
+
+
+main section div.myProductsFilterBar{
+    height: 60px;
+}
+
+
 main section div.myProductsContainer {
     display: grid;
     justify-content: center;
@@ -70,8 +77,15 @@ main section div.myProductsContainer {
 
 }
 
+main section div.myProductsContainer div.mySpinnerContainer{
+    min-height: 450px;
+    grid-column: 1 / 6;
+
+    
+}
+
 main section div.myProductsContainer div.myProductItem {
-    height: 450px;
+    height: 350px;
     cursor: pointer;
 }
 
@@ -80,16 +94,20 @@ main section div.myProductsContainer div.myProductItem:hover {
 }
 
 main section div.myProductsContainer div.myProductItem div.myProductItemImg{
-    height: 270px; /* 60% */
+    height: 200px; /* 60% */
     background-color: whitesmoke;
-    padding: 1.5rem;
+    padding: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 main section div.myProductsContainer div.myProductItem div.myProductItemImg img{
     height: 100%;
     width: auto;
+    transform: scale(1.5) rotate(-5deg) translateY(15px);
+
+    
     
 }

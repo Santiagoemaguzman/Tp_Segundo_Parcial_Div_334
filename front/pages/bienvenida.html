@@ -22,13 +22,19 @@
 
 </head>
 
-<body>
+<body data-page="bienvenida">
     <div class="myBackground"></div>
     <main class="container-fluid vh-100 d-flex justify-content-center align-items-center">
         <div class="myContainer p-5 bg-white shadow rounded d-flex flex-column gap-4">
             <img src="../../assets/logo.png" class="myLogo pb-5" alt="logo">
-            <input type="text" class="form-control" placeholder="Ingrese su Nombre" />
-            <button type="button" class="btn btn-primary w-100">Siguiente</button>
+            <div class="position-relative mb-3">
+                <input type="text" class="form-control myClientLoginInput" maxlength="10"
+                    placeholder="Ingrese su Nombre" />
+                <div class="invalid-feedback position-absolute" id="errorCliente">
+                    Debe tener entre 1 y 10 caracteres.
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary w-100 myClientLoginButton">Siguiente</button>
         </div>
     </main>
 </body>

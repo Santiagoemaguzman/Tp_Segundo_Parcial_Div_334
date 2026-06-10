@@ -22,63 +22,55 @@
 
 </head>
 
-<body>
+<body data-page="productos">
     <div class="myBackground"></div>
 
     <header class="vw-100 bg-white shadow rounded d-flex flex-row justify-content-center">
-        <div class="w-25"></div>
+
         <div class="myNavigationPanel w-50 d-flex flex-row justify-content-between py-1">
-            <img src="../../assets/logo.png" class="myLogo" alt="logo">
+
+            <div class="d-flex flex-row w-50 align-items-center">
+                <img src="../../assets/logo.png" class="myLogo" alt="logo">
+
+                <div class="h-100 ms-5 mt-3 d-flex align-items-center">
+                    <p class="fw-medium myClientName"></p>
+                </div>
+            </div>
 
             <nav class="myMenu d-flex flex-row gap-2 align-items-center">
                 <a href=""
                     class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
-                    <img src="../../assets/icons/Productos.svg" class="pb-1" alt="todos">Todos
+                    <img src="../../assets/icons/Productos.svg" class="pb-1" alt="productos">Productos
                 </a>
-                <a href="#boosters"
+                <!-- <a href="#boosters"
                     class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
                     <img src="../../assets/icons/Boosters.svg" class="pb-1" alt="boosters">Boosters
                 </a>
                 <a href="#singles"
                     class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
                     <img src="../../assets/icons/Singles.svg" class="pb-1" alt="singles">Singles
-                </a>
-                <a href="./pages/carrito/carrito.html"
+                </a> -->
+                <a href="./carrito.html"
                     class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
-                    <img src="../../assets/icons/Carrito.svg" class="pb-1" alt="carrito">Mi carrito
+                    <img src="../../assets/icons/Carrito.svg" class="pb-1" alt="carrito" />Carrito
+                </a>
+
+                <a href="./bienvenida.html"
+                    class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
+                    <img src="../../assets/icons/LogOut.svg" class="pb-1" alt="logout" />Salir
                 </a>
             </nav>
         </div>
-        <div class="w-25">
-            <p>Hola Carlos!</p>
-            <!-- WORK IN PROGRESS -->
-
-        </div>
     </header>
 
-    <main class="vw-100 d-flex flex-row justify-content-center" >
-        <section class="w-75 mb-5">
-
-            <div class="myProductsContainer mt-5"></div>
-
+    <main class="vw-100 d-flex flex-row justify-content-center">
+        <section class="w-75 mb-1 pt-2">
+            <div class="myProductsFilterBar bg-white rounded shadow row align-items-center justify-content-between px-0 mx-0">
                 
-
-            </div> 
+            </div>
+            <div class="myProductsContainer mt-3"></div>
         </section>
-
-
-
-
-
-
     </main>
-
-
-
-
-
-
-
 </body>
 
 </html>
