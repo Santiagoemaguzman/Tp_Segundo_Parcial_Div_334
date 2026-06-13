@@ -84,6 +84,10 @@ main section div.myProductsContainer div.mySpinnerContainer{
     
 }
 
+main section div.myProductsContainer div.myProductsMessage {
+    grid-column: 1 / 6;
+}
+
 main section div.myProductsContainer div.myProductItem {
     height: 350px;
     cursor: pointer;
@@ -111,3 +115,223 @@ main section div.myProductsContainer div.myProductItem div.myProductItemImg img{
     
     
 }
+
+/* Carrito*/
+
+.Carrito-main {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrito-panel {
+    position: relative;
+    width: min(1100px, 100%);
+    min-height: 620px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+}
+
+.imagen-fondo-carrito {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrito-contenido {
+    position: relative;
+    z-index: 1;
+    min-height: 620px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carrito-contenido h1 {
+    margin-bottom: 24px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 28px;
+}
+
+#Contenedor-carrito {
+    width: min(900px, 100%);
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+}
+
+#tabla-carrito {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+#tabla-carrito th,
+#tabla-carrito td {
+    padding: 12px;
+    border: 1px solid #d8d8d8;
+    text-align: center;
+}
+
+#tabla-carrito th {
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+.botones {
+    width: min(900px, 100%);
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.botones button {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.25);
+    font-weight: 500;
+}
+
+.botones button:hover {
+    background-color: #f1f1f1;
+}
+
+
+/*Ticket*/
+
+.ticket-main {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.ticket-panel {
+    position: relative;
+    width: min(520px, 100%);
+    aspect-ratio: 942 / 1675;
+}
+
+.ticket-imagen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ticket-contenido {
+    position: absolute;
+    z-index: 1;
+    top: 7%;
+    left: 12%;
+    width: 76%;
+    height: 56%;
+    display: flex;
+    flex-direction: column;
+    color: #242424;
+    font-family: "Courier New", monospace;
+    font-size: clamp(10px, 2.6vw, 15px);
+}
+
+.ticket-encabezado {
+    text-align: center;
+}
+
+.ticket-encabezado h1 {
+    margin: 0 0 6px;
+    font-size: clamp(20px, 5vw, 30px);
+    font-weight: 700;
+}
+
+.ticket-encabezado p,
+.ticket-datos p {
+    margin: 2px 0;
+}
+
+.ticket-encabezado span,
+.ticket-datos span,
+.ticket-total span {
+    display: inline-block;
+    min-width: 45%;
+    margin-left: 8px;
+    border-bottom: 1px solid #555555;
+}
+
+.ticket-contenido h2 {
+    margin: 18px 0 12px;
+    padding: 8px 0;
+    border-top: 1px dashed #555555;
+    border-bottom: 1px dashed #555555;
+    text-align: center;
+    font-size: clamp(16px, 4vw, 22px);
+}
+
+.ticket-datos {
+    margin-bottom: 16px;
+}
+
+.ticket-datos p {
+    display: flex;
+}
+
+.ticket-datos strong {
+    width: 28%;
+}
+
+.ticket-datos span {
+    flex: 1;
+}
+
+.ticket-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ticket-tabla th {
+    padding: 6px 0;
+    border-top: 1px dashed #555555;
+    border-bottom: 1px dashed #555555;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.ticket-tabla th:last-child,
+.ticket-tabla td:last-child {
+    text-align: right;
+}
+
+.ticket-tabla td {
+    height: 55px;
+    vertical-align: top;
+}
+
+.ticket-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-top: 1px dashed #555555;
+    border-bottom: 1px dashed #555555;
+    font-size: clamp(14px, 3.5vw, 20px);
+}
+
+.ticket-total span {
+    width: 35%;
+}
+
+.ticket-gracias {
+    margin-top: auto;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+

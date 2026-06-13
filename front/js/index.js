@@ -101,6 +101,11 @@ function imprimirLoadingSpinner() {
 
 function imprimirArrayProductos(arrayProductos) {
 
+    if (!Array.isArray(arrayProductos)) {
+        imprimirErrorProductos();
+        return;
+    }
+
     // Armado de los Nodos
     let _contenedorProductos = '';
     arrayProductos.forEach((producto) => {
@@ -132,6 +137,13 @@ function imprimirArrayProductos(arrayProductos) {
     // );
 }
 
+function imprimirErrorProductos() {
+    let _divContenedorProductos = document.querySelector('body main section div.myProductsContainer');
+    _divContenedorProductos.innerHTML = `<div class="alert alert-danger text-center myProductsMessage" role="alert">
+        No se pudieron cargar los productos. Verificá que el backend esté ejecutándose en el puerto 3000.
+    </div>`;
+}
+
 function handlerFilterBar(event) {
     const _barraBusqueda = document.querySelector('body main section div.myProductsFilterBar input.mySearchBar');
 
@@ -145,6 +157,7 @@ function handlerFilterBar(event) {
         })
         .catch((error) => {
             console.error("Hubo un error al recuperar:", error);
+            imprimirErrorProductos();
         });
 }
 
@@ -163,25 +176,20 @@ function agregarListenersFilterBar() {
 
 async function ProductosGetItems(searchProducto = '', tipoProducto = TIPOPRODUCTO_TODOS, orderBy = ORDEN_ALFA_ASC) {
 
+    const queryParams = new URLSearchParams({
+        producto: searchProducto,
+        tipoProducto,
+        orderBy
+    });
+    const _endpointURL = `http://localhost:3000/api/productos?${queryParams.toString()}`;
+    const response = await fetch(_endpointURL);
 
-    console.log(searchProducto);
-    console.log(tipoProducto);
-    console.log(orderBy);
-
-
-    let _endpointURL = `http://localhost:3000/api/productos?producto=${searchProducto}&tipoProducto=${tipoProducto}&orderBy=${orderBy}`;
-
-    console.log(_endpointURL);
-
-    try {
-        const response = await fetch(_endpointURL);
-        const datos = await response.json();
-        const productos = datos.payload;
-        return productos;
-
-    } catch (error) {
-        console.error(error);
+    if (!response.ok) {
+        throw new Error(`La API respondió con estado ${response.status}`);
     }
+
+    const datos = await response.json();
+    return datos.payload;
 }
 
 function initPantallaProductos() {
@@ -200,6 +208,7 @@ function initPantallaProductos() {
         })
         .catch((error) => {
             console.error("Hubo un error al recuperar:", error);
+            imprimirErrorProductos();
         });
 }
 
@@ -210,8 +219,6 @@ function initPantallaCarrito() {
 
     //Recupero nombreCliente en etiqueta HTML
     imprimirNombreCliente();
-    
-    imprimirLoadingSpinner();
 
 }
 

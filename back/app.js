@@ -41,13 +41,18 @@ app.get("/", (req, res) => {
 // GET all products
 app.get("/api/productos", async (req, res) => {
 
-    const { producto, tipoProducto, orderBy } = req.query;
+    const {
+        producto = '',
+        tipoProducto = '1',
+        orderBy = '1'
+    } = req.query;
 
-    let query = 'SELECT * FROM Productos WHERE 1 = 1'
+    let query = 'SELECT * FROM Productos WHERE 1 = 1';
+    const queryParams = [];
 
     if (producto !== '') {
-        // Por si se busca algo con comilla, escapamos la comilla
-        query += ` AND Producto LIKE '%${producto.replace(/'/g, "\\'")}%'`
+        query += ' AND Producto LIKE ?';
+        queryParams.push(`%${producto}%`);
     }
 
     //--
@@ -97,7 +102,7 @@ app.get("/api/productos", async (req, res) => {
 
     try {
         const sql = query;
-        const [rows] = await connection.query(sql); // En rows guardamos los resultados de nuestra sentencia SQL
+        const [rows] = await connection.query(sql, queryParams); // En rows guardamos los resultados de nuestra sentencia SQL
         // console.log(rows);
 
         // el objeto res nos permitira devolver un codigo de estado y un tipo de respuesta
@@ -107,6 +112,9 @@ app.get("/api/productos", async (req, res) => {
 
     } catch (error) {
         console.log("Error obteniendo productos: ", error.message);
+        res.status(500).json({
+            error: "No se pudieron obtener los productos"
+        });
     }
 });
 
