@@ -9,6 +9,7 @@ const { database } = environments;
 // Creamos la conexion (un pool de conexinoes a la BBDD)
 const connection = mysql2.createPool({
     host: database.host,
+    port: database.port,
     database: database.name,
     user: database.user,
     password: database.password

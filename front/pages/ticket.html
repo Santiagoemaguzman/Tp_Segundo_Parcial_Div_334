@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PokeTCG Service</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Seteo de icono -->
+    <link rel="icon" href="../../assets/icono.png">
+
+    <!-- Importacion de archivo CSS (Estilos) -->
+    <link rel="stylesheet" href="../css/index.css">
+
+    <!-- Importacion de archivo JS (Comportamiento) -->
+    <script src="../js/index.js"></script>
+
+</head>
+
+<body data-page="carrito">
+    <div class="myBackground"></div>
+
+    <header class="vw-100 bg-white shadow rounded d-flex flex-row justify-content-center">
+
+        <div class="myNavigationPanel w-50 d-flex flex-row justify-content-between py-1">
+
+            <div class="d-flex flex-row w-50 align-items-center">
+                <img src="../../assets/logo.png" class="myLogo" alt="logo">
+
+                <div class="h-100 ms-5 mt-3 d-flex align-items-center">
+                    <p class="fw-medium myClientName"></p>
+                </div>
+            </div>
+
+            <nav class="myMenu d-flex flex-row gap-2 align-items-center">
+                <a href="./productos.html"
+                    class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
+                    <img src="../../assets/icons/Productos.svg" class="pb-1" alt="productos">Productos
+                </a>
+                <!-- <a href="#boosters"
+                    class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
+                    <img src="../../assets/icons/Boosters.svg" class="pb-1" alt="boosters">Boosters
+                </a>
+                <a href="#singles"
+                    class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
+                    <img src="../../assets/icons/Singles.svg" class="pb-1" alt="singles">Singles
+                </a> -->
+                <a href=""
+                    class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
+                    <img src="../../assets/icons/Carrito.svg" class="pb-1" alt="carrito" />Carrito
+                </a>
+
+                <a href="./bienvenida.html"
+                    class="myMenuItem d-flex flex-column align-items-center text-decoration-none link-dark p-3 rounded fw-medium">
+                    <img src="../../assets/icons/LogOut.svg" class="pb-1" alt="logout" />Salir
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="ticket-main">
+        <div class="ticket-panel">
+            <img src="../../assets/Ticket-imagen.png" class="ticket-imagen" alt="Imagen de ticket">
+
+            <article class="ticket-contenido">
+                <header class="ticket-encabezado">
+                    <h1>PokeTCG.com</h1>
+                    <p>Dirección: <span></span></p>
+                    <p>Tel: <span></span></p>
+                </header>
+
+                <h2>VENTA</h2>
+
+                <section class="ticket-datos">
+                    <p><strong>Fecha:</strong><span></span></p>
+                    <p><strong>Usuario:</strong><span></span></p>
+                    <p><strong>Vendedor:</strong><span></span></p>
+                </section>
+
+                <table class="ticket-tabla">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Costo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="ticket-total">
+                    <strong>Total</strong>
+                    <span></span>
+                </div>
+
+                <p class="ticket-gracias">Gracias por su pokecompra</p>
+            </article>
+        </div>
+    </main>
+</body>
+
+</html>
