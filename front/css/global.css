@@ -1,0 +1,152 @@
+/* ==========================================================================
+// RESETS
+// ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+// BACKGROUND
+// ========================================================================== */
+body {
+    overflow-x: hidden;
+    background-color: var(--all-container-bg);
+}
+
+div.myBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: black;
+    background-image: var(--all-bg-image);
+    background-repeat: repeat;
+    background-size: 150px 150px;
+    opacity: 0.08;
+
+    animation: moverFondo 30s linear infinite;
+
+}
+
+@keyframes moverFondo {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 1550px -1000px;
+    }
+}
+
+/* ==========================================================================
+// HEADER
+// ========================================================================== */
+header {
+    background-color: var(--all-container-bg);
+    height: 64px;
+}
+
+header div nav a.myMenuItem,
+header div nav button.myMenuItem {
+    height: 60px;
+    width: 80px;
+    background-color: var(--menu-item-bg);
+    border: none;
+}
+
+header div nav a.myMenuItem p,
+header div nav button.myMenuItem p,
+header div div div p.myClientName {
+    color: var(--all-container-color);
+}
+
+header div nav a.myMenuItem svg,
+header div nav button.myMenuItem svg {
+    fill: var(--menu-item-fill);
+    max-width: 24px;
+    max-height: 24px;
+}
+
+header div nav a.myMenuItem:hover,
+header div nav button.myMenuItem:hover {
+    background-color: var(--menu-item-hover-bg);
+    border: none;
+}
+
+header div nav div.vr,
+hr {
+    background-color: var(--menu-item-fill);
+    border-color: var(--menu-item-fill);
+
+}
+
+header div div.myMenuResponsiveExpanded {
+    top: 64px;
+    right: -100%;
+    z-index: 100;
+    background-color: var(--all-container-bg);
+}
+
+header div div.myMenuResponsiveExpanded.myContainerIn {
+    animation-name: sideIn;
+    animation-duration: 0.5s;
+    right: 0;
+}
+
+header div div.myMenuResponsiveExpanded.myContainerOut {
+    animation-name: sideOut;
+    animation-duration: 0.5s;
+    right: -100%;
+}
+
+@keyframes sideIn {
+    from {
+        right: -100%;
+    }
+
+    to {
+        right: 0;
+    }
+}
+
+@keyframes sideOut {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: -100%;
+    }
+}
+
+/* ==========================================================================
+// FOOTERs
+// ========================================================================== */
+footer {
+    display: none;
+    color: var(--all-container-color);
+}
+
+@media (min-width: 992px) {
+
+    /*--breakpoint*/
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--all-container-bg);
+        color: var(--all-container-color);
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+header div div.myMenuResponsiveExpanded nav div {
+    position: fixed;
+    bottom: 0;
+    color: var(--all-container-color);
+}

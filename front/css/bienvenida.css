@@ -1,0 +1,26 @@
+/* ==========================================================================
+// CONTAINER
+// ========================================================================== */
+main div.myContainer {
+    width: 350px;
+    background-color: var(--all-container-bg);
+}
+
+main div.myContainer button.myClientLoginButton {
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+}
+
+main div.myContainer button.myClientLoginButton:hover {
+    background-color: var(--btn-primary-hover-bg);
+}
+
+main div.myContainer button.myAdminLoginButton {
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-color);
+    text-decoration: underline;
+}
+
+main div.myContainer button.myAdminLoginButton:hover {
+    background-color: var(--btn-secondary-hover-bg);
+}

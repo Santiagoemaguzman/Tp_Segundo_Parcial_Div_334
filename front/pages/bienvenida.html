@@ -15,28 +15,188 @@
     <link rel="icon" href="../../assets/icono.png">
 
     <!-- Importacion de archivo CSS (Estilos) -->
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/main.css">
 
     <!-- Importacion de archivo JS (Comportamiento) -->
-    <script src="../js/index.js"></script>
+    <script src="../js/main.js" type="module"></script>
 
 </head>
 
-<body data-page="bienvenida">
+<body data-page="bienvenida" data-theme="light">
+
+    <!-- Background -->
     <div class="myBackground"></div>
-    <main class="container-fluid vh-100 d-flex justify-content-center align-items-center">
-        <div class="myContainer p-5 bg-white shadow rounded d-flex flex-column gap-4">
-            <img src="../../assets/logo.png" class="myLogo pb-5" alt="logo">
-            <div class="position-relative mb-3">
-                <input type="text" class="form-control myClientLoginInput" maxlength="10"
-                    placeholder="Ingrese su Nombre" />
-                <div class="invalid-feedback position-absolute" id="errorCliente">
-                    Debe tener entre 1 y 10 caracteres.
+
+    <!-- Header -->
+    <header class="vw-100 shadow d-flex flex-row justify-content-center align-items-center">
+        <div class="w-50 h-100 d-flex flex-row justify-content-between px-2">
+
+            <!-- BrandLogo -->
+            <div class="d-flex flex-row w-50 align-items-center p-3">
+                <img src="../../assets/icono.png" class="h-100" alt="logo">
+                <div class="ms-5 mt-3 d-flex align-items-center">
+                    <p class="fw-medium myClientName"></p>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary w-100 myClientLoginButton">Siguiente</button>
+
+            <!-- Menu Responsivo -->
+            <nav class="myMenuResponsive d-none flex-row gap-2 align-items-center ">
+                <button
+                    class="myMenuItem myButtonToExpandMenu btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    <svg viewBox="0 0 36 24">
+                        <use href="../../assets/icons/MenuCollapse.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Menu</p>
+                </button>
+
+                <button
+                    class="myMenuItem myButtonToCollapseMenu d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    <svg viewBox="0 0 28 28">
+                        <use href="../../assets/icons/MenuExpanded.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Cerrar</p>
+                </button>
+            </nav>
+
+            <div
+                class="myMenuResponsiveExpanded myContainerOut d-flex position-fixed vw-100 vh-100 flex-row justify-content-center pt-5 ">
+                <!-- Menus -->
+                <nav class="w-50 d-flex flex-column gap-4 mt-5">
+                    <!-- <a href=""
+                        class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 41 36">
+                            <use href="../../assets/icons/Productos.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Tienda</p>
+                    </a>
+
+                    <a href="./carrito.html"
+                        class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 40 40">
+                            <use href="../../assets/icons/Carrito.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Carrito</p>
+                    </a>
+
+                    <a href="./bienvenida.html"
+                        class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 36 36">
+                            <use href="../../assets/icons/LogOut.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
+                    </a> -->
+
+                    <!-- Separator -->
+                    <hr />
+
+                    <!-- Theme -->
+                    <button
+                        class="myMenuItem myButtonToDarkMode btn d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 44 44">
+                            <use href="../../assets/icons/LightMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Light</p>
+                    </button>
+
+                    <button
+                        class="myMenuItem myButtonToLightMode d-none flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 36 36">
+                            <use href="../../assets/icons/DarkMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Dark</p>
+                    </button>
+
+                    <div class="position-fixed w-50 d-flex flex-row  justify-content-center">
+                        Desarrollado por Santiago Guzman y Carlos Mendéz
+                    </div>
+
+                </nav>
+
+            </div>
+
+            <!-- Menu Completo -->
+            <nav class="myMenuComplete d-none flex-row gap-2 align-items-center">
+
+                <!-- Menus -->
+                <!-- <a href=""
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    <svg viewBox="0 0 41 36">
+                        <use href="../../assets/icons/Productos.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Tienda</p>
+                </a>
+
+                <a href="./carrito.html"
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1 ms-3">
+                    <svg viewBox="0 0 40 40">
+                        <use href="../../assets/icons/Carrito.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Carrito</p>
+                </a>
+
+                <a href="./bienvenida.html"
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1 ms-3">
+                    <svg viewBox="0 0 36 36">
+                        <use href="../../assets/icons/LogOut.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Salir</p>
+                </a> -->
+
+                <!-- Separator -->
+                <div class="vr mx-1 my-2"></div>
+
+                <!-- Theme -->
+                <button
+                    class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    <svg viewBox="0 0 44 44">
+                        <use href="../../assets/icons/LightMode.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Light</p>
+                </button>
+
+                <button
+                    class="myMenuItem myButtonToLightMode d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    <svg viewBox="0 0 36 36">
+                        <use href="../../assets/icons/DarkMode.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Dark</p>
+                </button>
+            </nav>
+
         </div>
+    </header>
+
+    <!-- Main -->
+    <main class="container-fluid vw-100 d-flex justify-content-center align-items-center py-5">
+
+        <div class="myContainer shadow rounded d-flex flex-column px-5 py-5 mt-5">
+            <img src="../../assets/logo.png" class="myLogo mb-5" alt="logo">
+            
+            <!-- Input -->
+            <div class="position-relative mb-3">
+                <input type="text" class="form-control myClientLoginInput" maxlength="25"
+                    placeholder="Ingrese su Nombre" />
+                <div class="invalid-feedback position-absolute" id="errorCliente">
+                    Debe tener entre 5 y 25 caracteres.
+                </div>
+            </div>
+            
+            <!-- Boton Continuar -->
+            <button type="button" class="btn w-100 myClientLoginButton mt-3 mb-2">
+                <strong>Continuar</strong>
+            </button>
+            <!-- Boton Solo Adminsitradores -->
+            <button type="button" class="btn w-100 myAdminLoginButton">
+                Solo administradores
+            </button>
+        </div>
+
     </main>
+
+    <!-- Footer -->    
+    <footer class="vw-100">
+        Desarrollado por Santiago Guzman y Carlos Mendéz
+    </footer>
 </body>
 
 </html>

@@ -1,0 +1,11 @@
+/* ==========================================================================
+// IMPORTS
+// ========================================================================== */
+@import url("./variables.css");
+@import url("./global.css");
+
+/* PAGINAS */
+@import url("./bienvenida.css");
+@import url("./productos.css");
+@import url("./carrito.css");
+@import url("./ticket.css");

@@ -1,0 +1,54 @@
+
+
+main section div.myProductsFilterBar {
+    height: 60px;
+}
+
+
+main section div.myProductsContainer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+
+}
+
+main section div.myProductsContainer div.mySpinnerContainer {
+    min-height: 450px;
+    grid-column: 1 / 6;
+
+
+}
+
+main section div.myProductsContainer div.myProductsMessage {
+    grid-column: 1 / 6;
+}
+
+main section div.myProductsContainer div.myProductItem {
+    height: 350px;
+    cursor: pointer;
+}
+
+main section div.myProductsContainer div.myProductItem:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+main section div.myProductsContainer div.myProductItem div.myProductItemImg {
+    height: 200px;
+    /* 60% */
+    background-color: whitesmoke;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+main section div.myProductsContainer div.myProductItem div.myProductItemImg img {
+    height: 100%;
+    width: auto;
+    transform: scale(1.5) rotate(-5deg) translateY(15px);
+
+
+
+}

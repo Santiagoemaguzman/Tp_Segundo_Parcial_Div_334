@@ -1,71 +1,71 @@
 # 📋 Programación III - Checklist Definitivo (Autoservicio)
 
 ## 🎨 Aspectos Generales de Diseño y Navegación (Todo el Sistema)
-- ⚪ Restriccion de Negocio: Elegir un rubro lógico (físico o virtual) pero NO puede ser de comida
+- 🟢 Restriccion de Negocio: Elegir un rubro lógico (físico o virtual) pero NO puede ser de comida
 
 ## 💻 Proyecto Frontend
 ### Pantalla de Bienvenida
-- ⚪ Interfaz con estilos CSS cuidados y consistentes
-- ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- ⚪ Favicon configurado en el navegador
-- ⚪ Logo de la aplicación visible
-- ⚪ Nombre de la aplicación visible
-- ⚪ Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- ⚪ Barra de navegación *(PRESENTE PERO INHABILITADA SUPONGO)*
-- ⚪ Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- ⚪ Persistencia del tema elegido al recargar
-- ⚪ El cliente nunca debe escribir una ruta a mano en la URL
-- ⚪ Input para ingresar únicamente el nombre del cliente
-- ⚪ Validación del input (bloquear acceso si está vacío)
-- ⚪ Botón **Continuar** que redirige a la **Pantalla de Productos**
-- ⚪ Botón oculto/discreto que redirige al **Login del Administrador**
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
+- 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Barra de navegación *(SOLO THEME, MENUS NO DEBERIA)*
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
+- 🟢 El cliente nunca debe escribir una ruta a mano en la URL
+- 🟢 Input para ingresar únicamente el nombre del cliente
+- 🟢 Validación del input (bloquear acceso si está vacío)
+- 🟢 Botón **Continuar** que redirige a la **Pantalla de Productos**
+- 🟡 Botón oculto/discreto que redirige al **Login del Administrador**
 
 ### Pantalla de Productos
-- ⚪ Interfaz con estilos CSS cuidados y consistentes
-- ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- ⚪ Favicon configurado en el navegador
-- ⚪ Logo de la aplicación visible
-- ⚪ Nombre de la aplicación visible
-- ⚪ Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- ⚪ Barra de navegación
-- ⚪ Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- ⚪ Persistencia del tema elegido al recargar
-- ⚪ El cliente nunca debe escribir una ruta a mano en la URL
-- ⚪ Visualización de productos divididos explícitamente en dos categorías
-- ⚪ Mostrar solo los productos que tengan el estado activo
-- ⚪ Renderizar todos los datos del producto junto con su imagen
-- ⚪ Paginación funcional de los productos *(CREO QUE CON PAGINA SIGUIENTE Y PAGINA ANTERIOR DEBERIA ALCANZAR, NO NUMERAR LAS PAGINAS ABAJO)*
-- ⚪ Botón para agregar un producto al carrito *(SE ME OCURRIO HACERLO EN DOS PARTES, EN UNA PRIMERA SOLO "AGREGAR AL CARRITO", YA SI AGREGASTE 1, EL BOTON CAMBIA A ( - | 1 | + ))*
-- ⚪ Botón para quitar completamente el productos del carrito
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
+- 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Barra de navegación
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
+- 🟢 El cliente nunca debe escribir una ruta a mano en la URL
+- 🟡 Visualización de productos divididos explícitamente en dos categorías
+- 🟡 Mostrar solo los productos que tengan el estado activo
+- 🟡 Renderizar todos los datos del producto junto con su imagen
+- 🟡 Paginación funcional de los productos *(CREO QUE CON PAGINA SIGUIENTE Y PAGINA ANTERIOR DEBERIA ALCANZAR, NO NUMERAR LAS PAGINAS ABAJO)*
+- 🟡 Botón para agregar un producto al carrito *(SE ME OCURRIO HACERLO EN DOS PARTES, EN UNA PRIMERA SOLO "AGREGAR AL CARRITO", YA SI AGREGASTE 1, EL BOTON CAMBIA A ( - | 1 | + ))*
+- 🟡 Botón para quitar completamente el productos del carrito
 
 ### Pantalla de Carrito
-- ⚪ Interfaz con estilos CSS cuidados y consistentes
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
 - ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- ⚪ Favicon configurado en el navegador
-- ⚪ Logo de la aplicación visible
-- ⚪ Nombre de la aplicación visible
-- ⚪ Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- ⚪ Barra de navegación
-- ⚪ Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- ⚪ Persistencia del tema elegido al recargar
-- ⚪ El cliente nunca debe escribir una ruta a mano en la URL
-- ⚪ Listado detallado de los productos seleccionados
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Barra de navegación
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
+- 🟢 El cliente nunca debe escribir una ruta a mano en la URL
+- 🟢 Listado detallado de los productos seleccionados
 - ⚪ Controladores para incrementar o decrementar la cantidad de cada ítem
 - ⚪ Botón para eliminar por completo un producto del carrito
 - ⚪ Botón "Finalizar Compra" que dispara un Modal de Confirmación
 - ⚪ Al confirmar, impactar la compra en la base de datos y redirigir al **Ticket**
 
 ### Pantalla de Ticket
-- ⚪ Interfaz con estilos CSS cuidados y consistentes
-- ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- ⚪ Favicon configurado en el navegador
-- ⚪ Logo de la aplicación visible
-- ⚪ Nombre de la aplicación visible
-- ⚪ Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- ⚪ Barra de navegación
-- ⚪ Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- ⚪ Persistencia del tema elegido al recargar
-- ⚪ El cliente nunca debe escribir una ruta a mano en la URL
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
+- 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Barra de navegación
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
+- 🟢 El cliente nunca debe escribir una ruta a mano en la URL
 - ⚪ Muestra del ticket con: Nombre de la empresa, Nombre del Cliente, productos comprados, subtotales y total, fecha actual del sistema
 - ⚪ Botón para descargar el Ticket en formato PDF
 - ⚪ Botón de "Salir" / "Volver a empezar" que limpia la sesión, reinicia el flujo y vuelve a la **Pantalla de Bienvenida**  
@@ -75,7 +75,7 @@
 - ⚪ Los Productos deben tener una propiedad de activo
 - ⚪ El Sistema debe tener productos cargados al momento de evaluar	
 - ⚪ El Sistema debe persistir las Ventas
-- ⚪ El Sistema debe tener Relacion Muchos a Muchos entre Productos y Ventas
+- 🟢 El Sistema debe tener Relacion Muchos a Muchos entre Productos y Ventas
 
 ### API
 - ⚪ La API debe permitir traer los Productos en forma de pagina
@@ -83,7 +83,7 @@
 - ⚪ Debe validar los datos por Middlewares
 - ⚪ Utilizar un ORM *(¿ES OPCIONAL?)*
 - ⚪ CRUD
-- ⚪ Las imagenes se deben almacenar en el Servidor
+- 🟢 Las imagenes se deben almacenar en el Servidor
 - ⚪ Encriptacion de Contraseñas
 
 ### Pantalla de Login (VISTA EJS)
