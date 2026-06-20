@@ -22,7 +22,7 @@
 
 </head>
 
-<body data-page="carrito">
+<body data-page="ticket">
 
         <!-- Background -->
     <div class="myBackground"></div>
@@ -172,18 +172,18 @@
             <img src="../../assets/Ticket-imagen.png" class="ticket-imagen" alt="Imagen de ticket">
 
             <article class="ticket-contenido">
-                <header class="ticket-encabezado">
+                <div class="ticket-encabezado">
                     <h1>PokeTCG.com</h1>
                     <p>Dirección: <span></span></p>
                     <p>Tel: <span></span></p>
-                </header>
+                </div>
 
                 <h2>VENTA</h2>
 
                 <section class="ticket-datos">
-                    <p><strong>Fecha:</strong><span></span></p>
-                    <p><strong>Usuario:</strong><span></span></p>
-                    <p><strong>Vendedor:</strong><span></span></p>
+                    <p><strong>Fecha:</strong><span id="Ticket-fecha"></span></p>
+                    <p><strong>Usuario:</strong><span id="Ticket-cliente"></span></p>
+                    <p><strong>Vendedor:</strong><span id="Ticket-vendedor"></span></p>
                 </section>
 
                 <table class="ticket-tabla">
@@ -193,22 +193,22 @@
                             <th>Costo</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td></td>
-                        </tr>
+                    <tbody id="Ticket-productos">
                     </tbody>
                 </table>
 
                 <div class="ticket-total">
                     <strong>Total</strong>
-                    <span></span>
+                    <span id="Ticket-total"></span>
                 </div>
 
                 <p class="ticket-gracias">Gracias por su pokecompra</p>
             </article>
         </div>
+
+        <button type="button" id="Boton-reiniciar-flujo" class="ticket-restart-button">
+            Salir / Volver a empezar
+        </button>
     </main>
 
     <!-- Footer -->

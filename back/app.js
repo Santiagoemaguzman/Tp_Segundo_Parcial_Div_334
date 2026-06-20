@@ -18,6 +18,7 @@ const PORT = environments.port;
 /////////////////
 // Middlewares
 app.use(cors()); // Middleware CORS basico para permitir todas las solicitudes
+app.use(express.json());
 
 // Middleware logegr para mostrar todas las solicitudes por consola
 app.use((req, res, next) => {
@@ -115,6 +116,150 @@ app.get("/api/productos", async (req, res) => {
         res.status(500).json({
             error: "No se pudieron obtener los productos"
         });
+    }
+});
+
+// POST sale
+app.post("/api/ventas", async (req, res) => {
+    const { cliente, productos } = req.body;
+
+    if (typeof cliente !== 'string' || cliente.trim() === '' || cliente.length > 255) {
+        return res.status(400).json({ error: "El nombre del cliente es inválido" });
+    }
+
+    if (!Array.isArray(productos) || productos.length === 0) {
+        return res.status(400).json({ error: "El carrito está vacío" });
+    }
+
+    const productosSolicitados = productos.map((producto) => ({
+        id: Number(producto.id),
+        cantidad: Number(producto.cantidad)
+    }));
+    const productosValidos = productosSolicitados.every((producto) =>
+        Number.isInteger(producto.id)
+        && producto.id > 0
+        && Number.isInteger(producto.cantidad)
+        && producto.cantidad > 0
+    );
+
+    if (!productosValidos) {
+        return res.status(400).json({ error: "El carrito contiene productos inválidos" });
+    }
+
+    const idsProductos = productosSolicitados.map((producto) => producto.id);
+    const idsUnicos = new Set(idsProductos);
+
+    if (idsUnicos.size !== idsProductos.length) {
+        return res.status(400).json({ error: "El carrito contiene productos repetidos" });
+    }
+
+    let transaction;
+
+    try {
+        transaction = await connection.getConnection();
+        await transaction.beginTransaction();
+
+        const placeholders = idsProductos.map(() => '?').join(', ');
+        const [productosDB] = await transaction.query(
+            `SELECT IDProducto, Producto, Importe, Stock
+             FROM Productos
+             WHERE IDProducto IN (${placeholders}) AND Estado = 1
+             FOR UPDATE`,
+            idsProductos
+        );
+
+        if (productosDB.length !== productosSolicitados.length) {
+            const error = new Error("Uno o más productos no existen o están inactivos");
+            error.status = 400;
+            throw error;
+        }
+
+        const detalleVenta = productosSolicitados.map((productoSolicitado) => {
+            const productoDB = productosDB.find(
+                (producto) => producto.IDProducto === productoSolicitado.id
+            );
+
+            if (productoDB.Stock < productoSolicitado.cantidad) {
+                const error = new Error(`Stock insuficiente para ${productoDB.Producto}`);
+                error.status = 400;
+                throw error;
+            }
+
+            const precioIndividual = Number(productoDB.Importe);
+
+            return {
+                id: productoDB.IDProducto,
+                nombre: productoDB.Producto,
+                cantidad: productoSolicitado.cantidad,
+                precioIndividual,
+                subtotal: Number((precioIndividual * productoSolicitado.cantidad).toFixed(2))
+            };
+        });
+        const importeTotal = Number(
+            detalleVenta.reduce((total, producto) => total + producto.subtotal, 0).toFixed(2)
+        );
+        const nombreCliente = cliente.trim();
+        const [ventaResult] = await transaction.query(
+            `INSERT INTO Ventas (ImporteTotal, Cliente, UsuarioAlta)
+             VALUES (?, ?, ?)`,
+            [importeTotal, nombreCliente, nombreCliente]
+        );
+        const detallePlaceholders = detalleVenta.map(() => '(?, ?, ?)').join(', ');
+        const detalleParams = detalleVenta.flatMap((producto) => [
+            ventaResult.insertId,
+            producto.id,
+            producto.cantidad
+        ]);
+
+        await transaction.query(
+            `INSERT INTO VentasProductos (IDVenta, IDProducto, ProductoCantidad)
+             VALUES ${detallePlaceholders}`,
+            detalleParams
+        );
+
+        for (const producto of detalleVenta) {
+            const [stockResult] = await transaction.query(
+                `UPDATE Productos
+                 SET Stock = Stock - ?
+                 WHERE IDProducto = ? AND Stock >= ?`,
+                [producto.cantidad, producto.id, producto.cantidad]
+            );
+
+            if (stockResult.affectedRows !== 1) {
+                const error = new Error(`No se pudo actualizar el stock de ${producto.nombre}`);
+                error.status = 409;
+                throw error;
+            }
+        }
+
+        const [ventas] = await transaction.query(
+            'SELECT FechaAlta FROM Ventas WHERE IDVenta = ?',
+            [ventaResult.insertId]
+        );
+
+        await transaction.commit();
+
+        res.status(201).json({
+            payload: {
+                idVenta: ventaResult.insertId,
+                cliente: nombreCliente,
+                fecha: ventas[0].FechaAlta,
+                productos: detalleVenta,
+                total: importeTotal
+            }
+        });
+    } catch (error) {
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.log("Error registrando venta: ", error.message);
+        res.status(error.status || 500).json({
+            error: error.status ? error.message : "No se pudo registrar la venta"
+        });
+    } finally {
+        if (transaction) {
+            transaction.release();
+        }
     }
 });
 

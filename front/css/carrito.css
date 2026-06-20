@@ -67,6 +67,33 @@
     background-color: rgba(255, 255, 255, 0.96);
 }
 
+.myQuantityControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.myQuantityControls span {
+    min-width: 24px;
+    font-weight: 600;
+}
+
+.myQuantityButton {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: 0 0.15rem 0.35rem rgba(0, 0, 0, 0.25);
+    font-size: 18px;
+    line-height: 1;
+}
+
+.myQuantityButton:hover {
+    background-color: #f1f1f1;
+}
+
 .botones {
     width: min(900px, 100%);
     margin-top: auto;
@@ -86,4 +113,56 @@
 
 .botones button:hover {
     background-color: #f1f1f1;
+}
+
+.myPurchaseModal {
+    width: min(430px, calc(100% - 32px));
+    margin: auto;
+    padding: 28px;
+    border: 0;
+    border-radius: 12px;
+    background-color: var(--all-container-bg);
+    color: var(--all-container-color);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+}
+
+.myPurchaseModal::backdrop {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.myPurchaseModal h2 {
+    margin-bottom: 16px;
+}
+
+.myPurchaseSummary {
+    margin-bottom: 8px;
+}
+
+.myPurchaseError {
+    min-height: 24px;
+    margin-bottom: 16px;
+    color: #dc3545;
+}
+
+.myPurchaseModalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.myPurchaseModalActions button {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+#Boton-confirmar-compra {
+    background-color: #198754;
+    color: #ffffff;
+}
+
+#Boton-confirmar-compra:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
 }

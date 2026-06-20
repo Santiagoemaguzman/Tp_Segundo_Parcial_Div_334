@@ -61,8 +61,16 @@ function imprimirArrayProductos(arrayProductos) {
                 <p class="mt-0 mb-2 h-25">${producto.Producto}</p>
                 <h4 class="m-0 ">${Number(producto.Importe).toFixed(2)} AR$</h4>
                 <div class="d-flex m-0 flex-row justify-content-between ">
-                    <button class="btn btn-success px-4">Agregar</button>
-                    <button class="btn btn-danger px-4">Quitar</button>
+                    <button class="btn btn-success px-4 myButtonAgregarProducto"
+                        data-id="${producto.IDProducto}"
+                        data-nombre="${producto.Producto}"
+                        data-precio="${producto.Importe}">
+                    Agregar
+                    </button>
+                    <button class="btn btn-danger px-4 myButtonQuitarProducto"
+                        data-id="${producto.IDProducto}">
+                    Quitar
+                    </button>
                 </div>
             </div>
         </div>`;
@@ -72,6 +80,8 @@ function imprimirArrayProductos(arrayProductos) {
     let _divContenedorProductos = document.querySelector('body main section div.myProductsContainer');
     _divContenedorProductos.innerHTML = _contenedorProductos;
 
+    agregarListenersBotonesCarrito();
+
     // // Agregacion de los Listeners para Agregar al Carrito
     // let buttonsAgregarProducto = divContenedorProdcutos.querySelectorAll('div.card-producto button');
     // buttonsAgregarProducto.forEach(
@@ -79,6 +89,55 @@ function imprimirArrayProductos(arrayProductos) {
     //         button.addEventListener('click', agregarProducto);
     //     }
     // );
+}
+
+function agregarListenersBotonesCarrito() {
+    const botonesAgregar = document.querySelectorAll('.myButtonAgregarProducto');
+    const botonesQuitar = document.querySelectorAll('.myButtonQuitarProducto');
+
+    botonesAgregar.forEach((boton) => {
+        boton.addEventListener('click', handlerAgregarProducto);
+    });
+
+    botonesQuitar.forEach((boton) => {
+        boton.addEventListener('click', handlerQuitarProducto);
+    });
+}
+
+function handlerAgregarProducto(event) {
+    const boton = event.target;
+    const productoNuevo = {
+        id: Number(boton.dataset.id),
+        nombre: boton.dataset.nombre,
+        cantidad: 1,
+        precioIndividual: Number(boton.dataset.precio)
+    };
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const productoExistente = carrito.find((producto) => producto.id === productoNuevo.id);
+
+    if (productoExistente) {
+        productoExistente.cantidad++;
+    } else {
+        carrito.push(productoNuevo);
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function handlerQuitarProducto(event) {
+    const boton = event.target;
+    const idProducto = Number(boton.dataset.id);
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const productoExistente = carrito.find((producto) => producto.id === idProducto);
+
+    if (!productoExistente) {
+        return;
+    }
+
+    productoExistente.cantidad--;
+
+    const carritoActualizado = carrito.filter((producto) => producto.cantidad > 0);
+    localStorage.setItem('carrito', JSON.stringify(carritoActualizado));
 }
 
 function imprimirErrorProductos() {

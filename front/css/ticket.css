@@ -2,9 +2,12 @@
 
 .ticket-main {
     width: 100%;
-    padding: 30px 20px;
+    padding: 30px 20px 60px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 20px;
 }
 
 .ticket-panel {
@@ -102,8 +105,12 @@
 }
 
 .ticket-tabla td {
-    height: 55px;
+    padding: 3px 0;
     vertical-align: top;
+}
+
+.ticket-tabla td:first-child {
+    padding-right: 10px;
 }
 
 .ticket-total {
@@ -124,4 +131,18 @@
     text-align: center;
     text-transform: uppercase;
     font-weight: 700;
+}
+
+.ticket-restart-button {
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--all-container-bg);
+    color: var(--all-container-color);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+}
+
+.ticket-restart-button:hover {
+    filter: brightness(0.92);
 }

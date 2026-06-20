@@ -190,10 +190,21 @@
                 <section class="botones">
                     <button id="Boton-limpiar-carrito">Limpiar carrito</button>
                     <button id="Boton-agregar-productos">Seguir comprando</button>
-                    <button id="Boton-comprar">Comprar</button>
+                    <button id="Boton-comprar">Finalizar compra</button>
                 </section>
             </div>
         </div>
+
+        <dialog id="Modal-confirmar-compra" class="myPurchaseModal">
+            <h2>Confirmar compra</h2>
+            <p class="myPurchaseSummary"></p>
+            <p class="myPurchaseError" role="alert"></p>
+
+            <div class="myPurchaseModalActions">
+                <button type="button" id="Boton-cancelar-compra">Cancelar</button>
+                <button type="button" id="Boton-confirmar-compra">Confirmar</button>
+            </div>
+        </dialog>
     </main>
 
     <!-- Footer -->
