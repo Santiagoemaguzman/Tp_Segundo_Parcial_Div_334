@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PokeTCG Service</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Seteo de icono -->
+    <link rel="icon" href="../../assets/icono.png">
+
+    <!-- Importacion de archivo CSS (Estilos) -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- Importacion de archivo JS (Comportamiento)
+    <script src="../js/main.js" type="module"></script> -->
+
+</head>
+
+<body data-page="productos" data-theme="light">
+
+    <!-- Background -->
+    <div class="myBackground"></div>
+
+    <!-- Header -->
+    <header class="vw-100 shadow row justify-content-center align-items-center m-0">
+
+        <div class="h-100 col-12 col-lg-10 col-xxl-8 d-flex flex-row justify-content-between px-0 px-lg-2">
+
+            <!-- BrandLogo -->
+            <div class="d-flex flex-row w-50 align-items-center p-3">
+                <img src="../../assets/icono.png" class="h-100" alt="logo">
+                <div class="ms-5 mt-3 d-flex align-items-center">
+                    <p class="fw-medium myClientName"></p>
+                </div>
+            </div>
+
+            <!-- Menu Responsivo -->
+            <nav class="myMenuResponsive d-flex d-lg-none flex-row gap-2 align-items-center ">
+                <button
+                    class="myMenuItem myButtonToExpandMenu btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    <svg viewBox="0 0 36 24">
+                        <use href="../../assets/icons/MenuCollapse.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Menu</p>
+                </button>
+
+                <button
+                    class="myMenuItem myButtonToCollapseMenu d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    <svg viewBox="0 0 28 28">
+                        <use href="../../assets/icons/MenuExpanded.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Cerrar</p>
+                </button>
+            </nav>
+
+            <div
+                class="myMenuResponsiveExpanded myContainerOut d-none d-lg-none position-fixed vw-100 vh-100 flex-row justify-content-center pt-5 ">
+                <!-- Menus -->
+                <nav class="w-50 d-flex flex-column gap-4 mt-5">
+                    <a href=""
+                        class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 41 36">
+                            <use href="../../assets/icons/Productos.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Tienda</p>
+                    </a>
+
+                    <a href="./carrito.html"
+                        class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 40 40">
+                            <use href="../../assets/icons/Carrito.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Carrito</p>
+                    </a>
+
+                    <a href="./bienvenida.html"
+                        class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 36 36">
+                            <use href="../../assets/icons/LogOut.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
+                    </a>
+
+                    <!-- Separator -->
+                    <hr />
+
+                    <!-- Theme -->
+                    <button
+                        class="myMenuItem myButtonToDarkMode btn d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 44 44">
+                            <use href="../../assets/icons/LightMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Light</p>
+                    </button>
+
+                    <button
+                        class="myMenuItem myButtonToLightMode d-none flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 36 36">
+                            <use href="../../assets/icons/DarkMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Dark</p>
+                    </button>
+
+                    <div class="position-fixed w-50 d-flex flex-row justify-content-center text-center">
+                        Desarrollado por Santiago Guzman y Carlos Mendéz
+                    </div>
+
+                </nav>
+
+            </div>
+
+            <!-- Menu Completo -->
+            <nav class="myMenuComplete d-none d-lg-flex flex-row gap-2 align-items-center">
+
+                <!-- Menus -->
+                <a href=""
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    <svg viewBox="0 0 41 36">
+                        <use href="../../assets/icons/Add.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Nuevo</p>
+                </a>
+
+
+                <a href="./bienvenida.html"
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
+                    <svg viewBox="0 0 36 36">
+                        <use href="../../assets/icons/LogOut.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Salir</p>
+                </a>
+
+                <!-- Separator -->
+                <div class="vr mx-1 my-2"></div>
+
+                <!-- Theme -->
+                <button
+                    class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    <svg viewBox="0 0 44 44">
+                        <use href="../../assets/icons/LightMode.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Light</p>
+                </button>
+
+                <button
+                    class="myMenuItem myButtonToLightMode d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    <svg viewBox="0 0 36 36">
+                        <use href="../../assets/icons/DarkMode.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Dark</p>
+                </button>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- Main -->
+    <main class="vw-100 d-flex flex-row justify-content-center row m-0 mb-5">
+        <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
+
+            <div class="myProductsFilterBar rounded shadow row align-items-center justify-content-between px-0 mx-0">
+            </div>
+
+            <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
+
+            </div>
+
+            <div class="mySentinel">
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+
+
+
+        function imprimirArrayProductos(arrayProductos) {
+
+            if (!Array.isArray(arrayProductos)) {
+                imprimirErrorProductos();
+                return;
+            }
+
+            // Recuperamos el Carrito
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            // Armado de los Nodos
+            let _contenedorProductos = '';
+            arrayProductos.forEach((producto) => {
+
+                // Si existe en el Carrito, recuperamos la cantidad
+                let _productoEnCarrito = carrito.find((ProductoEnCarrito) => ProductoEnCarrito.id === producto.IDProducto);
+                const _productoEnCarritoCantidad = _productoEnCarrito ? _productoEnCarrito.cantidad : 0;
+
+                _contenedorProductos += `<div class="card myProductItem p-0 m-0" data-id="${producto.IDProducto}" data-tipo="${producto.IDTipoProducto}">
+            <div class="myProductItemImg">
+                <img src="${producto.ImagenPath}" alt="${producto.Producto}" >
+            </div>
+            <div class="card-body p-2 d-flex flex-column justify-content-between">
+                <p class="mt-0 mb-2 h-25">${producto.Producto}</p>
+                <h4 class="m-0 ">${Number(producto.Importe).toFixed(2)} AR$</h4>
+
+                <div class="${_productoEnCarritoCantidad == 0 ? "d-flex" : "d-none"} m-0 w-100 myDivButtonAgregarProductoWrapper ">
+                    <button class="btn px-4 w-100 myButtonAgregarProductoWrapper d-flex justify-content-center align-items-center"
+                        data-id="${producto.IDProducto}"
+                        data-nombre="${producto.Producto}"
+                        data-precio="${producto.Importe}">
+                        <svg viewBox="0 0 40 40 " class="me-3">
+                            <use href="../../assets/icons/AgregarCarrito.svg"></use>
+                        </svg>
+                        Agregar 
+                    </button>
+                </div>
+
+                <div class="${_productoEnCarritoCantidad == 0 ? "d-none" : "d-flex"} m-0 flex-row justify-content-between myDivButtonAgregarQuitarProducto">
+                   
+                    <button class="btn myButtonQuitarProducto d-flex justify-content-center align-items-center"
+                        data-id="${producto.IDProducto}">
+                        <svg viewBox="0 0 28 3">
+                            <use href="../../assets/icons/Remove.svg"></use>
+                        </svg>
+                    </button>
+
+                    <h4>${_productoEnCarritoCantidad}</h4>
+
+                    <button class="btn myButtonAgregarProducto d-flex justify-content-center align-items-center"
+                        data-id="${producto.IDProducto}"
+                        data-nombre="${producto.Producto}"
+                        data-precio="${producto.Importe}">
+                        <svg viewBox="0 0 28 28">
+                            <use href="../../assets/icons/Add.svg"></use>
+                        </svg>
+                    </button>
+                    
+                </div>
+            </div>
+        </div>`;
+            });
+
+            // Agregacion de los Nodos al DOM
+            let _divContenedorProductos = document.querySelector('body main section div.myProductsContainer');
+            // if (PAG_PAGINA_ACTUAL === 0) {
+                _divContenedorProductos.innerHTML = _contenedorProductos;
+            // } else {
+            //     _divContenedorProductos.innerHTML += _contenedorProductos;
+            // }
+
+
+        }
+
+        function imprimirErrorProductos(error) {
+            let _divContenedorProductos = document.querySelector('body main section div.myProductsContainer');
+            _divContenedorProductos.innerHTML = `<div class="alert alert-danger text-center myProductsMessage" role="alert">
+        ${error} 
+    </div>`;
+        }
+
+        function loadProductos() {
+            // if (PAG_CARGANDO || PAG_FIN) return;
+            // PAG_CARGANDO = true;
+
+            ProductosGetItems()
+                .then((productos) => {
+                    imprimirArrayProductos(productos);
+                    // Avanzamos la página para la siguiente tanda
+                    // PAG_PAGINA_ACTUAL += 1;
+                    // PAG_FIN = productos.length < PAG_ITEMS_PAGINA ? true : false;
+                    // Mandamos a comprobar de manera automática si se requiere rellenar más pantalla
+                    // checkIfSentinelIsShow();
+                })
+                .catch((error) => {
+                    imprimirErrorProductos(error);
+
+                }).finally(() => {
+                    // PAG_CARGANDO = false;
+                });
+        }
+
+        async function ProductosGetItems() {
+
+            // const queryParams = new URLSearchParams({
+            //     soloActivos: true
+            //     , producto: searchProducto
+            //     , tipoProducto
+            //     , orderBy
+            //     , currentPage
+            //     , limitPerPage
+            // });
+
+            //const _endpointURL = `http://localhost:3000/api/productos?${queryParams.toString()}`;
+            const _endpointURL = `http://localhost:3000/api/productos`;
+            const response = await fetch(_endpointURL);
+
+            if (!response.ok) {
+                throw new Error(`La API respondió con estado ${response.status}`);
+            }
+
+            const datos = await response.json();
+
+
+            return datos.payload;
+        }
+
+        loadProductos();
+
+    </script>
+
+    <!-- Footer -->
+    <footer class="d-none d-lg-flex position-fixed vw-100 justify-content-center align-items-center">
+        Desarrollado por Santiago Guzman y Carlos Mendéz
+    </footer>
+</body>
+
+</html>

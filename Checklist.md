@@ -31,10 +31,10 @@
 - 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
 - 🟢 Persistencia del tema elegido al recargar
 - 🟢 El cliente nunca debe escribir una ruta a mano en la URL
-- 🟡 Visualización de productos divididos explícitamente en dos categorías
+- 🟢 Visualización de productos divididos explícitamente en dos categorías
 - 🟡 Mostrar solo los productos que tengan el estado activo
-- 🟡 Renderizar todos los datos del producto junto con su imagen
-- 🟡 Paginación funcional de los productos *(CREO QUE CON PAGINA SIGUIENTE Y PAGINA ANTERIOR DEBERIA ALCANZAR, NO NUMERAR LAS PAGINAS ABAJO)*
+- 🟢 Renderizar todos los datos del producto junto con su imagen
+- 🟢 Paginación funcional de los productos *(YA TIENE SCROLL INFINITO)*
 - 🟡 Botón para agregar un producto al carrito *(SE ME OCURRIO HACERLO EN DOS PARTES, EN UNA PRIMERA SOLO "AGREGAR AL CARRITO", YA SI AGREGASTE 1, EL BOTON CAMBIA A ( - | 1 | + ))*
 - 🟡 Botón para quitar completamente el productos del carrito
 
