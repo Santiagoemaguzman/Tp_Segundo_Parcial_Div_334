@@ -40,23 +40,6 @@
 
 ### Pantalla de Carrito
 - 🟢 Interfaz con estilos CSS cuidados y consistentes
-- ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- 🟢 Favicon configurado en el navegador
-- 🟢 Logo de la aplicación visible
-- 🟢 Nombre de la aplicación visible
-- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- 🟢 Barra de navegación
-- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- 🟢 Persistencia del tema elegido al recargar
-- 🟢 El cliente nunca debe escribir una ruta a mano en la URL
-- 🟢 Listado detallado de los productos seleccionados
-- ⚪ Controladores para incrementar o decrementar la cantidad de cada ítem
-- ⚪ Botón para eliminar por completo un producto del carrito
-- ⚪ Botón "Finalizar Compra" que dispara un Modal de Confirmación
-- ⚪ Al confirmar, impactar la compra en la base de datos y redirigir al **Ticket**
-
-### Pantalla de Ticket
-- 🟢 Interfaz con estilos CSS cuidados y consistentes
 - 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
 - 🟢 Favicon configurado en el navegador
 - 🟢 Logo de la aplicación visible
@@ -66,21 +49,38 @@
 - 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
 - 🟢 Persistencia del tema elegido al recargar
 - 🟢 El cliente nunca debe escribir una ruta a mano en la URL
-- ⚪ Muestra del ticket con: Nombre de la empresa, Nombre del Cliente, productos comprados, subtotales y total, fecha actual del sistema
+- 🟢 Listado detallado de los productos seleccionados
+- 🟢 Controladores para incrementar o decrementar la cantidad de cada ítem
+- 🟢 Botón para eliminar por completo un producto del carrito
+- 🟢 Botón "Finalizar Compra" que dispara un Modal de Confirmación
+- 🟢 Al confirmar, impactar la compra en la base de datos y redirigir al **Ticket**
+
+### Pantalla de Ticket
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
+- 🟡 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Barra de navegación
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
+- 🟢 El cliente nunca debe escribir una ruta a mano en la URL
+- 🟢 Muestra del ticket con: Nombre de la empresa, Nombre del Cliente, productos comprados, subtotales y total, fecha actual del sistema
 - ⚪ Botón para descargar el Ticket en formato PDF
-- ⚪ Botón de "Salir" / "Volver a empezar" que limpia la sesión, reinicia el flujo y vuelve a la **Pantalla de Bienvenida**  
+- 🟢 Botón de "Salir" / "Volver a empezar" que limpia la sesión, reinicia el flujo y vuelve a la **Pantalla de Bienvenida**  
 
 ## ⚙️ Proyecto Backend (API & Backoffice)
 ### Base de Datos
-- ⚪ Los Productos deben tener una propiedad de activo
-- ⚪ El Sistema debe tener productos cargados al momento de evaluar	
-- ⚪ El Sistema debe persistir las Ventas
+- 🟢 Los Productos deben tener una propiedad de activo
+- 🟢 El Sistema debe tener productos cargados al momento de evaluar	
+- 🟢El Sistema debe persistir las Ventas
 - 🟢 El Sistema debe tener Relacion Muchos a Muchos entre Productos y Ventas
 
 ### API
 - ⚪ La API debe permitir traer los Productos en forma de pagina
-- ⚪ Las Rutas y Endpoints deben estar estructurados de forma lógica MVC
-- ⚪ Debe validar los datos por Middlewares
+- 🟢Las Rutas y Endpoints deben estar estructurados de forma lógica MVC
+- 🟢 Debe validar los datos por Middlewares
 - ⚪ Utilizar un ORM *(¿ES OPCIONAL?)*
 - ⚪ CRUD
 - 🟢 Las imagenes se deben almacenar en el Servidor

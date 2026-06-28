@@ -52,6 +52,7 @@
 
 #tabla-carrito {
     width: 100%;
+    min-width: 620px;
     border-collapse: collapse;
     background-color: rgba(255, 255, 255, 0.92);
 }
@@ -165,4 +166,70 @@
 #Boton-confirmar-compra:disabled {
     cursor: not-allowed;
     opacity: 0.65;
+}
+
+@media (max-width: 768px) {
+    .Carrito-main {
+        padding: 16px 10px;
+    }
+
+    .carrito-panel {
+        min-height: 600px;
+    }
+
+    .carrito-contenido {
+        min-height: 600px;
+        padding: 24px 12px;
+    }
+
+    .carrito-contenido h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .botones {
+        flex-wrap: wrap;
+    }
+
+    .botones button {
+        min-width: 170px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carrito-panel {
+        min-height: 620px;
+    }
+
+    .carrito-contenido {
+        min-height: 620px;
+    }
+
+    .carrito-contenido h1 {
+        font-size: 22px;
+        padding-inline: 16px;
+    }
+
+    #Contenedor-carrito {
+        width: 100%;
+    }
+
+    #tabla-carrito th,
+    #tabla-carrito td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+
+    .botones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .botones button {
+        width: 100%;
+    }
+
+    .myPurchaseModalActions {
+        flex-direction: column;
+    }
 }
