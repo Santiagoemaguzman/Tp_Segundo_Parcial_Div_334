@@ -24,3 +24,15 @@ main div.myContainer button.myAdminLoginButton {
 main div.myContainer button.myAdminLoginButton:hover {
     background-color: var(--btn-secondary-hover-bg);
 }
+
+@media (max-width: 576px) {
+    main div.myContainer {
+        width: min(350px, calc(100vw - 32px));
+        padding-inline: 24px !important;
+    }
+
+    main div.myContainer img.myLogo {
+        width: 100%;
+        height: auto;
+    }
+}

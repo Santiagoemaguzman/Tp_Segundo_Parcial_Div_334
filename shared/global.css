@@ -132,3 +132,52 @@ header div div.myMenuResponsiveExpanded nav div {
     color: var(--all-container-color);
     bottom: 0;
 }
+/* }
+
+@media (max-width: 991px) {
+    header > div {
+        width: 100% !important;
+    }
+
+    header > div > div:first-child {
+        width: auto !important;
+        max-width: calc(100% - 100px);
+    }
+
+    header > div > div:first-child img {
+        max-width: 52px;
+        object-fit: contain;
+    }
+
+    header div div div p.myClientName {
+        font-size: 14px;
+    }
+
+    header div div.myMenuResponsiveExpanded nav {
+        width: min(360px, 90%) !important;
+    }
+
+    header div div.myMenuResponsiveExpanded nav div {
+        width: 90% !important;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    header > div {
+        padding-inline: 8px !important;
+    }
+
+    header > div > div:first-child {
+        padding: 8px !important;
+    }
+
+    header > div > div:first-child div {
+        margin-left: 12px !important;
+    }
+
+    header div nav a.myMenuItem,
+    header div nav button.myMenuItem {
+        width: 68px;
+    }
+} */
