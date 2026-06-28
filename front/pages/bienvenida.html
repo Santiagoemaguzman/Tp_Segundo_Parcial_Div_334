@@ -12,7 +12,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <!-- Seteo de icono -->
-    <link rel="icon" href="../../assets/icono.png">
+    <link rel="icon" type="image/png" href="../../assets/icono.png">
 
     <!-- Importacion de archivo CSS (Estilos) -->
     <link rel="stylesheet" href="../css/main.css">
@@ -28,8 +28,9 @@
     <div class="myBackground"></div>
 
     <!-- Header -->
-    <header class="vw-100 shadow d-flex flex-row justify-content-center align-items-center">
-        <div class="w-50 h-100 d-flex flex-row justify-content-between px-2">
+    <header class="vw-100 shadow row justify-content-center align-items-center m-0">
+
+        <div class="h-100 col-12 col-lg-10 col-xxl-8 d-flex flex-row justify-content-between px-0 px-lg-2">
 
             <!-- BrandLogo -->
             <div class="d-flex flex-row w-50 align-items-center p-3">
@@ -40,9 +41,9 @@
             </div>
 
             <!-- Menu Responsivo -->
-            <nav class="myMenuResponsive d-none flex-row gap-2 align-items-center ">
+            <nav class="myMenuResponsive d-flex d-lg-none flex-row gap-2 align-items-center ">
                 <button
-                    class="myMenuItem myButtonToExpandMenu btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    class="myMenuItem myButtonToExpandMenu btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                     <svg viewBox="0 0 36 24">
                         <use href="../../assets/icons/MenuCollapse.svg"></use>
                     </svg>
@@ -50,7 +51,7 @@
                 </button>
 
                 <button
-                    class="myMenuItem myButtonToCollapseMenu d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    class="myMenuItem myButtonToCollapseMenu d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                     <svg viewBox="0 0 28 28">
                         <use href="../../assets/icons/MenuExpanded.svg"></use>
                     </svg>
@@ -59,7 +60,7 @@
             </nav>
 
             <div
-                class="myMenuResponsiveExpanded myContainerOut d-flex position-fixed vw-100 vh-100 flex-row justify-content-center pt-5 ">
+                class="myMenuResponsiveExpanded myContainerOut d-none d-lg-none position-fixed vw-100 vh-100 flex-row justify-content-center pt-5 ">
                 <!-- Menus -->
                 <nav class="w-50 d-flex flex-column gap-4 mt-5">
                     <!-- <a href=""
@@ -106,7 +107,7 @@
                         <p class="fw-medium fs-6 p-0 m-0 ms-5">Dark</p>
                     </button>
 
-                    <div class="position-fixed w-50 d-flex flex-row  justify-content-center">
+                    <div class="position-fixed w-50 d-flex flex-row justify-content-center text-center">
                         Desarrollado por Santiago Guzman y Carlos Mendéz
                     </div>
 
@@ -115,11 +116,11 @@
             </div>
 
             <!-- Menu Completo -->
-            <nav class="myMenuComplete d-none flex-row gap-2 align-items-center">
+            <nav class="myMenuComplete d-none d-lg-flex flex-row gap-2 align-items-center">
 
                 <!-- Menus -->
                 <!-- <a href=""
-                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                     <svg viewBox="0 0 41 36">
                         <use href="../../assets/icons/Productos.svg"></use>
                     </svg>
@@ -127,7 +128,7 @@
                 </a>
 
                 <a href="./carrito.html"
-                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1 ms-3">
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
                     <svg viewBox="0 0 40 40">
                         <use href="../../assets/icons/Carrito.svg"></use>
                     </svg>
@@ -135,7 +136,7 @@
                 </a>
 
                 <a href="./bienvenida.html"
-                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1 ms-3">
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
                     <svg viewBox="0 0 36 36">
                         <use href="../../assets/icons/LogOut.svg"></use>
                     </svg>
@@ -147,7 +148,7 @@
 
                 <!-- Theme -->
                 <button
-                    class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                     <svg viewBox="0 0 44 44">
                         <use href="../../assets/icons/LightMode.svg"></use>
                     </svg>
@@ -155,7 +156,7 @@
                 </button>
 
                 <button
-                    class="myMenuItem myButtonToLightMode d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded p-1">
+                    class="myMenuItem myButtonToLightMode d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                     <svg viewBox="0 0 36 36">
                         <use href="../../assets/icons/DarkMode.svg"></use>
                     </svg>
@@ -164,6 +165,7 @@
             </nav>
 
         </div>
+
     </header>
 
     <!-- Main -->
@@ -186,15 +188,15 @@
                 <strong>Continuar</strong>
             </button>
             <!-- Boton Solo Adminsitradores -->
-            <button type="button" class="btn w-100 myAdminLoginButton">
+            <button type="button" class="btn w-100 myToAdminLoginPageButton">
                 Solo administradores
             </button>
         </div>
 
     </main>
 
-    <!-- Footer -->    
-    <footer class="vw-100">
+    <!-- Footer -->
+    <footer class="d-none d-lg-flex position-fixed vw-100 justify-content-center align-items-center">
         Desarrollado por Santiago Guzman y Carlos Mendéz
     </footer>
 </body>

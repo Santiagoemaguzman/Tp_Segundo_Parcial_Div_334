@@ -8,7 +8,7 @@ import {
     , ORDEN_PRECIO_DESC
     , THEME_LIGHT
     , THEME_DARK
-} from './constantes.js';
+} from '../../shared/constantes.js';
 
 import { initPantallaBienvenida } from './bienvenida.js';
 import { initPantallaProductos } from './productos.js';
@@ -19,80 +19,48 @@ import { initPantallaTicket } from './ticket.js';
 // ==========================================================================
 // NAVBAR
 // ==========================================================================
-function setMenuResponsive() {
 
-    // Recupero ambos Menus
-    const _menuResponsive = document.querySelector('header div nav.myMenuResponsive');
-    const _menuComplete = document.querySelector('header div nav.myMenuComplete');
+function handlerMenu() {
 
-    // Ajusto la visibilidad
-    _menuResponsive.classList.add('d-flex');
-    _menuResponsive.classList.remove('d-none');
-    _menuComplete.classList.add('d-none');
-    _menuComplete.classList.remove('d-flex');
+    // Defino el Comportamiento para el Menu Responsive
 
     // Recupero los botones y el Menu Responsive Expandido
     const _buttonToExpandMenu = document.querySelector('header div nav.myMenuResponsive button.myButtonToExpandMenu');
     const _buttonToCollapseMenu = document.querySelector('header div nav.myMenuResponsive button.myButtonToCollapseMenu');
     const _menuResponsiveExpanded = document.querySelector('header div div.myMenuResponsiveExpanded');
 
-    _menuResponsiveExpanded.classList.add('d-flex');
-    _menuResponsiveExpanded.classList.remove('d-none');
+    if (!_buttonToExpandMenu || !_buttonToCollapseMenu || !_menuResponsiveExpanded) return;
 
     //Comportamiento del Boton para Expandir el Menu
     _buttonToExpandMenu.addEventListener('click', function (event) {
-        _buttonToExpandMenu.classList.add('d-none');
-        _buttonToExpandMenu.classList.remove('d-flex');
+        event.stopPropagation();
 
-        _buttonToCollapseMenu.classList.add('d-flex');
-        _buttonToCollapseMenu.classList.remove('d-none');
+        _buttonToExpandMenu.classList.replace('d-flex', 'd-none');
+        _buttonToCollapseMenu.classList.replace('d-none', 'd-flex');
 
-        _menuResponsiveExpanded.classList.add('myContainerIn');
-        _menuResponsiveExpanded.classList.remove('myContainerOut');
-    })
+        _menuResponsiveExpanded.classList.replace('d-none', 'd-flex');
+        _menuResponsiveExpanded.classList.replace('myContainerOut', 'myContainerIn');
+    });
 
     //Comportamiento del Boton para Colapsar el Menu
     _buttonToCollapseMenu.addEventListener('click', function (event) {
-        _buttonToCollapseMenu.classList.add('d-none');
-        _buttonToCollapseMenu.classList.remove('d-flex');
+        event.stopPropagation();
 
-        _buttonToExpandMenu.classList.add('d-flex');
-        _buttonToExpandMenu.classList.remove('d-none');
+        _buttonToExpandMenu.classList.replace('d-none', 'd-flex');
+        _buttonToCollapseMenu.classList.replace('d-flex', 'd-none');
+        
+        _menuResponsiveExpanded.classList.replace('myContainerIn', 'myContainerOut');
 
-        _menuResponsiveExpanded.classList.add('myContainerOut');
-        _menuResponsiveExpanded.classList.remove('myContainerIn');
+        // Termina la animacion y queda oculto
+        setTimeout(() => {
+            if (_menuResponsiveExpanded.classList.contains('myContainerOut')) {
+                _menuResponsiveExpanded.classList.replace('d-flex', 'd-none');
+            }
+        }, 500);
+
     })
-}
-
-function setMenuComplete() {
-
-    // Recupero ambos Menus
-    const _menuResponsive = document.querySelector('header div nav.myMenuResponsive');
-    const _menuComplete = document.querySelector('header div nav.myMenuComplete');
-
-    // Ajusto la visibilidad
-    _menuResponsive.classList.add('d-none');
-    _menuResponsive.classList.remove('d-flex');
-    _menuComplete.classList.add('d-flex');
-    _menuComplete.classList.remove('d-none');
-
-    // Recupero el Menu Responsive Expandido
-    const _menuResponsiveExpanded = document.querySelector('header div div.myMenuResponsiveExpanded');
-    _menuResponsiveExpanded.classList.add('d-none');
-    _menuResponsiveExpanded.classList.remove('d-flex');
 
 }
-
-function handlerMenu() {
-
-    const _anchoPantalla = window.innerWidth;
-    if (_anchoPantalla < 992) {
-        setMenuResponsive();
-    } else {
-        setMenuComplete();
-    }
-}
-
 
 // ==========================================================================
 // THEME
@@ -106,7 +74,7 @@ function setTheme(temaSitio) {
     const _arrButtonToLightMode = document.querySelectorAll('header div nav button.myButtonToLightMode');
 
     // Set el Atributo data-theme, y la visibilidad de los Botones
-    switch (temaSitio) {
+    switch (Number(temaSitio)) {
         case THEME_DARK:
             _body.setAttribute('data-theme', 'dark');
             _arrButtonToDarkMode.forEach(function (boton) {
@@ -119,7 +87,7 @@ function setTheme(temaSitio) {
             })
             break;
         case THEME_LIGHT:
-        default:
+            //default:
             _body.setAttribute('data-theme', 'light');
             _arrButtonToDarkMode.forEach(function (boton) {
                 boton.classList.add('d-flex');
@@ -131,6 +99,8 @@ function setTheme(temaSitio) {
             })
             break;
     }
+
+    localStorage.setItem('temaSitio', temaSitio);
 }
 
 function handlerTheme() {
@@ -153,11 +123,17 @@ function handlerTheme() {
 
     // Les agrego Listeners para Cambiar el Tema
     _arrButtonToDarkMode.forEach(function (boton) {
-        boton.addEventListener('click', () => setTheme(THEME_DARK));
+        boton.addEventListener('click', function (event) {
+            event.stopPropagation();
+            setTheme(THEME_DARK);
+        });
     })
 
     _arrButtonToLightMode.forEach(function (boton) {
-        boton.addEventListener('click', () => setTheme(THEME_LIGHT));
+        boton.addEventListener('click', function (event) {
+            event.stopPropagation();
+            setTheme(THEME_LIGHT);
+        });
     })
 }
 
@@ -200,16 +176,13 @@ function init() {
         case 'ticket':
             imprimirNombreCliente();
             initPantallaTicket();
-            break;            
+            break;
         default:
             console.warn('Pantalla En Progreso');
     }
 
     // MANEJO DEL MENU
-    // Lo llamo una Primera Vez para que adapte el Menu
     handlerMenu();
-    // Lo guardo en un Listener de Eventos
-    window.addEventListener('resize', handlerMenu);
 
     // MANEJO DEL TEMA
     handlerTheme();

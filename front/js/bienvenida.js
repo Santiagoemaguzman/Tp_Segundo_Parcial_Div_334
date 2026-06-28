@@ -1,3 +1,6 @@
+// ==========================================================================
+// LOGIN CLIENTE
+// ==========================================================================
 function handlerLoginCliente(event) {
     // Recupera el Valor del Input
     let _clientLoginInput = document.querySelector('input.myClientLoginInput');
@@ -21,15 +24,24 @@ function handlerLoginCliente(event) {
     window.location.href = '../pages/productos.html';
 }
 
+function handlerLoginAdmin(event) {
+    // Redireccion a Productos
+    window.location.href = '../../back/views/login.html';
+}
+
 // ==========================================================================
-// Export
+// EXPORT
 // ==========================================================================
 export function initPantallaBienvenida() {
 
-    // Recuperamos el Boton y le agregamos un Listener
-    let _boton = document.querySelector('button.myClientLoginButton');
-    _boton.addEventListener('click', handlerLoginCliente)
+    // Reset localStorage
+    localStorage.clear();
 
-    // Reset localStorage nombreCliente
-    localStorage.setItem('nombreCliente', '');
+    // Recuperamos el Boton Login de Cliente y le agregamos un Listener
+    const _botonClientLoginButton  = document.querySelector('button.myClientLoginButton');
+    _botonClientLoginButton.addEventListener('click', handlerLoginCliente)
+
+    // Recuperamos el Boton Login de Admin y le agregamos un Listener
+    const _botonAdminLoginButton = document.querySelector('button.myToAdminLoginPageButton');
+    _botonAdminLoginButton.addEventListener('click', handlerLoginAdmin)
 }

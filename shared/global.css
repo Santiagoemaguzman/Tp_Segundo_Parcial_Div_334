@@ -126,27 +126,9 @@ header div div.myMenuResponsiveExpanded.myContainerOut {
 /* ==========================================================================
 // FOOTERs
 // ========================================================================== */
-footer {
-    display: none;
-    color: var(--all-container-color);
-}
-
-@media (min-width: 992px) {
-
-    /*--breakpoint*/
-    footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--all-container-bg);
-        color: var(--all-container-color);
-        position: fixed;
-        bottom: 0;
-    }
-}
-
+footer,
 header div div.myMenuResponsiveExpanded nav div {
-    position: fixed;
-    bottom: 0;
+    background-color: var(--all-container-bg);
     color: var(--all-container-color);
+    bottom: 0;
 }
