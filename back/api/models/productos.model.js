@@ -14,7 +14,19 @@ import {
 
 function selectProductos() {
 
-    const query = "SELECT IDProducto, Producto, Importe, ImagenPath FROM Productos";
+    const query = `SELECT
+        PROD.IDProducto
+        , PROD.Producto
+        , PROD.IDTipoProducto
+        , TPRD.TipoProducto
+        , PROD.Importe
+        , PROD.ImagenPath
+        , PROD.Estado
+    FROM
+        Productos PROD
+        INNER JOIN TipoProductos TPRD ON PROD.IDTipoProducto = TPRD.IDTipoProducto
+    ORDER BY 
+        PROD.IDProducto ASC`;
 
     return connection.query(query);
 }

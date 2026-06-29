@@ -1,4 +1,4 @@
-import connection from "../config/database/database.js";
+import connection from "../database/database.js";
 
 function crearError(mensaje, status) {
     const error = new Error(mensaje);

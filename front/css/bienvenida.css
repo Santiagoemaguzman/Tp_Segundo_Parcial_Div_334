@@ -15,13 +15,13 @@ main div.myContainer button.myClientLoginButton:hover {
     background-color: var(--btn-primary-hover-bg);
 }
 
-main div.myContainer button.myAdminLoginButton {
+main div.myContainer button.myToAdminLoginPageButton {
     background-color: var(--btn-secondary-bg);
     color: var(--btn-secondary-color);
     text-decoration: underline;
 }
 
-main div.myContainer button.myAdminLoginButton:hover {
+main div.myContainer button.myToAdminLoginPageButton:hover {
     background-color: var(--btn-secondary-hover-bg);
 }
 

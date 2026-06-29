@@ -1,0 +1,197 @@
+/* ==========================================================================
+// FILTER BAR
+// ========================================================================== */
+main section div.myProductsFilterBar {
+    background-color: var(--all-container-bg);
+    color: var(--all-container-color);
+}
+
+/* ==========================================================================
+// PRODUCTS CONTAINER
+// ========================================================================== */
+main section div.myProductsContainer {
+    min-width: 500px;
+}
+
+/* main section div.myProductsContainer div.myProductsMessage {
+    grid-column: 1 / 6; 
+} */
+
+/* ==========================================================================
+// PRODUCT ITEM
+// ========================================================================== */
+
+/* main section div.myProductsContainer div.mySpinnerContainer {
+    min-height: 450px;
+    grid-column: 1 / -1;
+
+
+}
+
+main section div.myProductsContainer div.myProductsMessage {
+    grid-column: 1 / -1;
+} */
+
+main section div.myProductsContainer div.myProductItem {
+    height: 350px;
+    width: 230px;
+    cursor: pointer;
+    background-color: var(--all-container-bg);
+    color: var(--all-container-color);
+}
+
+main section div.myProductsContainer div.myProductItem:hover {
+    box-shadow: var(--item-hover-box-shadow);
+}
+
+
+
+main section div.myProductsContainer div.myProductItem div.myProductItemImg {
+    height: 200px;
+    background-color: whitesmoke;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+main section div.myProductsContainer div.myProductItem div.myProductItemImg img {
+    height: 100%;
+    width: auto;
+    transform: scale(1.5) rotate(-5deg) translateY(15px);
+}
+
+/* 
+main section div.myProductsContainer div.myProductItem button.myButtonAgregarProductoWrapper{
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+}
+
+main section div.myProductsContainer div.myProductItem button.myButtonAgregarProductoWrapper:hover{
+    background-color: var(--btn-primary-hover-bg);
+}
+
+main section div.myProductsContainer div.myProductItem button.myButtonAgregarProductoWrapper svg{
+    fill: white;
+    width: 24px;
+    height: 24px;
+} */
+
+
+main section div.myProductsContainer table tbody button.myButtonConsultarProducto,
+main section div.myProductsContainer table tbody button.myButtonModificarProducto,
+main section div.myProductsFilterBar button.myButtonCrearProducto {
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+}
+
+main section div.myProductsContainer table tbody button.myButtonConsultarProducto:hover,
+main section div.myProductsContainer table tbody button.myButtonModificarProducto:hover,
+main section div.myProductsFilterBar button.myButtonCrearProducto:hover {
+    background-color: var(--btn-primary-hover-bg);
+}
+
+main section div.myProductsContainer table tbody button.myButtonAnularProducto {
+    background-color: var(--btn-danger-bg);
+    color: var(--btn-danger-color);
+}
+
+main section div.myProductsContainer table tbody button.myButtonAnularProducto:hover {
+    background-color: var(--btn-danger-hover-bg);
+}
+
+main section div.myProductsContainer table tbody button.myButtonConsultarProducto,
+main section div.myProductsContainer table tbody button.myButtonModificarProducto,
+main section div.myProductsContainer table tbody button.myButtonValidarProducto,
+main section div.myProductsContainer table tbody button.myButtonAnularProducto,
+main section div.myProductsFilterBar button.myButtonCrearProducto {
+    height: 38px;
+}
+
+
+main section div.myProductsContainer table tbody button.myButtonConsultarProducto svg,
+main section div.myProductsContainer table tbody button.myButtonModificarProducto svg,
+main section div.myProductsContainer table tbody button.myButtonValidarProducto svg,
+main section div.myProductsContainer table tbody button.myButtonAnularProducto svg,
+main section div.myProductsFilterBar button.myButtonCrearProducto svg {
+    fill: white;
+    width: 18px;
+    height: 18px;
+}
+
+/* 
+main section div.myProductsContainer div.myProductItem .card-body > div {
+    gap: 6px;
+}
+
+main section div.myProductsContainer div.myProductItem .card-body button {
+    flex: 1;
+    padding-inline: 8px !important;
+}
+
+@media (max-width: 1200px) {
+    main section div.myProductsContainer {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 991px) {
+    body[data-page="productos"] main section {
+        width: calc(100% - 24px) !important;
+    }
+
+    main section div.myProductsFilterBar {
+        height: auto;
+        gap: 12px;
+        padding-block: 12px;
+    }
+
+    main section div.myProductsFilterBar > div {
+        width: 100%;
+    }
+
+    main section div.myProductsFilterBar label {
+        width: 110px !important;
+    }
+
+    main section div.myProductsFilterBar select {
+        flex: 1;
+        width: auto !important;
+    }
+
+    main section div.myProductsContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    main section div.myProductsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    body[data-page="productos"] main {
+        padding-bottom: 20px;
+    }
+
+    main section div.myProductsFilterBar {
+        padding-inline: 12px !important;
+    }
+
+    main section div.myProductsFilterBar > div {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px;
+    }
+
+    main section div.myProductsFilterBar label,
+    main section div.myProductsFilterBar select {
+        width: 100% !important;
+    }
+
+    main section div.myProductsContainer {
+        grid-template-columns: minmax(0, 1fr);
+    }
+} */

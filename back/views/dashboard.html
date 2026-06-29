@@ -121,10 +121,10 @@
                 <!-- Menus -->
                 <a href=""
                     class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
-                    <svg viewBox="0 0 41 36">
-                        <use href="../../assets/icons/Add.svg"></use>
+                    <svg viewBox="0 0 32 32">
+                        <use href="../../assets/icons/Download.svg"></use>
                     </svg>
-                    <p class="fw-medium fs-6 p-0 m-0">Nuevo</p>
+                    <p class="fw-medium fs-6 p-0 m-0">Ventas</p>
                 </a>
 
 
@@ -165,14 +165,10 @@
     <main class="vw-100 d-flex flex-row justify-content-center row m-0 mb-5">
         <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
 
-            <div class="myProductsFilterBar rounded shadow row align-items-center justify-content-between px-0 mx-0">
+            <div class="myProductsFilterBar rounded shadow row align-items-center justify-content-end px-0 mx-0">
             </div>
 
             <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
-
-            </div>
-
-            <div class="mySentinel">
             </div>
 
         </section>
@@ -180,7 +176,26 @@
 
     <script>
 
+        function setFilterBar() {
+            // Agregacion de los Nodos al DOM
+            const _divProductsFilterBar = document.querySelector('body main section div.myProductsFilterBar');
+            _divProductsFilterBar.innerHTML = `<button class="btn myButtonCrearProducto col-12 col-lg-1 my-lg-3 me-3 d-flex justify-content-center align-items-center" >
+                <svg viewBox="0 0 28 28" class="me-2">
+                    <use href="../../assets/icons/Add.svg"></use>
+                </svg>
+                Nuevo
+            </button>`;
 
+            // const _barraBusqueda = document.querySelector('body main section div.myProductsFilterBar input.mySearchBar');
+            // const _selectFiltro = document.querySelector('body main section div.myProductsFilterBar select.mySelectFilter');
+            // const _selectOrder = document.querySelector('body main section div.myProductsFilterBar select.mySelectOrder');
+
+            // if (_barraBusqueda && _selectFiltro && _selectOrder) {
+            //     _barraBusqueda.addEventListener('input', handlerFilterBar);
+            //     _selectFiltro.addEventListener('change', handlerFilterBar);
+            //     _selectOrder.addEventListener('change', handlerFilterBar);
+            // }
+        }
 
         function imprimirArrayProductos(arrayProductos) {
 
@@ -189,69 +204,71 @@
                 return;
             }
 
-            // Recuperamos el Carrito
-            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
             // Armado de los Nodos
-            let _contenedorProductos = '';
+            let _contenedorProductos = `<table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="col-1">ID</th>
+                        <th scope="col" class="col-7">Producto</th>
+                        <th scope="col" class="col-1">Tipo</th>
+                        <th scope="col" class="col-1">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
             arrayProductos.forEach((producto) => {
+                _contenedorProductos += ` <tr class="myTableRow">
+                    <th scope="row" class="">${producto.IDProducto}</th>
+                    <td class="">${producto.Producto}</td>
+                    <td class="">${producto.TipoProducto}</td>
+                    <td class="">
+                        ${producto.Estado.data[0] === 1 
+                        ? '<span class="badge rounded-pill text-bg-success p-2">Habilitado</span>'
+                        : '<span class="badge rounded-pill text-bg-danger p-2">Inhabilitado</span>'
+                        }
+                    </td>
+                    <td class="d-flex flex-row justify-content-end">
+                        <button class="btn myButtonConsultarProducto d-flex justify-content-center align-items-center ms-2"
+                            data-id="${producto.IDProducto}">
+                            <svg viewBox="0 0 36 36">
+                                <use href="../../assets/icons/Read.svg"></use>
+                            </svg>
+                        </button>
 
-                // Si existe en el Carrito, recuperamos la cantidad
-                let _productoEnCarrito = carrito.find((ProductoEnCarrito) => ProductoEnCarrito.id === producto.IDProducto);
-                const _productoEnCarritoCantidad = _productoEnCarrito ? _productoEnCarrito.cantidad : 0;
+                        <button class="btn myButtonModificarProducto d-flex justify-content-center align-items-center ms-2"
+                            data-id="${producto.IDProducto}">
+                            <svg viewBox="0 0 36 36">
+                                <use href="../../assets/icons/Edit.svg"></use>
+                            </svg>
+                        </button>
 
-                _contenedorProductos += `<div class="card myProductItem p-0 m-0" data-id="${producto.IDProducto}" data-tipo="${producto.IDTipoProducto}">
-            <div class="myProductItemImg">
-                <img src="${producto.ImagenPath}" alt="${producto.Producto}" >
-            </div>
-            <div class="card-body p-2 d-flex flex-column justify-content-between">
-                <p class="mt-0 mb-2 h-25">${producto.Producto}</p>
-                <h4 class="m-0 ">${Number(producto.Importe).toFixed(2)} AR$</h4>
+                        <button class="btn myButtonAnularProducto d-flex justify-content-center align-items-center ms-2"
+                            data-id="${producto.IDProducto}">
+                            <svg viewBox="0 0 28 28">
+                                <use href="../../assets/icons/MenuExpanded.svg"></use>
+                            </svg>
+                        </button>
 
-                <div class="${_productoEnCarritoCantidad == 0 ? "d-flex" : "d-none"} m-0 w-100 myDivButtonAgregarProductoWrapper ">
-                    <button class="btn px-4 w-100 myButtonAgregarProductoWrapper d-flex justify-content-center align-items-center"
-                        data-id="${producto.IDProducto}"
-                        data-nombre="${producto.Producto}"
-                        data-precio="${producto.Importe}">
-                        <svg viewBox="0 0 40 40 " class="me-3">
-                            <use href="../../assets/icons/AgregarCarrito.svg"></use>
-                        </svg>
-                        Agregar 
-                    </button>
-                </div>
 
-                <div class="${_productoEnCarritoCantidad == 0 ? "d-none" : "d-flex"} m-0 flex-row justify-content-between myDivButtonAgregarQuitarProducto">
-                   
-                    <button class="btn myButtonQuitarProducto d-flex justify-content-center align-items-center"
-                        data-id="${producto.IDProducto}">
-                        <svg viewBox="0 0 28 3">
-                            <use href="../../assets/icons/Remove.svg"></use>
-                        </svg>
-                    </button>
+                        <button class="btn myButtonAnularProducto d-flex justify-content-center align-items-center ms-2"
+                            data-id="${producto.IDProducto}">
+                            <svg viewBox="0 0 32 36">
+                                <use href="../../assets/icons/Delete.svg"></use>
+                            </svg>
+                        </button>
 
-                    <h4>${_productoEnCarritoCantidad}</h4>
-
-                    <button class="btn myButtonAgregarProducto d-flex justify-content-center align-items-center"
-                        data-id="${producto.IDProducto}"
-                        data-nombre="${producto.Producto}"
-                        data-precio="${producto.Importe}">
-                        <svg viewBox="0 0 28 28">
-                            <use href="../../assets/icons/Add.svg"></use>
-                        </svg>
-                    </button>
-                    
-                </div>
-            </div>
-        </div>`;
+                    </td>
+                </tr>`;
             });
+
+            _contenedorProductos += `</tbody>
+                </table>`;
 
             // Agregacion de los Nodos al DOM
             let _divContenedorProductos = document.querySelector('body main section div.myProductsContainer');
-            // if (PAG_PAGINA_ACTUAL === 0) {
-                _divContenedorProductos.innerHTML = _contenedorProductos;
-            // } else {
-            //     _divContenedorProductos.innerHTML += _contenedorProductos;
-            // }
+            _divContenedorProductos.innerHTML = _contenedorProductos;
+
 
 
         }
@@ -286,16 +303,6 @@
 
         async function ProductosGetItems() {
 
-            // const queryParams = new URLSearchParams({
-            //     soloActivos: true
-            //     , producto: searchProducto
-            //     , tipoProducto
-            //     , orderBy
-            //     , currentPage
-            //     , limitPerPage
-            // });
-
-            //const _endpointURL = `http://localhost:3000/api/productos?${queryParams.toString()}`;
             const _endpointURL = `http://localhost:3000/api/productos`;
             const response = await fetch(_endpointURL);
 
@@ -308,6 +315,8 @@
 
             return datos.payload;
         }
+
+        setFilterBar();
 
         loadProductos();
 
