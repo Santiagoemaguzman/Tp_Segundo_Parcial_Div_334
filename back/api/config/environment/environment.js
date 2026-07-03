@@ -7,6 +7,7 @@ dotenv.config(); // Cargamos las variables de entorno desde el archivo .env
 // , todo se centraliza en este archivo
 export default {
     port: process.env.PORT || 3000,
+    sessionSecret: process.env.SESSION_SECRET || 'poketcg-backoffice-session',
     database: {
         host: process.env.DB_HOST,
         port: process.env.DB_PORT || 3306,
