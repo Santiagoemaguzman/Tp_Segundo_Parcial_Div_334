@@ -81,7 +81,7 @@
 - ⚪ La API debe permitir traer los Productos en forma de pagina
 - 🟢Las Rutas y Endpoints deben estar estructurados de forma lógica MVC
 - 🟢 Debe validar los datos por Middlewares
-- ⚪ Utilizar un ORM *(¿ES OPCIONAL?)*
+- ⚪ Utilizar un ORM *(¿ES OPCIONAL?)*/No hay que integrarlo/
 - ⚪ CRUD
 - 🟢 Las imagenes se deben almacenar en el Servidor
 - ⚪ Encriptacion de Contraseñas

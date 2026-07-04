@@ -78,6 +78,14 @@ INSERT INTO TipoProductos( TipoProducto, UsuarioAlta )
 VALUES ( 'Boosters', 'admin'  )
         , ( 'Singles', 'admin'  );
 
+INSERT INTO Usuarios( Mail, Password, NombreApellido, UsuarioAlta )
+VALUES (
+    'tester@poketcg.com',
+    '$2b$10$kI9sV2n0Xl1AGzaQ7LmgGe/.FSzu83bXmpyg.6VBq4MU4b0S4IA7K',
+    'Tester PokeTCG',
+    'admin'
+);
+
 INSERT INTO Productos( Producto, IDTipoProducto, Importe, Stock, ImagenPath, UsuarioAlta )
 VALUES ( 'Booster Mega Evolution : Ascended Heroes', 1, 23000.00, 100,  '../../back/productos-imgs/000001.png','admin' )
     , ( 'Booster Mega Evolution : Perfect Order', 1, 12000.00, 100,  '../../back/productos-imgs/000002.png','admin' )

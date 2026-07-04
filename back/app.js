@@ -10,6 +10,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loggerURL } from "./api/middlewares/logger.js";
 
+// import path from "node:path";
+// import { fileURLToPath } from "node:url";
+// import environments from "./api/config/environment/environment.js";
+// import authRouter from "./api/routes/auth.routes.js";
+// import dashboardRouter from "./api/routes/dashboard.routes.js";
+// import inicioRouter from "./api/routes/inicio.routes.js";
+// import productosRouter from "./api/routes/productos.routes.js";
+// import ventasRouter from "./api/routes/ventas.routes.js";
+
 
 
 // 
@@ -30,6 +39,20 @@ app.use(cors());
 
 // Middleware para parsear JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(currentDirectory, 'public')));
+app.use('/assets', express.static(path.join(currentDirectory, '..', 'assets')));
+app.use(session({
+    name: 'poketcg.sid',
+    secret: environments.sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        sameSite: 'lax',
+        maxAge: 1000 * 60 * 60 * 4
+    }
+}));
 
 // Middleware logear para mostrar todas las solicitudes por consola
 app.use(loggerURL);
@@ -53,6 +76,12 @@ app.use('/shared', express.static(path.join(currentDirectory, '..', 'shared')));
 // ==============================================
 // ROUTES
 // ==============================================
+
+// app.use('/', inicioRouter);
+// app.use('/login', authRouter);
+// app.use('/dashboard', dashboardRouter);
+
+
 app.use('/api/productos', productosRouter);
 
 app.use('/api/ventas', ventasRouter);

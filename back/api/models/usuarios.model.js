@@ -17,6 +17,8 @@ function selectUsuariosWhereMail(params) {
     //console.log("selectProductosWhereIDProducto");
 }
 
+// =======
+// import connection from "../config/database/database.js";
 
 // export async function buscarUsuarioPorMail(mail) {
 //     const [usuarios] = await connection.query(
@@ -29,3 +31,4 @@ function selectUsuariosWhereMail(params) {
 
 //     return usuarios[0] ?? null;
 // }
+// >>>>>>> feature/santiago

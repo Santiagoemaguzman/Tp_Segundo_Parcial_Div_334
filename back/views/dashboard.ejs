@@ -170,3 +170,39 @@
 </body>
 
 </html>
+
+<!-- <%- include('partials/head', { title, pageClass: 'dashboard-page' }) %>
+
+<div class="page-shell">
+    <header class="topbar">
+        <a class="brand" href="/dashboard">
+            <img src="/assets/icono.png" alt="Logo de PokeTCG.com">
+            <span>
+                <strong>PokeTCG.com</strong>
+                <small>Backoffice</small>
+            </span>
+        </a>
+
+        <div class="dashboard-actions">
+            <label class="theme-control" for="theme-select">
+                <span>Tema</span>
+                <select id="theme-select" aria-label="Cambiar tema de la aplicación">
+                    <option value="light">Claro</option>
+                    <option value="dark">Oscuro</option>
+                    <option value="forest">Bosque</option>
+                </select>
+            </label>
+            <form action="/login/salir" method="POST">
+                <button class="logout-button" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="dashboard-card">
+        <span class="eyebrow">Sesión iniciada</span>
+        <h1>Hola, <%= usuario.nombre %></h1>
+        <p>Hola soy una pantalla de dashboard, terrible locura.</p>
+    </main>
+</div>
+
+<%- include('partials/footer', { pageScript: null }) %> -->
