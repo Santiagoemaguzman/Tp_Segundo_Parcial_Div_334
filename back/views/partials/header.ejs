@@ -1,0 +1,272 @@
+<!-- Background -->
+<div class="myBackground"></div>
+
+<!-- Header -->
+<header class="vw-100 shadow row justify-content-center align-items-center m-0">
+
+    <div class="h-100 col-12 col-lg-10 col-xxl-8 d-flex flex-row justify-content-between px-0 px-lg-2">
+
+        <!-- BrandLogo -->
+        <div class="d-flex flex-row w-50 align-items-center p-3">
+            <img src="/assets/icono.png " class="h-100" alt="logo">
+            <div class="ms-5 mt-3 d-flex align-items-center">
+                <p class="fw-medium myClientName"></p>
+            </div>
+        </div>
+
+        <!-- Menu Responsivo -->
+        <nav class="myMenuResponsive d-flex d-lg-none flex-row gap-2 align-items-center ">
+            <button
+                class="myMenuItem myButtonToExpandMenu btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                <svg viewBox="0 0 36 24">
+                    <use href="/assets/icons/MenuCollapse.svg"></use>
+                </svg>
+                <p class="fw-medium fs-6 p-0 m-0">Menu</p>
+            </button>
+
+            <button
+                class="myMenuItem myButtonToCollapseMenu d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                <svg viewBox="0 0 28 28">
+                    <use href="/assets/icons/MenuExpanded.svg"></use>
+                </svg>
+                <p class="fw-medium fs-6 p-0 m-0">Cerrar</p>
+            </button>
+        </nav>
+
+        <div
+            class="myMenuResponsiveExpanded myContainerOut d-none d-lg-none position-fixed vw-100 vh-100 flex-row justify-content-center pt-5 ">
+            <!-- Menus -->
+            <nav class="w-50 d-flex flex-column gap-4 mt-5">
+                <a href=""
+                    class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                    <svg viewBox="0 0 41 36">
+                        <use href="/assets/icons/Download.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Ventas</p>
+                </a>
+
+                <a href="./bienvenida.html"
+                    class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                    <svg viewBox="0 0 36 36">
+                        <use href="/assets/icons/LogOut.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
+                </a>
+
+                <!-- Separator -->
+                <hr />
+
+                <!-- Theme -->
+                <button
+                    class="myMenuItem myButtonToDarkMode btn d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                    <svg viewBox="0 0 44 44">
+                        <use href="/assets/icons/LightMode.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Light</p>
+                </button>
+
+                <button
+                    class="myMenuItem myButtonToLightMode d-none flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                    <svg viewBox="0 0 36 36">
+                        <use href="/assets/icons/DarkMode.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Dark</p>
+                </button>
+
+                <div class="position-fixed w-50 d-flex flex-row justify-content-center text-center">
+                    Desarrollado por Santiago Guzman y Carlos Mendéz
+                </div>
+
+            </nav>
+
+        </div>
+
+        <!-- Menu Completo -->
+        <nav class="myMenuComplete d-none d-lg-flex flex-row gap-2 align-items-center">
+
+            <!-- Menus -->
+            <a href=""
+                class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                <svg viewBox="0 0 32 32">
+                    <use href="/assets/icons/Download.svg"></use>
+                </svg>
+                <p class="fw-medium fs-6 p-0 m-0">Ventas</p>
+            </a>
+
+
+            <a href="./bienvenida.html"
+                class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
+                <svg viewBox="0 0 36 36">
+                    <use href="/assets/icons/LogOut.svg"></use>
+                </svg>
+                <p class="fw-medium fs-6 p-0 m-0">Salir</p>
+            </a>
+
+            <!-- Separator -->
+            <div class="vr mx-1 my-2"></div>
+
+            <!-- Theme -->
+            <button
+                class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                <svg viewBox="0 0 44 44">
+                    <use href="/assets/icons/LightMode.svg"></use>
+                </svg>
+                <p class="fw-medium fs-6 p-0 m-0">Light</p>
+            </button>
+
+            <button
+                class="myMenuItem myButtonToLightMode d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                <svg viewBox="0 0 36 36">
+                    <use href="/assets/icons/DarkMode.svg"></use>
+                </svg>
+                <p class="fw-medium fs-6 p-0 m-0">Dark</p>
+            </button>
+        </nav>
+
+    </div>
+
+    <script type="module">
+
+        import {
+            TIPOPRODUCTO_BOOSTERS
+            , TIPOPRODUCTO_SINGLES
+            , TIPOPRODUCTO_TODOS
+            , ORDEN_ALFA_ASC
+            , ORDEN_ALFA_DESC
+            , ORDEN_PRECIO_ASC
+            , ORDEN_PRECIO_DESC
+            , THEME_LIGHT
+            , THEME_DARK
+        } from '/shared/constantes.js';
+
+        // ==========================================================================
+        // NAVBAR
+        // ==========================================================================
+
+        function handlerMenu() {
+
+            // Defino el Comportamiento para el Menu Responsive
+
+            // Recupero los botones y el Menu Responsive Expandido
+            const _buttonToExpandMenu = document.querySelector('header div nav.myMenuResponsive button.myButtonToExpandMenu');
+            const _buttonToCollapseMenu = document.querySelector('header div nav.myMenuResponsive button.myButtonToCollapseMenu');
+            const _menuResponsiveExpanded = document.querySelector('header div div.myMenuResponsiveExpanded');
+
+            if (!_buttonToExpandMenu || !_buttonToCollapseMenu || !_menuResponsiveExpanded) return;
+
+            //Comportamiento del Boton para Expandir el Menu
+            _buttonToExpandMenu.addEventListener('click', function (event) {
+                event.stopPropagation();
+
+                _buttonToExpandMenu.classList.replace('d-flex', 'd-none');
+                _buttonToCollapseMenu.classList.replace('d-none', 'd-flex');
+
+                _menuResponsiveExpanded.classList.replace('d-none', 'd-flex');
+                _menuResponsiveExpanded.classList.replace('myContainerOut', 'myContainerIn');
+            });
+
+            //Comportamiento del Boton para Colapsar el Menu
+            _buttonToCollapseMenu.addEventListener('click', function (event) {
+                event.stopPropagation();
+
+                _buttonToExpandMenu.classList.replace('d-none', 'd-flex');
+                _buttonToCollapseMenu.classList.replace('d-flex', 'd-none');
+
+                _menuResponsiveExpanded.classList.replace('myContainerIn', 'myContainerOut');
+
+                // Termina la animacion y queda oculto
+                setTimeout(() => {
+                    if (_menuResponsiveExpanded.classList.contains('myContainerOut')) {
+                        _menuResponsiveExpanded.classList.replace('d-flex', 'd-none');
+                    }
+                }, 500);
+
+            })
+
+        }
+
+        // ==========================================================================
+        // THEME
+        // ==========================================================================
+
+        function setTheme(temaSitio) {
+
+            // Recupero el Body, y los Botones para cambiar de Tema, tanto del Menu Completo como el Responsivo
+            const _body = document.querySelector('body');
+            const _arrButtonToDarkMode = document.querySelectorAll('header div nav button.myButtonToDarkMode');
+            const _arrButtonToLightMode = document.querySelectorAll('header div nav button.myButtonToLightMode');
+
+            // Set el Atributo data-theme, y la visibilidad de los Botones
+            switch (Number(temaSitio)) {
+                case THEME_DARK:
+                    _body.setAttribute('data-theme', 'dark');
+                    _arrButtonToDarkMode.forEach(function (boton) {
+                        boton.classList.add('d-none');
+                        boton.classList.remove('d-flex');
+                    })
+                    _arrButtonToLightMode.forEach(function (boton) {
+                        boton.classList.add('d-flex');
+                        boton.classList.remove('d-none');
+                    })
+                    break;
+                case THEME_LIGHT:
+                    //default:
+                    _body.setAttribute('data-theme', 'light');
+                    _arrButtonToDarkMode.forEach(function (boton) {
+                        boton.classList.add('d-flex');
+                        boton.classList.remove('d-none');
+                    })
+                    _arrButtonToLightMode.forEach(function (boton) {
+                        boton.classList.add('d-none');
+                        boton.classList.remove('d-flex');
+                    })
+                    break;
+            }
+
+            localStorage.setItem('temaSitio', temaSitio);
+        }
+
+        function handlerTheme() {
+
+            // Recupero temaSitio del localStorage
+            let _temaSitio = localStorage.getItem('temaSitio');
+
+            // Si no esta Seteado, reviso si en el Sistema es Dark, sino Light
+            if (!_temaSitio) {
+                const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                _temaSitio = userPrefersDark ? THEME_DARK : THEME_LIGHT;
+            }
+
+            // Seteo el Tema del Sitio por Primera Vez
+            setTheme(_temaSitio);
+
+            // Recupero los Botones de Cambio de Tema
+            const _arrButtonToDarkMode = document.querySelectorAll('header div nav button.myButtonToDarkMode');
+            const _arrButtonToLightMode = document.querySelectorAll('header div nav button.myButtonToLightMode');
+
+            // Les agrego Listeners para Cambiar el Tema
+            _arrButtonToDarkMode.forEach(function (boton) {
+                boton.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    setTheme(THEME_DARK);
+                });
+            })
+
+            _arrButtonToLightMode.forEach(function (boton) {
+                boton.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    setTheme(THEME_LIGHT);
+                });
+            })
+        }
+
+
+        // MANEJO DEL MENU
+        handlerMenu();
+
+        // MANEJO DEL TEMA
+        handlerTheme();
+
+    </script>
+
+</header>

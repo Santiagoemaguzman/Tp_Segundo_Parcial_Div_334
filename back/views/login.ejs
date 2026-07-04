@@ -1,0 +1,89 @@
+<%- include("partials/head.ejs") %>
+
+    <body data-page="productos" data-theme="light">
+
+        <%- include("partials/header.ejs") %>
+
+            <!-- Main -->
+            <main class="container-fluid vw-100 d-flex justify-content-center align-items-center py-5">
+
+                <div class="myContainer shadow rounded d-flex flex-column px-5 py-5 mt-5">
+                    <img src="../../assets/logo.png" class="myLogo mb-2" alt="logo">
+
+                    <h5 class="w-100 text-center mb-4">Acceso exclusivo<br>Solo personal autorizado</h5>
+
+
+                    <!-- Form -->
+                    <form action="/login" method="POST">
+
+                        <div class="position-relative mb-3">
+
+                            <input id="email" name="email" type="email" class="form-control myClientAdminMail"
+                                placeholder="Ingrese su Mail" autocomplete="username" required />
+
+                            <input id="password" name="password" type="password"
+                                class="form-control myClientAdminMail mt-2" placeholder="Ingrese su Contraseña"
+                                autocomplete="current-password" required />
+                        </div>
+
+                        <!-- Boton Continuar -->
+                        <button type="submit" class="btn w-100 myAdminLoginButton mt-3 mb-2">
+                            <strong>Iniciar Sesion</strong>
+                        </button>
+                        <!-- <script>
+                const _botonAdminLoginButton = document.querySelector('button.myAdminLoginButton');
+                _botonAdminLoginButton.addEventListener('click', function(){
+                    window.location.href = "http://localhost:3000/dashboard";
+                });
+            </script> -->
+                        <button type="button" class="btn w-100 mySetUserTestButton">
+                            Acceso Tester
+                        </button>
+
+                        <!-- <label for="email">Correo electrónico</label>
+                <div class="input-group">
+                    <span aria-hidden="true">@</span>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        
+                        placeholder="nombre@correo.com"
+                        autocomplete="username"
+                        maxlength="255"
+                        required
+                    >
+                </div>
+
+                <label for="password">Contraseña</label>
+                <div class="input-group">
+                    <span aria-hidden="true">●</span>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Ingresá tu contraseña"
+                        autocomplete="current-password"
+                        maxlength="255"
+                        required
+                    >
+                </div>
+
+                <button class="primary-button" type="submit">Iniciar sesión</button>
+                <button class="tester-button" id="tester-access" type="button">
+                    Completar acceso tester
+                </button> -->
+                    </form>
+
+
+
+
+                </div>
+
+            </main>
+
+            <%- include("partials/footer.ejs") %>
+
+    </body>
+
+    </html>

@@ -1,8 +1,9 @@
 /* ==========================================================================
 // IMPORTS
 // ========================================================================== */
-@import url("../../shared/variables.css");
-@import url("../../shared/global.css");
+@import url("/shared/variables.css");
+@import url("/shared/global.css");
 
 /* VIEWS */
+@import url("./login.css");
 @import url("./dashboard.css");

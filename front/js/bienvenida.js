@@ -26,7 +26,7 @@ function handlerLoginCliente(event) {
 
 function handlerLoginAdmin(event) {
     // Redireccion a Productos
-    window.location.href = '../../back/views/login.html';
+    window.location.href = "http://localhost:3000/back/login";
 }
 
 // ==========================================================================
@@ -35,7 +35,7 @@ function handlerLoginAdmin(event) {
 export function initPantallaBienvenida() {
 
     // Reset localStorage
-    localStorage.clear();
+    localStorage.removeItem('nombreCliente');
 
     // Recuperamos el Boton Login de Cliente y le agregamos un Listener
     const _botonClientLoginButton  = document.querySelector('button.myClientLoginButton');

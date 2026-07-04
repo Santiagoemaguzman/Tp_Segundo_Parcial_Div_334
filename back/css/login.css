@@ -1,0 +1,40 @@
+/* ==========================================================================
+// CONTAINER
+// ========================================================================== */
+main div.myContainer {
+    width: 350px;
+    background-color: var(--all-container-bg);
+}
+
+main div.myContainer button.myAdminLoginButton {
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+}
+
+main div.myContainer button.myAdminLoginButton:hover {
+    background-color: var(--btn-primary-hover-bg);
+}
+
+main div.myContainer button.mySetUserTestButton {
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-color);
+    text-decoration: underline;
+}
+
+main div.myContainer button.mySetUserTestButton:hover {
+    background-color: var(--btn-secondary-hover-bg);
+}
+
+@media (max-width: 576px) {
+    main div.myContainer {
+        width: min(350px, calc(100vw - 32px));
+        padding-inline: 24px !important;
+    }
+
+    main div.myContainer img.myLogo {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
