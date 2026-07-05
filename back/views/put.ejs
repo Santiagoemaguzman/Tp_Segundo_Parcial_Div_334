@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include("partials/head.ejs") %>
+
+    <body data-theme="light">
+
+        <%- include("partials/header.ejs") %>
+
+            <main class="vw-100 d-flex flex-row justify-content-center row m-0 mb-5">
+                <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
+
+                    <div
+                        class="myProductsFilterBar rounded shadow row align-items-center justify-content-between px-3 mx-0 ">
+
+                        <a href="/dashboard"
+                            class="btn myButtonAtras col-12 col-lg-1 my-lg-3 d-flex justify-content-center align-items-center">
+                            <!-- <svg viewBox="0 0 28 28" class="me-2">
+                                <use href="/assets/icons/Add.svg"></use>
+                            </svg> -->
+                            Atras
+                        </a>
+
+                        <button
+                            class="btn myButtonConfirmar col-12 col-lg-1 my-lg-3 d-flex justify-content-center align-items-center"
+                            type="submit" form="myForm">
+                            Confirmar
+                        </button>
+                        <script>
+
+                            function mostrarMensaje(titulo, mensaje, callback) {
+
+                                const modal = document.querySelector("dialog.myModal");
+                                const modalTitulo = modal.querySelector("h2");
+                                const modalMensaje = modal.querySelector("p");
+                                const modalButton = modal.querySelector("button");
+
+                                modalTitulo.textContent = titulo;
+                                modalMensaje.textContent = mensaje;
+
+                                if (callback) {
+                                    modalButton.addEventListener('click', callback);
+                                } else {
+                                    modalButton.addEventListener('click', () => modal.close());
+                                }
+                                modal.showModal();
+                            }
+
+                            function validarFormulario(data) {
+
+                                const errores = [];
+
+                                if (!data.Producto || data.Producto.trim().length < 2) {
+                                    errores.push("El nombre debe tener al menos 2 caracteres");
+                                }
+
+                                if (!data.Importe || isNaN(data.Importe) || Number(data.Importe) < 0) {
+                                    errores.push("El precio debe ser un numero mayor a 0");
+                                }
+
+                                if (!data.IDTipoProducto) {
+                                    errores.push("Debe seleccionar una categoria");
+                                }
+
+                                return errores;
+                            }
+
+                            document.addEventListener('DOMContentLoaded', () => {
+
+                                const productoForm = document.getElementById("myForm");
+
+                                productoForm?.addEventListener("submit", async (event) => {
+                                    event.preventDefault();
+
+                                    const formData = new FormData(event.target);
+                                    const data = Object.fromEntries(formData.entries());
+
+                                    // Normalizacion 
+                                    data.Importe = Number(data.Importe);
+
+                                    // Validaciones 
+                                    const errores = validarFormulario(data);
+                                    if (errores.length > 0) {
+                                        //mostrarMensaje("error", errores.join("\n"));
+                                        mostrarMensaje("Error", errores.join("\n"))
+                                        return;
+                                    }
+
+                                    // Fetch
+                                    try {
+                                        const response = await fetch("http://localhost:3000/api/productos/", {
+                                            method: "PUT",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                            body: JSON.stringify(data)
+                                        });
+
+                                        const result = await response.json();
+
+                                        // Optimizacion 5: Manejamos respuestas no ok del servidor
+                                        if (!response.ok) {
+                                            mostrarMensaje("Error", result.message)
+                                            return;
+                                        };
+
+                                        mostrarMensaje("Exito", result.message, () => {
+                                            window.location.href = "http://localhost:3000/dashboard/get/" + result.productId;
+                                        });
+
+                                    } catch (error) {
+                                        console.error("Error al enviar los datos: ", error);
+                                        // mostrarMensaje("error", "Error al procesar la solcitud")
+                                    }
+                                });
+                            });
+
+                        </script>
+                    </div>
+                    <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
+
+                        <form id="myForm" class="myForm rounded shadow row px-3 py-4">
+
+                            <div class="col-7 d-flex row m-0 p-0">
+
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <div class="col-1 m-0 p-0 pe-1">
+                                        <label for="IDProducto" class="form-label">ID</label>
+                                        <input type="text" value="<%= producto.IDProducto %>" class="form-control"
+                                            readonly disabled></input>
+                                        <input type="hidden" name="IDProducto"
+                                            value="<%= producto.IDProducto %>"></input>
+                                    </div>
+                                    <div class="col-8 m-0 p-0 ps-1">
+                                        <label for="Producto" class="form-label">Producto</label>
+                                        <input type="text" name="Producto" value="<%= producto.Producto %>"
+                                            class="form-control"></input>
+                                    </div>
+
+                                    <div class="col-2 m-0 p-0 ps-1 ms-5">
+                                        <label class="form-label">Estado</label>
+                                        <% if (producto.Estado===1) { %>
+                                            <span class="badge rounded-pill text-bg-success p-2">Habilitado</span>
+                                            <% } else { %>
+                                                <span class="badge rounded-pill text-bg-danger p-2">Inhabilitado</span>
+                                                <% } %>
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <div class="col-6 m-0 p-0 pe-1">
+                                        <label for="IDTipoProducto" class="form-label">Tipo de Producto</label>
+                                        <select name="IDTipoProducto" class="form-select">
+                                            <% tipoProductos.forEach(tipoProducto=> { %>
+                                                <option value="<%= tipoProducto.IDTipoProducto %>"
+                                                    <%=(tipoProducto.IDTipoProducto==producto.IDTipoProducto)
+                                                    ? "selected" : "" %>
+                                                    >
+                                                    <%= tipoProducto.TipoProducto %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-6 m-0 p-0 ps-1  ">
+                                        <label for="Importe" class="form-label">Importe</label>
+                                        <input type="text" name="Importe" value="<%= producto.Importe %>"
+                                            class="form-control"></input>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <label for="ImagenPath" class="form-label mx-0 px-0 ps-1">Imagen</label>
+                                    <!-- <input type="file" name="ImagenPath" class="form-control"></input> -->
+                                    <input type="text" name="ImagenPath" value="<%= producto.ImagenPath %>"
+                                        class="form-control" readonly disabled></input>
+                                </div>
+
+                            </div>
+
+                            <div class="col-5 d-flex row m-0 p-0  d-flex justify-content-center align-items-center p-5">
+                                <div class="myProductItemImg rounded w100"></div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </section>
+
+
+
+                <dialog class="myModal">
+                    <h2></h2>
+                    <p class=""></p>
+                    <button type="button">Aceptar</button>
+                </dialog>
+
+            </main>
+
+            <%- include("partials/footer.ejs") %>
+
+    </body>
+
+</html>

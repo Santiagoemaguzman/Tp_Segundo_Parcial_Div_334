@@ -21,12 +21,12 @@ function selectProductos() {
         , TPRD.TipoProducto
         , PROD.Importe
         , PROD.ImagenPath
-        , PROD.Estado
+        , CAST(PROD.Estado AS UNSIGNED) AS Estado
     FROM
         Productos PROD
         INNER JOIN TipoProductos TPRD ON PROD.IDTipoProducto = TPRD.IDTipoProducto
     ORDER BY 
-        PROD.IDProducto ASC`;
+        PROD.IDProducto DESC`;
 
     return connection.query(query);
 }
@@ -100,42 +100,106 @@ function selectProductosWhere(params) {
 
 function selectProductosWhereIDProducto(params) {
 
-    //     const query = "SELECT IDProducto, Producto, Importe, ImagenPath FROM Productos WHERE IDProducto = ?";
+    // Destruc de Parametros
+    const { IDProducto } = params;
 
-    //     return connection.query(query, [IDProducto]);
+    const query = `SELECT
+        PROD.IDProducto
+        , PROD.Producto
+        , PROD.IDTipoProducto
+        , TPRD.TipoProducto
+        , PROD.Importe
+        , PROD.ImagenPath
+        , CAST(PROD.Estado AS UNSIGNED) AS Estado
+    FROM
+        Productos PROD
+        INNER JOIN TipoProductos TPRD ON PROD.IDTipoProducto = TPRD.IDTipoProducto
+    WHERE 
+        PROD.IDProducto = ` + IDProducto;
 
-    console.log("selectProductosWhereIDProducto");
+    return connection.query(query);
 }
 
 function insertProductos(params) {
 
-    // // Destruc de Parametros
-    // const {
-    //     producto = 'Nuevo Producto'
-    //     , tipoProducto = '1'
-    //     , importe = '0.00'
-    //     , stock = '1'
-    //     , imgPath = ''
-    //     , usuarioAlta = 'ADMIN'
-    // } = params;
+    // Destruc de Parametros
+    const {
+        producto = 'Nuevo Producto'
+        , tipoProducto = '1'
+        , importe = '0.00'
+        , stock = '100'
+        , imgPath = ''
+        , usuarioAlta = 'admin'
+    } = params;
 
-    // const query = "INSERT INTO Productos( Producto, IDTipoProducto, Importe, Stock, ImagenPath, UsuarioAlta ) VALUES ( ?, ?, ?, ?, ?, ? )";
+    console.log(params);
 
-    // return connection.query(query, params);
+    const query = `INSERT INTO 
+        Productos
+        (
+            Producto
+            , IDTipoProducto
+            , Importe
+            , Stock
+            , ImagenPath
+            , UsuarioAlta
+        ) VALUES ( 
+            ?, ?, ?, ?, ?, ? 
+        )`;
 
-
-    console.log("insertProductos");
+    return connection.query(query, [producto, tipoProducto, importe, stock, imgPath, usuarioAlta]);
 }
 
 function updateProductosWhereIDProducto(params) {
 
-    //     const sql = "UPDATE products SET name = ?, image = ?, category = ?, price = ?, active = ? WHERE id = ?";
+    // Destruc de Parametros
+    const {
+        id = '0'
+        , producto = 'Nuevo Producto'
+        , tipoProducto = '1'
+        , importe = '0.00'
+        , stock = '100'
+        , imgPath = ''
+        , usuarioModif = 'admin'
+    } = params;
 
-    //     return connection.query(sql, [name, image, category, price, active, id]);
+    const query = `UPDATE Productos
+    SET
+        Producto = ?
+        , IDTipoProducto = ?
+        , Importe = ?
+        , Stock = ?
+        , ImagenPath = ?
+        , UsuarioModif = ?
+        , FechaModif = NOW()
+    WHERE
+        IDProducto = ?`;
 
-    console.log("updateProductosWhereIDProducto");
+    return connection.query(query, [producto, tipoProducto, importe, stock, imgPath, usuarioModif, id]);
+}
+
+function updateProductosEstadoWhereIDProducto(params) {
+    // Destruc de Parametros
+    const {
+        id = '0'
+        , estado = 1
+        , usuarioModif = 'admin'
+    } = params;
+
+    const query = `UPDATE Productos
+    SET
+        Estado = ?
+        , UsuarioModif = ?
+        , FechaModif = NOW()
+    WHERE
+        IDProducto = ?`;
+
+    return connection.query(query, [estado, usuarioModif, id]);
+
 
 }
+
+
 
 function deleteProductosWhereIDProducto(params) {
     //     const sql = "DELETE FROM products WHERE id = ?";
@@ -144,6 +208,24 @@ function deleteProductosWhereIDProducto(params) {
     console.log("deleteProductosWhereIDProducto");
 }
 
+
+
+
+
+function selectTipoProductos() {
+
+    const query = `SELECT
+        IDTipoProducto
+        , TipoProducto
+    FROM
+        TipoProductos
+    ORDER BY 
+        IDTipoProducto ASC`;
+
+    return connection.query(query);
+}
+
+
 export default {
     selectProductos
     , selectProductosWhere
@@ -151,4 +233,5 @@ export default {
     , insertProductos
     , updateProductosWhereIDProducto
     , deleteProductosWhereIDProducto
+    , selectTipoProductos
 }

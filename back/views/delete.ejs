@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include("partials/head.ejs") %>
+
+    <body data-theme="light">
+
+        <%- include("partials/header.ejs") %>
+
+            <main class="vw-100 d-flex flex-row justify-content-center row m-0 mb-5">
+                <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
+
+                    <div
+                        class="myProductsFilterBar rounded shadow row align-items-center justify-content-start px-3 mx-0 ">
+
+                        <a href="/dashboard"
+                            class=" btn myButtonAtras col-12 col-lg-1 my-lg-3 d-flex justify-content-center align-items-center">
+                            <!-- <svg viewBox="0 0 28 28" class="me-2">
+                                <use href="/assets/icons/Add.svg"></use>
+                            </svg> -->
+                            Atras
+                        </a>
+                    </div>
+                    <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
+
+                        <form class="myForm rounded shadow row px-3 py-4">
+
+                            <div class="col-7 d-flex row m-0 p-0">
+
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <div class="col-1 m-0 p-0 pe-1">
+                                        <label for="IDProducto" class="form-label">ID</label>
+                                        <input type="text" name="IDProducto" value="<%= producto.IDProducto %>"
+                                            class="form-control" readonly disabled></input>
+                                    </div>
+                                    <div class="col-8 m-0 p-0 ps-1">
+                                        <label for="Producto" class="form-label">Producto</label>
+                                        <input type="text" name="Producto" value="<%= producto.Producto %>"
+                                            class="form-control" readonly disabled></input>
+                                    </div>
+
+                                    <div class="col-2 m-0 p-0 ps-1 ms-5">
+                                        <label class="form-label">Estado</label>
+                                        <% if (producto.Estado===1) { %>
+                                            <span class="badge rounded-pill text-bg-success p-2">Habilitado</span>
+                                            <% } else { %>
+                                                <span class="badge rounded-pill text-bg-danger p-2">Inhabilitado</span>
+                                                <% } %>
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <div class="col-6 m-0 p-0 pe-1">
+                                        <label for="IDTipoProducto" class="form-label">Tipo de Producto</label>
+
+                                        <select name="IDTipoProducto" class="form-select" readonly disabled>
+                                            <% tipoProductos.forEach(tipoProducto=> { %>
+                                                <option value="<%= tipoProducto.IDTipoProducto %>"
+                                                    <%=(tipoProducto.IDTipoProducto==producto.IDTipoProducto)
+                                                    ? "selected" : "" %>
+                                                    >
+                                                    <%= tipoProducto.TipoProducto %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-6 m-0 p-0 ps-1  ">
+                                        <label for="Importe" class="form-label">Importe</label>
+                                        <input type="text" name="Importe" value="<%= producto.Importe %>"
+                                            class="form-control" readonly disabled></input>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex row m-0 p-0 my-4">
+
+                                    <label for="ImagenPath" class="form-label mx-0 px-0 ps-1">Imagen</label>
+
+                                    <input type="text" name="ImagenPath" value="<%= producto.ImagenPath %>"
+                                        class="form-control" readonly disabled></input>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-5 d-flex row m-0 p-0  d-flex justify-content-center align-items-center p-5">
+                                <div class="myProductItemImg rounded w100">
+                                    <img src=" <%= producto.ImagenPath.replace('../../back','') %>"
+                                        alt=" <%= producto.ImagenPath.replace('../../back','') %>">
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </section>
+            </main>
+
+            <%- include("partials/footer.ejs") %>
+
+    </body>
+
+</html>

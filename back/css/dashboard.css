@@ -79,16 +79,16 @@ main section div.myProductsContainer div.myProductItem button.myButtonAgregarPro
 } */
 
 
-main section div.myProductsContainer table tbody button.myButtonConsultarProducto,
-main section div.myProductsContainer table tbody button.myButtonModificarProducto,
-main section div.myProductsFilterBar button.myButtonCrearProducto {
+main section div.myProductsContainer table tbody a.myButtonConsultarProducto,
+main section div.myProductsContainer table tbody a.myButtonModificarProducto,
+main section div.myProductsFilterBar a.myButtonCrearProducto {
     background-color: var(--btn-primary-bg);
     color: var(--btn-primary-color);
 }
 
-main section div.myProductsContainer table tbody button.myButtonConsultarProducto:hover,
-main section div.myProductsContainer table tbody button.myButtonModificarProducto:hover,
-main section div.myProductsFilterBar button.myButtonCrearProducto:hover {
+main section div.myProductsContainer table tbody a.myButtonConsultarProducto:hover,
+main section div.myProductsContainer table tbody a.myButtonModificarProducto:hover,
+main section div.myProductsFilterBar a.myButtonCrearProducto:hover {
     background-color: var(--btn-primary-hover-bg);
 }
 
@@ -101,20 +101,20 @@ main section div.myProductsContainer table tbody button.myButtonAnularProducto:h
     background-color: var(--btn-danger-hover-bg);
 }
 
-main section div.myProductsContainer table tbody button.myButtonConsultarProducto,
-main section div.myProductsContainer table tbody button.myButtonModificarProducto,
+main section div.myProductsContainer table tbody a.myButtonConsultarProducto,
+main section div.myProductsContainer table tbody a.myButtonModificarProducto,
 main section div.myProductsContainer table tbody button.myButtonValidarProducto,
 main section div.myProductsContainer table tbody button.myButtonAnularProducto,
-main section div.myProductsFilterBar button.myButtonCrearProducto {
+main section div.myProductsFilterBar a.myButtonCrearProducto {
     height: 38px;
 }
 
 
-main section div.myProductsContainer table tbody button.myButtonConsultarProducto svg,
-main section div.myProductsContainer table tbody button.myButtonModificarProducto svg,
+main section div.myProductsContainer table tbody a.myButtonConsultarProducto svg,
+main section div.myProductsContainer table tbody a.myButtonModificarProducto svg,
 main section div.myProductsContainer table tbody button.myButtonValidarProducto svg,
 main section div.myProductsContainer table tbody button.myButtonAnularProducto svg,
-main section div.myProductsFilterBar button.myButtonCrearProducto svg {
+main section div.myProductsFilterBar a.myButtonCrearProducto svg {
     fill: white;
     width: 18px;
     height: 18px;

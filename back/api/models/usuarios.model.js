@@ -2,6 +2,9 @@ import connection from "../database/database.js"
 
 function selectUsuariosWhereMail(params) {
 
+    // Destruc de Parametros
+    const { Mail } = params;
+
     const query = `SELECT
         Mail
         , Password
@@ -32,3 +35,8 @@ function selectUsuariosWhereMail(params) {
 //     return usuarios[0] ?? null;
 // }
 // >>>>>>> feature/santiago
+
+
+export default {
+    selectUsuariosWhereMail
+}

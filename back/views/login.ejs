@@ -1,145 +1,66 @@
-<%- include("partials/head.ejs") %>
+<!DOCTYPE html>
+<html lang="es">
 
-    <body data-page="productos" data-theme="light">
+    <%- include("partials/head.ejs") %>
+
+    <body data-theme="light">
 
         <%- include("partials/header.ejs") %>
 
-            <!-- Main -->
-            <main class="container-fluid vw-100 d-flex justify-content-center align-items-center py-5">
+        <!-- Main -->
+        <main class="container-fluid vw-100 d-flex justify-content-center align-items-center py-5">
 
-                <div class="myContainer shadow rounded d-flex flex-column px-5 py-5 mt-5">
-                    <img src="../../assets/logo.png" class="myLogo mb-2" alt="logo">
+            <div class="myContainer shadow rounded d-flex flex-column px-5 py-5 mt-5">
+                <img src="/assets/logo.png" class="myLogo mb-2" alt="logo">
 
-                    <h5 class="w-100 text-center mb-4">Acceso exclusivo<br>Solo personal autorizado</h5>
+                <h5 class="w-100 text-center mb-4">Acceso exclusivo<br>Solo personal autorizado</h5>
 
 
-                    <!-- Form -->
-                    <form action="/login" method="POST">
+                <!-- Form -->
+                <form action="/login" method="POST">
 
-                        <div class="position-relative mb-3">
+                    <div class="position-relative mb-3">
 
-                            <input id="email" name="email" type="email" class="form-control myClientAdminMail"
-                                placeholder="Ingrese su Mail" autocomplete="username" required />
+                        <input id="myAdminEmail" name="email" type="email" class="form-control myClientAdminMail"
+                            placeholder="Ingrese su Mail" autocomplete="username" required />
 
-                            <input id="password" name="password" type="password"
-                                class="form-control myClientAdminMail mt-2" placeholder="Ingrese su Contraseña"
-                                autocomplete="current-password" required />
-                        </div>
+                        <input id="myAdminPassword" name="password" type="password"
+                            class="form-control myClientAdminMail mt-2" placeholder="Ingrese su Contraseña"
+                            autocomplete="current-password" required />
+                    </div>
 
-                        <!-- Boton Continuar -->
-                        <button type="submit" class="btn w-100 myAdminLoginButton mt-3 mb-2">
-                            <strong>Iniciar Sesion</strong>
-                        </button>
-                        <!-- <script>
-                const _botonAdminLoginButton = document.querySelector('button.myAdminLoginButton');
-                _botonAdminLoginButton.addEventListener('click', function(){
-                    window.location.href = "http://localhost:3000/dashboard";
-                });
-            </script> -->
-                        <button type="button" class="btn w-100 mySetUserTestButton">
-                            Acceso Tester
-                        </button>
+                    <!-- Boton Continuar -->
+                    <button type="submit" class="btn w-100 myAdminLoginButton mt-3 mb-2">
+                        <strong>Iniciar Sesion</strong>
+                    </button>
+                    <!-- <script>
+                    const _botonAdminLoginButton = document.querySelector('button.myAdminLoginButton');
+                    _botonAdminLoginButton.addEventListener('click', function(){
+                        window.location.href = "http://localhost:3000/dashboard";
+                    });
+                    </script> -->
+                    <button id="mySetUserTestButton" type="button" class="btn w-100 mySetUserTestButton">
+                        Acceso Tester
+                    </button>
+                    <script>
+                        const testerAccessButton = document.querySelector('#mySetUserTestButton');
+                        const emailInput = document.querySelector('#myAdminEmail');
+                        const passwordInput = document.querySelector('#myAdminPassword');
+                        testerAccessButton?.addEventListener('click', () => {
+                            emailInput.value = 'tester@poketcg.com';    
+                            passwordInput.value = 'PokeTester334!';
+                            passwordInput.focus();
+                        });
+                    </script>
+                    
+                </form>
 
-                        <!-- <label for="email">Correo electrónico</label>
-<%- include('partials/head', { title, pageClass: 'login-page' }) %>
-
-<div class="page-shell">
-    <header class="topbar">
-        <a class="brand" href="/login" aria-label="Ir al inicio de sesión">
-            <img src="/assets/icono.png" alt="Logo de PokeTCG.com">
-            <span>
-                <strong>PokeTCG.com</strong>
-                <small>Backoffice</small>
-            </span>
-        </a>
-
-        <label class="theme-control" for="theme-select">
-            <span>Tema</span>
-            <select id="theme-select" aria-label="Cambiar tema de la aplicación">
-                <option value="light">Claro</option>
-                <option value="dark">Oscuro</option>
-                <option value="forest">Bosque</option>
-            </select>
-        </label>
-    </header>
-
-    <main class="login-card">
-        <section class="login-content" aria-labelledby="login-title">
-            <div class="login-heading">
-                <span class="eyebrow">Administración</span>
-                <h1 id="login-title">Bienvenido de nuevo</h1>
-                <p>Ingresá tus credenciales para administrar la tienda.</p>
             </div>
 
-            <% if (error) { %>
-                <div class="login-error" role="alert"><%= error %></div>
-            <% } %>
+        </main>
 
-            <form class="login-form" action="/login" method="POST">
-                <label for="email">Correo electrónico</label>
-
-                <div class="input-group">
-                    <span aria-hidden="true">@</span>
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value="<%= email %>"
-                        placeholder="nombre@correo.com"
-                        autocomplete="username"
-                        maxlength="255"
-                        required
-                    >
-                </div>
-
-                <label for="password">Contraseña</label>
-                <div class="input-group">
-                    <span aria-hidden="true">●</span>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Ingresá tu contraseña"
-                        autocomplete="current-password"
-                        maxlength="255"
-                        required
-                    >
-                </div>
-
-                <button class="primary-button" type="submit">Iniciar sesión</button>
-                <button class="tester-button" id="tester-access" type="button">
-                    Completar acceso tester
-                </button> -->
-                    </form>
-
-
-
-
-                </div>
-
-            </main>
-
-            <%- include("partials/footer.ejs") %>
+        <%- include("partials/footer.ejs") %>
 
     </body>
 
 </html>
-<!-- 
-                </button>
-            </form>
-
-            <p class="security-note">Acceso exclusivo para personal autorizado.</p>
-        </section>
-
-        <aside class="login-visual" aria-label="Bienvenida al panel de PokeTCG.com">
-            <div class="visual-overlay"></div>
-            <div class="visual-content">
-                <img src="/assets/logo.png" alt="Logo de PokeTCG Service">
-                <span>Todo tu inventario, en un mismo lugar.</span>
-            </div>
-        </aside>
-    </main>
-</div>
-
-<%- include('partials/footer', { pageScript: '/js/login.js' }) %>
--->

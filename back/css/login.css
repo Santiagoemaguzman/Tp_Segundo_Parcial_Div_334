@@ -20,6 +20,9 @@ main div.myContainer button.mySetUserTestButton {
     color: var(--btn-secondary-color);
     text-decoration: underline;
 }
+main div.myContainer h5{
+    color : var(--all-container-color);
+}
 
 main div.myContainer button.mySetUserTestButton:hover {
     background-color: var(--btn-secondary-hover-bg);

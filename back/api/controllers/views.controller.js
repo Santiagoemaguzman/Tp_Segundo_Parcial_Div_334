@@ -1,43 +1,125 @@
-/*===============================
-    Controladores  de vistas
-================================*/
+// ==========================================================================
+// CONTROLADOR DE VISTAS
+// ==========================================================================
 
-// Importamos el modelo de los productos para poder comunicarlos con la BBDD
+// Importaciones
 import productosModel from "../models/productos.model.js"
 
 
+export async function indexView(req, res) {
 
+    const nombreUsuario = req.session.usuario.nombre;
 
-export const loginView = async (req, res) => {
+    try {
 
+        const [rows] = await productosModel.selectProductos();
 
-     try {
-        // 2. Aquí respondes al navegador renderizando tu archivo 'dashboard.ejs'
-        // (Asegúrate de que 'dashboard.ejs' esté dentro de tu carpeta 'views')
-        res.render("login", {
-            title: "Panel de Control"
+        if (rows.length === 0) {
+            return respuesta.status(404).send(
+                "No se encontraron Productos"
+            )
+        }
+
+        res.status(200).render("dashboard", {
+            usuario: nombreUsuario
+            , productosArray: rows
         });
 
     } catch (error) {
-        console.error("Error al renderizar el login:", error);
+        console.error("Error al renderizar el dashboard:", error);
         res.status(500).send("Error interno del servidor");
     }
-
 }
 
+// Vista GET
+export async function getView(req, res) {
 
-// Vista index
-export const indexView = async (req, res) => {
+    const nombreUsuario = req.session.usuario.nombre;
 
-    console.log('TESSSSSSSSSST');
-
-    // res.render("dashboard");
+    const IDProducto = req.params.IDProducto;
 
     try {
-        // 2. Aquí respondes al navegador renderizando tu archivo 'dashboard.ejs'
-        // (Asegúrate de que 'dashboard.ejs' esté dentro de tu carpeta 'views')
-        res.render("dashboard", {
-            title: "Panel de Control"
+        const [rowProducto] = await productosModel.selectProductosWhereIDProducto({ IDProducto: IDProducto });
+
+        const [rowTipos] = await productosModel.selectTipoProductos();
+
+        if (rowProducto.length === 0 || rowTipos.length === 0) {
+            return respuesta.status(404).send(
+                "No se encontraron Productos"
+            )
+        }
+
+        const producto = rowProducto[0];
+
+        const tipos = rowTipos;
+
+        res.status(200).render("get", {
+            usuario: nombreUsuario
+            , producto: producto
+            , tipoProductos: tipos
+        });
+
+    } catch (error) {
+        console.error("Error al renderizar el dashboard:", error);
+        res.status(500).send("Error interno del servidor");
+    }
+}
+
+// Vista POST
+export async function createView(req, res) {
+
+    const nombreUsuario = req.session.usuario.nombre;
+
+    try {
+        const [rowTipos] = await productosModel.selectTipoProductos();
+
+        if (rowTipos.length === 0) {
+            return respuesta.status(404).send(
+                "No se encontraron Productos"
+            )
+        }
+
+        const tipos = rowTipos;
+
+        res.status(200).render("post", {
+            usuario: nombreUsuario
+            , tipoProductos: tipos
+        });
+
+    } catch (error) {
+        console.error("Error al renderizar el dashboard:", error);
+        res.status(500).send("Error interno del servidor");
+    }
+}
+
+// Vista PUT
+export async function updateView(req, res) {
+
+    console.log('updateView');
+
+    const nombreUsuario = req.session.usuario.nombre;
+
+    const IDProducto = req.params.IDProducto;
+
+    try {
+        const [rowProducto] = await productosModel.selectProductosWhereIDProducto({ IDProducto: IDProducto });
+
+        const [rowTipos] = await productosModel.selectTipoProductos();
+
+        if (rowProducto.length === 0 || rowTipos.length === 0) {
+            return respuesta.status(404).send(
+                "No se encontraron Productos"
+            )
+        }
+
+        const producto = rowProducto[0];
+
+        const tipos = rowTipos;
+
+        res.status(200).render("put", {
+            usuario: nombreUsuario
+            , producto: producto
+            , tipoProductos: tipos
         });
 
     } catch (error) {
@@ -45,43 +127,7 @@ export const indexView = async (req, res) => {
         res.status(500).send("Error interno del servidor");
     }
 
-    // try {
-    //     const [rows] = await productosModel.selectProductos();
-
-    //     res.render("index", {
-    //         title: "Inicio",
-    //         about: "Nuestros productos",
-    //         productsArray: rows
-    //     });
-
-    // } catch (error) {
-    //     console.log(error);
-    // }
 }
-
-// // Vista GET
-// export const getView = (req, res) => {
-//     res.render("get", {
-//         title: "Consultar",
-//         about: "Consultar producto por id:"
-//     });
-// }
-
-// // Vista POST
-// export const createView = (req, res) => {
-//     res.render("post", {
-//         title: "Crear",
-//         about: "Crear producto"
-//     });
-// }
-
-// // Vista PUT
-// export const updateView = (req, res) => {
-//     res.render("put", {
-//         title: "Modificar",
-//         about: "Consultar producto por id:"
-//     });
-// }
 
 // // Vista DELETE
 // export const deleteView = (req, res) => {

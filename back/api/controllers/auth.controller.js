@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
-import { buscarUsuarioPorMail } from "../models/usuarios.model.js";
+import usuariosModel from "../models/usuarios.model.js";
 
 export function mostrarLogin(req, res) {
-    if (req.session.usuario) {
-        return res.redirect('/dashboard');
-    }
+    // if (req.session.usuario) {
+    //     return res.redirect('/dashboard');
+    // }
 
     res.render('login', {
         title: 'Iniciar sesión',
@@ -14,10 +14,14 @@ export function mostrarLogin(req, res) {
 }
 
 export async function iniciarSesion(req, res) {
+
     const { email, password } = req.credenciales;
 
     try {
-        const usuario = await buscarUsuarioPorMail(email);
+        const [rows] = await usuariosModel.selectUsuariosWhereMail({ Mail: email });
+
+        const usuario = rows[0];
+
         const credencialesCorrectas = usuario
             ? await bcrypt.compare(password, usuario.Password)
             : false;

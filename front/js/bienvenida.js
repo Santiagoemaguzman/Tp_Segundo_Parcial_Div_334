@@ -26,7 +26,7 @@ function handlerLoginCliente(event) {
 
 function handlerLoginAdmin(event) {
     // Redireccion a Productos
-    window.location.href = "http://localhost:3000/back/login";
+    window.location.href = "http://localhost:3000/login";
 }
 
 // ==========================================================================

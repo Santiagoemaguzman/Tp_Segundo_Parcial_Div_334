@@ -1,24 +1,24 @@
 import { Router } from "express";
-import { loginView, indexView } from "../controllers/views.controller.js";
+import { indexView, getView, createView, updateView } from "../controllers/views.controller.js";
+import { requerirLogin } from "../middlewares/autenticacion.js"
+
 
 // Inicializamos el modulo router
 const router = Router();
 
 //Login
-router.get("/login", loginView);
-
 
 // Vista principal del dashboard
-router.get("/", indexView);
+router.get("/", requerirLogin, indexView);
 
-// // Vista consultar producto
-// router.get("/get", getView);
+// Vista consultar producto
+router.get("/get/:IDProducto", requerirLogin, getView);
 
-// // Vista crear producto
-// router.get("/post", createView);
+// Vista crear producto
+router.get("/post", requerirLogin, createView);
 
-// // Vista modificar producto
-// router.get("/put", updateView);
+// Vista modificar producto
+router.get("/put/:IDProducto", requerirLogin, updateView);
 
 // // Vista eliminar producto
 // router.get("/delete", deleteView);

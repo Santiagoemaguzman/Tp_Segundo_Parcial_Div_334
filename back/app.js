@@ -4,7 +4,7 @@ import cors from "cors";
 import session from "express-session";
 import environment from "./api/config/environment.js";
 import {
-    inicioRouter, productosRouter, ventasRouter, viewsRouter
+    productosRouter, ventasRouter, authRouter, viewsRouter
 } from './api/routes/index.js'
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -44,7 +44,7 @@ app.use(express.static(path.join(currentDirectory, 'public')));
 app.use('/assets', express.static(path.join(currentDirectory, '..', 'assets')));
 app.use(session({
     name: 'poketcg.sid',
-    secret: environments.sessionSecret,
+    secret: environment.sessionSecret,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -64,6 +64,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/assets', express.static(path.join(currentDirectory, '..', 'assets')));
 app.use('/css', express.static(path.join(currentDirectory, 'css')));
 app.use('/shared', express.static(path.join(currentDirectory, '..', 'shared')));
+app.use('/productos-imgs', express.static(path.join(currentDirectory, 'productos-imgs')));
 
 // // Middleware de sesion
 // app.use(session({
@@ -86,7 +87,9 @@ app.use('/api/productos', productosRouter);
 
 app.use('/api/ventas', ventasRouter);
 
-app.use("/back", viewsRouter);
+app.use("/login", authRouter);
+
+app.use("/dashboard", viewsRouter);
 
 // ==============================================
 

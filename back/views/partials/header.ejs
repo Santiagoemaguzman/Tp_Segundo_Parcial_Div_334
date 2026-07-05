@@ -10,7 +10,9 @@
         <div class="d-flex flex-row w-50 align-items-center p-3">
             <img src="/assets/icono.png " class="h-100" alt="logo">
             <div class="ms-5 mt-3 d-flex align-items-center">
-                <p class="fw-medium myClientName"></p>
+                <p class="fw-medium myClientName">
+                    <%= (typeof usuario !== 'undefined' && usuario) ? "Bienvenido/a " + usuario + "!" : '' %>
+                </p>
             </div>
         </div>
 
@@ -45,13 +47,16 @@
                     <p class="fw-medium fs-6 p-0 m-0 ms-5">Ventas</p>
                 </a>
 
-                <a href="./bienvenida.html"
-                    class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
-                    <svg viewBox="0 0 36 36">
-                        <use href="/assets/icons/LogOut.svg"></use>
-                    </svg>
-                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
-                </a>
+                <form action="/login/salir" method="POST">
+                    <button type="submit"
+                        class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        <svg viewBox="0 0 36 36">
+                            <use href="/assets/icons/LogOut.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
+                    </button>
+                </form>
+
 
                 <!-- Separator -->
                 <hr />
@@ -92,15 +97,15 @@
                 </svg>
                 <p class="fw-medium fs-6 p-0 m-0">Ventas</p>
             </a>
-
-
-            <a href="./bienvenida.html"
-                class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
-                <svg viewBox="0 0 36 36">
-                    <use href="/assets/icons/LogOut.svg"></use>
-                </svg>
-                <p class="fw-medium fs-6 p-0 m-0">Salir</p>
-            </a>
+            <form action="/login/salir" method="POST">
+                <button type="submit"
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
+                    <svg viewBox="0 0 36 36">
+                        <use href="/assets/icons/LogOut.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Salir</p>
+                </button>
+            </form>
 
             <!-- Separator -->
             <div class="vr mx-1 my-2"></div>
