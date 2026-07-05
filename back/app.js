@@ -10,6 +10,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loggerURL } from "./api/middlewares/logger.js";
 
+import { exec } from 'child_process';
+
 // import path from "node:path";
 // import { fileURLToPath } from "node:url";
 // import environments from "./api/config/environment/environment.js";
@@ -97,5 +99,12 @@ app.use("/dashboard", viewsRouter);
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 
-    console.log(path.join(currentDirectory, 'views'));
+    const url = 'http://localhost:3000/front/pages/bienvenida.html';
+    // const comando = process.platform === 'win32' ? `start ${url}` :
+    //                 process.platform === 'darwin' ? `open ${url}` :
+    //                 `xdg-open ${url}`;
+    
+    exec(`start ${url}`);
+
+
 });
