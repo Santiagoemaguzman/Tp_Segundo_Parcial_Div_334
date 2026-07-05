@@ -11,7 +11,7 @@
                 <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
 
                     <div
-                        class="myProductsFilterBar rounded shadow row align-items-center justify-content-start px-3 mx-0 ">
+                        class="myProductsFilterBar rounded shadow row align-items-center justify-content-between px-3 mx-0 ">
 
                         <a href="/dashboard"
                             class=" btn myButtonAtras col-12 col-lg-1 my-lg-3 d-flex justify-content-center align-items-center">
@@ -20,18 +20,94 @@
                             </svg> -->
                             Atras
                         </a>
+
+                        <button
+                            class="btn myButtonEliminar col-12 col-lg-1 my-lg-3 d-flex justify-content-center align-items-center"
+                            type="submit" form="myForm">
+                            Eliminar
+                        </button>
+                        <script>
+
+                            function mostrarMensaje(titulo, mensaje, callback) {
+
+                                const modal = document.querySelector("dialog.myModal");
+                                const modalTitulo = modal.querySelector("h2");
+                                const modalMensaje = modal.querySelector("p");
+                                const modalButton = modal.querySelector("button");
+
+                                modalTitulo.textContent = titulo;
+                                modalMensaje.textContent = mensaje;
+
+                                if (callback) {
+                                    modalButton.addEventListener('click', callback);
+                                } else {
+                                    modalButton.addEventListener('click', () => modal.close());
+                                }
+                                modal.showModal();
+                            }
+
+                            document.addEventListener('DOMContentLoaded', () => {
+
+                                const productoForm = document.getElementById("myForm");
+
+                                productoForm?.addEventListener("submit", async (event) => {
+                                    event.preventDefault();
+
+                                    const formData = new FormData(event.target);
+                                    const data = Object.fromEntries(formData.entries());
+
+                                    // // Validaciones 
+                                    // const errores = validarFormulario(data);
+                                    // if (errores.length > 0) {
+                                    //     //mostrarMensaje("error", errores.join("\n"));
+                                    //     mostrarMensaje("Error", errores.join("\n"))
+                                    //     return;
+                                    // }
+
+                                    // Fetch
+                                    try {
+                                        const response = await fetch("http://localhost:3000/api/productos/", {
+                                            method: "DELETE",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                            body: JSON.stringify(data)
+                                        });
+
+                                        const result = await response.json();
+
+                                        // Optimizacion 5: Manejamos respuestas no ok del servidor
+                                        if (!response.ok) {
+                                            mostrarMensaje("Error", result.message)
+                                            return;
+                                        };
+
+                                        mostrarMensaje("Exito", result.message, () => {
+                                            window.location.href = "http://localhost:3000/dashboard/";
+                                        });
+
+                                    } catch (error) {
+                                        console.error("Error al enviar los datos: ", error);
+                                        // mostrarMensaje("error", "Error al procesar la solcitud")
+                                    }
+                                });
+                            });
+
+                        </script>
                     </div>
                     <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
 
-                        <form class="myForm rounded shadow row px-3 py-4">
+                        <form id="myForm" class="myForm rounded shadow row px-3 py-4">
 
                             <div class="col-7 d-flex row m-0 p-0">
 
                                 <div class="d-flex row m-0 p-0 my-4">
                                     <div class="col-1 m-0 p-0 pe-1">
                                         <label for="IDProducto" class="form-label">ID</label>
-                                        <input type="text" name="IDProducto" value="<%= producto.IDProducto %>"
+                                        <input type="text" value="<%= producto.IDProducto %>"
                                             class="form-control" readonly disabled></input>
+                                        <input type="hidden" name="IDProducto"
+                                            value="<%= producto.IDProducto %>"></input>
                                     </div>
                                     <div class="col-8 m-0 p-0 ps-1">
                                         <label for="Producto" class="form-label">Producto</label>
@@ -44,7 +120,7 @@
                                         <% if (producto.Estado===1) { %>
                                             <span class="badge rounded-pill text-bg-success p-2">Habilitado</span>
                                             <% } else { %>
-                                                <span class="badge rounded-pill text-bg-danger p-2">Inhabilitado</span>
+                                                <span class="badge rounded-pill text-bg-danger p-2">Deshabilitado</span>
                                                 <% } %>
                                     </div>
 
@@ -96,6 +172,14 @@
                     </div>
 
                 </section>
+
+                  <dialog class="myModal">
+                    <h2></h2>
+                    <p class=""></p>
+                    <!-- <p class="myPurchaseError" role="alert"></p> -->
+                    <button type="button">Aceptar</button>
+                </dialog>
+                
             </main>
 
             <%- include("partials/footer.ejs") %>

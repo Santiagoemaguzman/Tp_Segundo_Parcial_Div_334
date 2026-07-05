@@ -8,155 +8,233 @@
         <%- include("partials/header.ejs") %>
 
             <!-- Main -->
-        <main class="vw-100 d-flex flex-row justify-content-center row m-0 mb-5">
-            <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
+            <main class="vw-100 d-flex flex-row justify-content-center row m-0 mb-5">
+                <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
 
-                <div
-                    class="myProductsFilterBar rounded shadow row align-items-center justify-content-end px-0 mx-0">
+                    <div
+                        class="myProductsFilterBar rounded shadow row align-items-center justify-content-end px-0 mx-0">
 
-                    <a href="/dashboard/post"
-                        class="btn myButtonCrearProducto col-12 col-lg-1 my-lg-3 me-3 d-flex justify-content-center align-items-center">
-                        <!-- <svg viewBox="0 0 28 28" class="me-2">
+                        <a href="/dashboard/post"
+                            class="btn myButtonCrearProducto col-12 col-lg-1 my-lg-3 me-3 d-flex justify-content-center align-items-center">
+                            <!-- <svg viewBox="0 0 28 28" class="me-2">
                             <use href="/assets/icons/Add.svg"></use>
                         </svg> -->
-                        Nuevo
-                    </a>
-                </div>
+                            Nuevo
+                        </a>
+                    </div>
 
-                <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
+                    <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
 
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="col-1">ID</th>
-                                <th scope="col" class="col-7">Producto</th>
-                                <th scope="col" class="col-1">Tipo</th>
-                                <th scope="col" class="col-1">Estado</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-1">ID</th>
+                                    <th scope="col" class="col-7">Producto</th>
+                                    <th scope="col" class="col-1">Tipo</th>
+                                    <th scope="col" class="col-1">Estado</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            <% productosArray.forEach(producto=> { %>
+                                <% productosArray.forEach(producto=> { %>
 
-                                <tr class="myTableRow">
-                                    <th scope="row" class="">
-                                        <%= producto.IDProducto %>
-                                    </th>
-                                    <td class="">
-                                        <%= producto.Producto %>
-                                    </td>
-                                    <td class="">
-                                        <%= producto.TipoProducto %>
-                                    </td>
-                                    <td class="">
-                                        <% if (producto.Estado===1) { %>
+                                    <tr class="myTableRow">
+                                        <th scope="row" class="">
+                                            <%= producto.IDProducto %>
+                                        </th>
+                                        <td class="">
+                                            <%= producto.Producto %>
+                                        </td>
+                                        <td class="">
+                                            <%= producto.TipoProducto %>
+                                        </td>
+                                        <td class="">
+                                            <% if (producto.Estado===1) { %>
                                             <span class="badge rounded-pill text-bg-success p-2">Habilitado</span>
                                             <% } else { %>
-                                                <span
-                                                    class="badge rounded-pill text-bg-danger p-2">Inhabilitado</span>
+                                            <span
+                                            class="badge rounded-pill text-bg-danger p-2">Deshabilitado</span>
+                                            <% } %>
+                                        </td>
+
+                                        <td class="d-flex flex-row justify-content-end">
+
+                                            <a href="/dashboard/get/<%= producto.IDProducto %>"
+                                                class="btn myButtonConsultarProducto d-flex justify-content-center align-items-center ms-2">
+                                                <svg viewBox="0 0 36 36">
+                                                    <use href="/assets/icons/Read.svg"></use>
+                                                </svg>
+                                            </a>
+
+                                            <a href="/dashboard/put/<%= producto.IDProducto %>"
+                                                class="btn myButtonModificarProducto d-flex justify-content-center align-items-center ms-2"
+                                                data-id="<%= producto.IDProducto %>">
+                                                <svg viewBox="0 0 36 36">
+                                                    <use href="/assets/icons/Edit.svg"></use>
+                                                </svg>
+                                            </a>
+
+                                            <% if (producto.Estado===1) { %>
+                                                <button
+                                                    class="btn myButtonAnularProducto d-flex justify-content-center align-items-center ms-2"
+                                                    data-id="<%= producto.IDProducto %>">
+                                                    <svg viewBox="0 0 28 28">
+                                                        <use href="/assets/icons/MenuExpanded.svg"></use>
+                                                    </svg>
+                                                </button>
+                                                <% } else { %>
+                                                <button
+                                                    class="btn myButtonValidarProducto d-flex justify-content-center align-items-center ms-2"
+                                                    data-id="<%= producto.IDProducto %>">
+                                                    <svg viewBox="0 0 24 18">
+                                                        <use href="/assets/icons/Validate.svg"></use>
+                                                    </svg>
+                                                </button>
                                                 <% } %>
-                                    </td>
 
-                                    <td class="d-flex flex-row justify-content-end">
-                                        
-                                        <a href="/dashboard/get/<%= producto.IDProducto %>"
-                                            class="btn myButtonConsultarProducto d-flex justify-content-center align-items-center ms-2">
-                                            <svg viewBox="0 0 36 36">
-                                                <use href="/assets/icons/Read.svg"></use>
-                                            </svg>
-                                        </a>
+                                                <a href="/dashboard/delete/<%= producto.IDProducto %>"
+                                                    class="btn myButtonEliminarProducto d-flex justify-content-center align-items-center ms-2"
+                                                    data-id="<%= producto.IDProducto %>">
+                                                    <svg viewBox="0 0 32 36">
+                                                        <use href="/assets/icons/Delete.svg"></use>
+                                                    </svg>
+                                                </a>
 
-                                        <a href="/dashboard/put/<%= producto.IDProducto %>"
-                                            class="btn myButtonModificarProducto d-flex justify-content-center align-items-center ms-2"
-                                            data-id="<%= producto.IDProducto %>">
-                                            <svg viewBox="0 0 36 36">
-                                                <use href="/assets/icons/Edit.svg"></use>
-                                            </svg>
-                                        </a>
+                                        </td>
+                                    </tr>
 
-                                                
-                                        <button
-                                            class="btn myButtonAnularProducto d-flex justify-content-center align-items-center ms-2"
-                                            data-id="<%= producto.IDProducto %>">
-                                            <svg viewBox="0 0 28 28">
-                                                <use href="/assets/icons/MenuExpanded.svg"></use>
-                                            </svg>
-                                        </button>
+                                    <% }) %>
 
-                                        <button
-                                            class="btn myButtonAnularProducto d-flex justify-content-center align-items-center ms-2"
-                                            data-id="<%= producto.IDProducto %>">
-                                            <svg viewBox="0 0 32 36">
-                                                <use href="/assets/icons/Delete.svg"></use>
-                                            </svg>
-                                        </button>
+                            </tbody>
 
-                                    </td>
-                                </tr>
+                        </table>
 
-                            <% }) %>
 
-                        </tbody>
 
-                    </table>
+                    </div>
 
-                    <!-- <script>
+                    <script>
+
+                        function mostrarMensaje(titulo, mensaje, callback) {
+
+                            const modal = document.querySelector("dialog.myModal");
+                            const modalTitulo = modal.querySelector("h2");
+                            const modalMensaje = modal.querySelector("p");
+                            const modalButton = modal.querySelector("button");
+
+                            modalTitulo.textContent = titulo;
+                            modalMensaje.textContent = mensaje;
+
+                            if (callback) {
+                                modalButton.addEventListener('click', callback);
+                            } else {
+                                modalButton.addEventListener('click', () => modal.close());
+                            }
+                            modal.showModal();
+                        }
 
                         document.addEventListener('DOMContentLoaded', () => {
 
-                            const productsContainer = document.querySelector('main section div.myProductsContainer table'); 
+                            const botonesDeshabilitar = document.querySelectorAll("button.myButtonAnularProducto");
 
-                            productsContainer?.addEventListener('click', (event) => {
-                                event.preventDefault();
+                            botonesDeshabilitar.forEach((boton) => {
+                                boton.addEventListener("click", async (event) => {
+                                    
 
-                                const _buttonPressed = event.target.closest('button');
-                                
-                                if(_buttonPressed.classList.contains('myButtonConsultarProducto')){
-                                    console.log("GET");
+                                    const IDProducto = boton.dataset.id;
+
+                                    const formData = new FormData();
+                                    formData.append("IDProducto", IDProducto);
+                                    formData.append("Estado", 0); //DESHABILITADO
+
+                                    const data = Object.fromEntries(formData.entries());
+
+                                    // Fetch
+                                    try {
+                                        const response = await fetch("http://localhost:3000/api/productos/changeEstado/", {
+                                            method: "PUT",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                            body: JSON.stringify(data)
+                                        });
+
+                                        const result = await response.json();
+
+                                        // Optimizacion 5: Manejamos respuestas no ok del servidor
+                                        if (!response.ok) {
+                                            mostrarMensaje("Error", result.message)
+                                            return;
+                                        };
+
+                                        mostrarMensaje("Exito", result.message, () => {
+                                            window.location.href = "http://localhost:3000/dashboard";
+                                        });
+
+                                    } catch (error) {
+                                        console.error("Error al enviar los datos: ", error);
+                                        // mostrarMensaje("error", "Error al procesar la solcitud")
+                                    }
+                                })
+                            });
 
 
+                            const botonesHabilitar = document.querySelectorAll("button.myButtonValidarProducto");
 
-                                }
+                            botonesHabilitar.forEach((boton) => {
+                                boton.addEventListener("click", async (event) => {
+                                    
 
+                                    const IDProducto = boton.dataset.id;
 
-                                
-                                
-                                
-                                
-                                
+                                    const formData = new FormData();
+                                    formData.append("IDProducto", IDProducto);
+                                    formData.append("Estado", 1); //HABILITADO
 
-                                // // 2. Botón Editar
-                                // const botonEditar = e.target.closest('.myButtonEditarProducto');
-                                // if (botonEditar) {
-                                //     const idProducto = botonEditar.dataset.id;
-                                //     window.location.href = `/productos/editar/${idProducto}`;
-                                //     return;
-                                // }
+                                    const data = Object.fromEntries(formData.entries());
 
-                                // // 3. Botón Eliminar
-                                // const botonEliminar = e.target.closest('.myButtonEliminarProducto');
-                                // if (botonEliminar) {
-                                //     const idProducto = botonEliminar.dataset.id;
-                                //     if (confirm("¿Seguro que querés eliminar este producto?")) {
-                                //         fetch(`/api/productos/eliminar/${idProducto}`, { method: 'DELETE' })
-                                //             .then(res => res.json())
-                                //             .then(() => window.location.reload());
-                                //     }
-                                //     return;
-                                // }
+                                    // Fetch
+                                    try {
+                                        const response = await fetch("http://localhost:3000/api/productos/changeEstado/", {
+                                            method: "PUT",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                            body: JSON.stringify(data)
+                                        });
+
+                                        const result = await response.json();
+
+                                        // Optimizacion 5: Manejamos respuestas no ok del servidor
+                                        if (!response.ok) {
+                                            mostrarMensaje("Error", result.message)
+                                            return;
+                                        };
+
+                                        mostrarMensaje("Exito", result.message, () => {
+                                            window.location.href = "http://localhost:3000/dashboard";
+                                        });
+
+                                    } catch (error) {
+                                        console.error("Error al enviar los datos: ", error);
+                                        // mostrarMensaje("error", "Error al procesar la solcitud")
+                                    }
+                                })
                             });
                         });
+                    </script>
+                </section>
 
+                <dialog class="myModal">
+                    <h2></h2>
+                    <p class=""></p>
+                    <button type="button">Aceptar</button>
+                </dialog>
 
-                    </script> -->
+            </main>
 
-                </div>
-
-            </section>
-        </main>
-    
-        <%- include("partials/footer.ejs") %>
+            <%- include("partials/footer.ejs") %>
 
     </body>
 

@@ -65,6 +65,7 @@ app.use('/assets', express.static(path.join(currentDirectory, '..', 'assets')));
 app.use('/css', express.static(path.join(currentDirectory, 'css')));
 app.use('/shared', express.static(path.join(currentDirectory, '..', 'shared')));
 app.use('/productos-imgs', express.static(path.join(currentDirectory, 'productos-imgs')));
+app.use('/front', express.static(path.join(currentDirectory, '..', 'front')));
 
 // // Middleware de sesion
 // app.use(session({

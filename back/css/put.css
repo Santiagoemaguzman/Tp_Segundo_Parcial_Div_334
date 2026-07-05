@@ -1,9 +1,9 @@
-main section div.myProductsFilterBar button.myButtonCrear {
+main section div.myProductsFilterBar button.myButtonGuardar {
     background-color: var(--btn-primary-bg);
     color: var(--btn-primary-color);
 }
 
-main section div.myProductsFilterBar button.myButtonCrear:hover {
+main section div.myProductsFilterBar button.myButtonGuardar:hover {
     background-color: var(--btn-primary-hover-bg);
 }
 

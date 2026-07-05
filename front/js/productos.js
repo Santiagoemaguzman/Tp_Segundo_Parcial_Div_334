@@ -8,7 +8,7 @@ import {
     , ORDEN_PRECIO_DESC
     , THEME_LIGHT
     , THEME_DARK
-} from '../../shared/constantes.js';
+} from '/shared/constantes.js';
 
 // ==========================================================================
 // PARAMETROS GLOBALES DE PAGINACION 
@@ -81,25 +81,26 @@ function handlerFilterBar(event) {
 
 function imprimirArrayProductos(arrayProductos) {
 
-    if (!Array.isArray(arrayProductos)) {
-        imprimirErrorProductos();
-        return;
-    }
+    // if (!Array.isArray(arrayProductos)) {
+    //     imprimirErrorProductos();
+    //     return;
+    // }
 
     // Recuperamos el Carrito
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-    // Armado de los Nodos
     let _contenedorProductos = '';
-    arrayProductos.forEach((producto) => {
+    if (arrayProductos) {
+        // Armado de los Nodos
+        arrayProductos.forEach((producto) => {
 
-        // Si existe en el Carrito, recuperamos la cantidad
-        let _productoEnCarrito = carrito.find((ProductoEnCarrito) => ProductoEnCarrito.id === producto.IDProducto);
-        const _productoEnCarritoCantidad = _productoEnCarrito ? _productoEnCarrito.cantidad : 0;
+            // Si existe en el Carrito, recuperamos la cantidad
+            let _productoEnCarrito = carrito.find((ProductoEnCarrito) => ProductoEnCarrito.id === producto.IDProducto);
+            const _productoEnCarritoCantidad = _productoEnCarrito ? _productoEnCarrito.cantidad : 0;
 
-        _contenedorProductos += `<div class="card myProductItem p-0 m-0" data-id="${producto.IDProducto}" data-tipo="${producto.IDTipoProducto}">
+            _contenedorProductos += `<div class="card myProductItem p-0 m-0" data-id="${producto.IDProducto}" data-tipo="${producto.IDTipoProducto}">
             <div class="myProductItemImg">
-                <img src="${producto.ImagenPath}" alt="${producto.Producto}" >
+                <img src="${producto.ImagenPath.replace('../../back', '')}" alt="${producto.Producto}" >
             </div>
             <div class="card-body p-2 d-flex flex-column justify-content-between">
                 <p class="mt-0 mb-2 h-25">${producto.Producto}</p>
@@ -111,7 +112,7 @@ function imprimirArrayProductos(arrayProductos) {
                         data-nombre="${producto.Producto}"
                         data-precio="${producto.Importe}">
                         <svg viewBox="0 0 40 40 " class="me-3">
-                            <use href="../../assets/icons/AgregarCarrito.svg"></use>
+                            <use href="/assets/icons/AgregarCarrito.svg"></use>
                         </svg>
                         Agregar 
                     </button>
@@ -122,7 +123,7 @@ function imprimirArrayProductos(arrayProductos) {
                     <button class="btn myButtonQuitarProducto d-flex justify-content-center align-items-center"
                         data-id="${producto.IDProducto}">
                         <svg viewBox="0 0 28 3">
-                            <use href="../../assets/icons/Remove.svg"></use>
+                            <use href="/assets/icons/Remove.svg"></use>
                         </svg>
                     </button>
 
@@ -133,14 +134,15 @@ function imprimirArrayProductos(arrayProductos) {
                         data-nombre="${producto.Producto}"
                         data-precio="${producto.Importe}">
                         <svg viewBox="0 0 28 28">
-                            <use href="../../assets/icons/Add.svg"></use>
+                            <use href="/assets/icons/Add.svg"></use>
                         </svg>
                     </button>
                     
                 </div>
             </div>
         </div>`;
-    });
+        });
+    }
 
     // Agregacion de los Nodos al DOM
     let _divContenedorProductos = document.querySelector('body main section div.myProductsContainer');
@@ -270,14 +272,20 @@ function loadProductos() {
     ProductosGetItems()
         .then((productos) => {
             imprimirArrayProductos(productos);
-            // Avanzamos la página para la siguiente tanda
-            PAG_PAGINA_ACTUAL += 1;
-            PAG_FIN = productos.length < PAG_ITEMS_PAGINA ? true : false;
-            // Mandamos a comprobar de manera automática si se requiere rellenar más pantalla
-            checkIfSentinelIsShow();
+            if (productos) {
+                // Avanzamos la página para la siguiente tanda
+                PAG_PAGINA_ACTUAL += 1;
+                PAG_FIN = productos.length < PAG_ITEMS_PAGINA ? true : false;
+                // Mandamos a comprobar de manera automática si se requiere rellenar más pantalla
+                checkIfSentinelIsShow();
+
+            }
+
         })
         .catch((error) => {
-            imprimirErrorProductos(error);
+
+            console.log(error);
+            // imprimirErrorProductos(error);
 
         }).finally(() => {
             PAG_CARGANDO = false;
@@ -298,7 +306,7 @@ async function ProductosGetItems(searchProducto = PAG_FILTER_SEARCH, tipoProduct
     const _endpointURL = `http://localhost:3000/api/productos?${queryParams.toString()}`;
     const response = await fetch(_endpointURL);
 
-    if (!response.ok) {
+    if (!response.ok && response.status != 404) {
         throw new Error(`La API respondió con estado ${response.status}`);
     }
 

@@ -100,4 +100,61 @@ export async function updateProducto(req, res) {
     }
 }
 
+export async function changeEstadoProducto(req, res) {
+
+
+    let estadoString, estadoStringAccion;
+
+    try {
+
+        const { IDProducto, Estado } = req.body;
+        estadoString = Estado == 1 ? "habilitado" : "deshabilitado"
+        estadoStringAccion = Estado == 1 ? "habilitar" : "deshabilitar"
+
+        if (!IDProducto || !Estado) {
+            return res.status(400).json({
+                message: "Datos invalidos, asegurate de incluir todas las categorias"
+            });
+        }
+
+        //ImagenPath
+
+        const [row] = await productosModel.updateProductosEstadoWhereIDProducto({ id: IDProducto, estado: Estado });
+
+        res.status(201).json({
+            message: `Producto con ID ${IDProducto} ${estadoString} con exito`,
+        });
+
+    } catch (error) {
+        console.log(`Error interno al ${estadoStringAccion} Producto. Detalle [${error.message}]`);
+        res.status(500).json({
+            message: `Error interno al ${estadoStringAccion} Producto. Detalle [${error.message}]`
+        })
+    }
+}
+
+export async function deleteProducto(req, res) {
+
+    try {
+
+        const { IDProducto } = req.body;
+
+        console.log(IDProducto);
+
+        //ImagenPath
+
+        await productosModel.deleteProductosWhereIDProducto({ id: IDProducto});
+
+        res.status(200).json({
+            message: `Producto con ID ${IDProducto} eliminado con exito`,
+        });
+
+    } catch (error) {
+        console.log(`Error interno al eliminar Producto. Detalle [${error.message}]`);
+        res.status(500).json({
+            message: `Error interno al eliminar Producto. Detalle [${error.message}]`
+        })
+    }
+}
+
 

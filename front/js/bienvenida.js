@@ -21,7 +21,7 @@ function handlerLoginCliente(event) {
     localStorage.setItem('nombreCliente', _nombreCliente);
 
     // Redireccion a Productos
-    window.location.href = '../pages/productos.html';
+    window.location.href = '/front/pages/productos.html';
 }
 
 function handlerLoginAdmin(event) {

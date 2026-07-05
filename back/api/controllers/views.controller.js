@@ -129,7 +129,36 @@ export async function updateView(req, res) {
 
 }
 
-// // Vista DELETE
-// export const deleteView = (req, res) => {
-//     res.render("delete");
-// }
+// Vista DELETE
+export async function deleteView(req, res) {
+
+    const nombreUsuario = req.session.usuario.nombre;
+
+    const IDProducto = req.params.IDProducto;
+
+    try {
+        const [rowProducto] = await productosModel.selectProductosWhereIDProducto({ IDProducto: IDProducto });
+
+        const [rowTipos] = await productosModel.selectTipoProductos();
+
+        if (rowProducto.length === 0 || rowTipos.length === 0) {
+            return respuesta.status(404).send(
+                "No se encontraron Productos"
+            )
+        }
+
+        const producto = rowProducto[0];
+
+        const tipos = rowTipos;
+
+        res.status(200).render("delete", {
+            usuario: nombreUsuario
+            , producto: producto
+            , tipoProductos: tipos
+        });
+
+    } catch (error) {
+        console.error("Error al renderizar el dashboard:", error);
+        res.status(500).send("Error interno del servidor");
+    }
+}

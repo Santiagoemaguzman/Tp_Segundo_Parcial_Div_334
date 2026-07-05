@@ -44,8 +44,6 @@ main section div.myProductsContainer div.myProductItem:hover {
     box-shadow: var(--item-hover-box-shadow);
 }
 
-
-
 main section div.myProductsContainer div.myProductItem div.myProductItemImg {
     height: 200px;
     background-color: whitesmoke;
@@ -92,19 +90,32 @@ main section div.myProductsFilterBar a.myButtonCrearProducto:hover {
     background-color: var(--btn-primary-hover-bg);
 }
 
-main section div.myProductsContainer table tbody button.myButtonAnularProducto {
+main section div.myProductsContainer table tbody button.myButtonAnularProducto ,
+main section div.myProductsContainer table tbody a.myButtonEliminarProducto {
     background-color: var(--btn-danger-bg);
     color: var(--btn-danger-color);
 }
 
-main section div.myProductsContainer table tbody button.myButtonAnularProducto:hover {
+main section div.myProductsContainer table tbody button.myButtonAnularProducto:hover,
+main section div.myProductsContainer table tbody a.myButtonEliminarProducto:hover {
     background-color: var(--btn-danger-hover-bg);
 }
+
+main section div.myProductsContainer table tbody button.myButtonValidarProducto {
+    background-color: var(--btn-success-bg);
+    color: var(--btn-success-color);
+}
+
+main section div.myProductsContainer table tbody button.myButtonValidarProducto:hover {
+    background-color: var(--btn-success-hover-bg);
+}
+
 
 main section div.myProductsContainer table tbody a.myButtonConsultarProducto,
 main section div.myProductsContainer table tbody a.myButtonModificarProducto,
 main section div.myProductsContainer table tbody button.myButtonValidarProducto,
 main section div.myProductsContainer table tbody button.myButtonAnularProducto,
+main section div.myProductsContainer table tbody a.myButtonEliminarProducto,
 main section div.myProductsFilterBar a.myButtonCrearProducto {
     height: 38px;
 }
@@ -114,6 +125,7 @@ main section div.myProductsContainer table tbody a.myButtonConsultarProducto svg
 main section div.myProductsContainer table tbody a.myButtonModificarProducto svg,
 main section div.myProductsContainer table tbody button.myButtonValidarProducto svg,
 main section div.myProductsContainer table tbody button.myButtonAnularProducto svg,
+main section div.myProductsContainer table tbody a.myButtonEliminarProducto svg,
 main section div.myProductsFilterBar a.myButtonCrearProducto svg {
     fill: white;
     width: 18px;

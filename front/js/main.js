@@ -8,7 +8,7 @@ import {
     , ORDEN_PRECIO_DESC
     , THEME_LIGHT
     , THEME_DARK
-} from '../../shared/constantes.js';
+} from '/shared/constantes.js';
 
 import { initPantallaBienvenida } from './bienvenida.js';
 import { initPantallaProductos } from './productos.js';

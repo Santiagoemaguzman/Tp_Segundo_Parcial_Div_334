@@ -9,3 +9,76 @@
 @import url("./dashboard.css");
 @import url("./get.css");
 @import url("./post.css");
+@import url("./put.css");
+@import url("./delete.css");
+
+main section div.myProductsFilterBar a.myButtonAtras {
+    background-color: var(--btn-success-bg);
+    color: var(--btn-success-color);
+}
+
+main section div.myProductsFilterBar a.myButtonAtras:hover {
+    background-color: var(--btn-success-hover-bg);
+}
+
+
+
+main section div.myProductsContainer form.myForm {
+    background-color: var(--all-container-bg);
+    color: var(--all-container-color);
+}
+
+main section div.myProductsContainer form.myForm div.myProductItemImg {
+    height: 350px;
+    background-color: whitesmoke;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+main section div.myProductsContainer form.myForm div.myProductItemImg img {
+    height: 100%;
+    width: auto;
+}
+
+
+
+
+
+main dialog.myModal {
+    width: min(430px, calc(100% - 32px));
+    margin: auto;
+    padding: 28px;
+    border: 0;
+    border-radius: 12px;
+    background-color: var(--all-container-bg);
+    color: var(--all-container-color);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+}
+
+main dialog.myModal::backdrop {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+main dialog.myModal h2 {
+    margin-bottom: 16px;
+}
+
+main dialog.myModal p {
+    margin-bottom: 8px;
+}
+
+main dialog.myModal button {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 6px;
+    font-weight: 600;
+    background-color: var(--btn-success-bg);
+    color: var(--btn-success-color);
+}
+
+main dialog.myModal button:hover {
+    background-color: var(--btn-success-hover-bg);
+}

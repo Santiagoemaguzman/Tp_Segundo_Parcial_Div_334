@@ -35,7 +35,7 @@ function selectProductosWhere(params) {
 
     // Destruc de Parametros
     const {
-        soloActivo = false
+        soloActivo = true
         , producto = ''
         , tipoProducto = '1'
         , orderBy = '1'
@@ -46,13 +46,16 @@ function selectProductosWhere(params) {
     // Query Base
     let query = 'SELECT IDProducto, Producto, Importe, ImagenPath FROM Productos WHERE 1 = 1';
 
+    const queryParams = [];
+
     // SET soloActivo
     if (soloActivo == true) {
-        query += " AND Estado = 1";
+        const estado = 1;
+        query += " AND Estado = ?";
+        queryParams.push(estado);
     }
 
     // SET Producto
-    const queryParams = [];
     if (producto !== '') {
         query += ' AND Producto LIKE ?';
         queryParams.push(`%${producto}%`);
@@ -94,6 +97,8 @@ function selectProductosWhere(params) {
     //SET offset
     const offset = parseInt(currentPage, 10) * parseInt(limitPerPage, 10);
     query += " OFFSET " + offset;
+
+    console.log(query, queryParams);
 
     return connection.query(query, queryParams);
 }
@@ -194,23 +199,48 @@ function updateProductosEstadoWhereIDProducto(params) {
     WHERE
         IDProducto = ?`;
 
-    return connection.query(query, [estado, usuarioModif, id]);
+    return connection.query(query, [Buffer.from([estado]), usuarioModif, id]);
 
 
 }
 
+async function deleteProductosWhereIDProducto(params) {
+
+    const {
+        id = '0'
+    } = params;
+
+    const connectionInstance = await connection.getConnection();
+
+    try {
+        await connectionInstance.beginTransaction();
+
+        await connectionInstance.query(`
+            INSERT INTO ProductosEliminados 
+            SELECT * FROM Productos WHERE IDProducto = ?
+        `, [id]);
+
+        await connectionInstance.query(`
+            INSERT INTO VentasProductosEliminados 
+            SELECT * FROM VentasProductos WHERE IDProducto = ?
+        `, [id]);
+
+        await connectionInstance.query(`
+            DELETE FROM VentasProductos WHERE IDProducto = ?
+        `, [id]);
 
 
-function deleteProductosWhereIDProducto(params) {
-    //     const sql = "DELETE FROM products WHERE id = ?";
-    //     return connection.query(sql, [id]);
+        await connectionInstance.query(`
+            DELETE FROM Productos WHERE IDProducto = ?
+        `, [id]);
 
-    console.log("deleteProductosWhereIDProducto");
+        await connectionInstance.commit();
+
+    } catch (error) {
+        await connectionInstance.rollback();
+        throw error;
+    }
 }
-
-
-
-
 
 function selectTipoProductos() {
 
@@ -232,6 +262,7 @@ export default {
     , selectProductosWhereIDProducto
     , insertProductos
     , updateProductosWhereIDProducto
+    , updateProductosEstadoWhereIDProducto
     , deleteProductosWhereIDProducto
     , selectTipoProductos
 }

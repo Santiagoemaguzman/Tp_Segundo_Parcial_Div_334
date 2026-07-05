@@ -15,6 +15,15 @@ main div.myContainer button.myAdminLoginButton:hover {
     background-color: var(--btn-primary-hover-bg);
 }
 
+main div.myContainer a.myToClientLoginPageButton {
+    background-color: var(--btn-success-bg);
+    color: var(--btn-success-color);
+}
+
+main div.myContainer a.myToClientLoginPageButton:hover {
+    background-color: var(--btn-success-hover-bg);
+}
+
 main div.myContainer button.mySetUserTestButton {
     background-color: var(--btn-secondary-bg);
     color: var(--btn-secondary-color);

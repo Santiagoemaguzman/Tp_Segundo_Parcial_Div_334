@@ -60,6 +60,29 @@ CREATE TABLE VentasProductos (
     , CONSTRAINT FK_VentasProductos_Productos FOREIGN KEY (IDProducto) REFERENCES Productos(IDProducto)
 );
 
+CREATE TABLE ProductosEliminados (
+    IDProducto INT 
+    , Producto VARCHAR(255) NOT NULL
+    , IDTipoProducto INT NOT NULL
+    , Importe DECIMAL(10, 2) NOT NULL
+    , Stock INT NOT NULL DEFAULT 0
+    , ImagenPath VARCHAR(255) NOT NULL
+    , Estado BIT DEFAULT 1
+    , UsuarioAlta VARCHAR(100) NOT NULL
+    , FechaAlta DATETIME NOT NULL DEFAULT CURRENT_DATE 
+    , UsuarioModif VARCHAR(100) NULL DEFAULT NULL
+    , FechaModif DATETIME NULL DEFAULT NULL
+);
+
+CREATE TABLE VentasProductosEliminados (
+    IDVentasProductos INT 
+    , IDVenta INT NOT NULL
+    , IDProducto INT NOT NULL
+    , ProductoCantidad INT NOT NULL DEFAULT 1
+);
+
+
+
 CREATE TABLE Usuarios (
     Mail VARCHAR(255) PRIMARY KEY
     , Password VARCHAR(255) NOT NULL

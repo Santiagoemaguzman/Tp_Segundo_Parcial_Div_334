@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { indexView, getView, createView, updateView } from "../controllers/views.controller.js";
+import { indexView, getView, createView, updateView, deleteView } from "../controllers/views.controller.js";
 import { requerirLogin } from "../middlewares/autenticacion.js"
 
 
@@ -20,7 +20,7 @@ router.get("/post", requerirLogin, createView);
 // Vista modificar producto
 router.get("/put/:IDProducto", requerirLogin, updateView);
 
-// // Vista eliminar producto
-// router.get("/delete", deleteView);
+// Vista eliminar producto
+router.get("/delete/:IDProducto", requerirLogin, deleteView);
 
 export default router;

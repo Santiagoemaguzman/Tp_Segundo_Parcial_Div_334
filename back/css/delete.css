@@ -1,0 +1,9 @@
+main section div.myProductsFilterBar button.myButtonEliminar {
+    background-color: var(--btn-danger-bg);
+    color: var(--btn-danger-color);
+}
+
+main section div.myProductsFilterBar button.myButtonEliminar:hover {
+    background-color: var(--btn-danger-hover-bg);
+}
+

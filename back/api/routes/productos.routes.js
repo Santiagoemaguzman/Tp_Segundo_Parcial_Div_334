@@ -1,5 +1,5 @@
 import { Router } from "express"; // Importamos el modulo Router
-import { getProductos, createProducto, updateProducto } from "../controllers/productos.controller.js";
+import { getProductos, createProducto, updateProducto, changeEstadoProducto, deleteProducto } from "../controllers/productos.controller.js";
 import { validarConsultaProductos } from "../middlewares/validaciones.js";
 
 // Inicializamos el modulo router
@@ -12,7 +12,8 @@ router.post("/", createProducto);
 
 router.put("/", updateProducto);
 
-router.put("/enabled/", updateProducto);
+router.put("/changeEstado/", changeEstadoProducto);
 
+router.delete("/", deleteProducto);
 
 export default router;
