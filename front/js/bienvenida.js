@@ -37,6 +37,8 @@ export function initPantallaBienvenida() {
     // Reset localStorage
     localStorage.removeItem('nombreCliente');
 
+    localStorage.removeItem('carrito');
+
     // Recuperamos el Boton Login de Cliente y le agregamos un Listener
     const _botonClientLoginButton  = document.querySelector('button.myClientLoginButton');
     _botonClientLoginButton.addEventListener('click', handlerLoginCliente)

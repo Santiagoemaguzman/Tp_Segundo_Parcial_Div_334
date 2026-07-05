@@ -104,7 +104,7 @@ app.listen(PORT, () => {
     //                 process.platform === 'darwin' ? `open ${url}` :
     //                 `xdg-open ${url}`;
     
-    exec(`start ${url}`);
+    //exec(`start ${url}`);
 
 
 });

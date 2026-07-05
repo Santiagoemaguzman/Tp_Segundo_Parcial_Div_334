@@ -105,3 +105,27 @@ export async function registrarVenta(cliente, productosSolicitados) {
         }
     }
 }
+
+
+export async function selectVentasToExportExcel() {
+
+    const query = `
+    SELECT
+        VNT.IDVenta
+        , VNT.Cliente
+        , PRD.IDProducto 
+        , PRD.Producto 
+        , PRD.Importe AS PrecioUnitario
+        , VXP.ProductoCantidad
+        , PRD.Importe * VXP.ProductoCantidad AS SubTotal
+        , VNT.ImporteTotal AS Total
+        , VNT.FechaAlta AS FechaVenta
+    FROM
+        Ventas VNT
+        INNER JOIN VentasProductos VXP ON VNT.IDVenta = VXP.IDVenta
+        INNER JOIN Productos PRD ON VXP.IDProducto = PRD.IDProducto
+    ORDER BY 
+        VNT.IDVenta DESC`;
+
+    return connection.query(query);
+}
