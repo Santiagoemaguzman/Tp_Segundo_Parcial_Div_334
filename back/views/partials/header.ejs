@@ -39,6 +39,9 @@
             class="myMenuResponsiveExpanded myContainerOut d-none d-lg-none position-fixed vw-100 vh-100 flex-row justify-content-center pt-5 ">
             <!-- Menus -->
             <nav class="w-50 d-flex flex-column gap-4 mt-5">
+
+                <% if( typeof nologin === 'undefined' ){ %>
+
                 <a href="/api/ventas/export"
                     class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
                     <svg viewBox="0 0 41 36">
@@ -56,7 +59,8 @@
                         <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
                     </button>
                 </form>
-
+                
+                <% } %>
 
                 <!-- Separator -->
                 <hr />
@@ -90,22 +94,30 @@
         <nav class="myMenuComplete d-none d-lg-flex flex-row gap-2 align-items-center">
 
             <!-- Menus -->
-            <a href="/api/ventas/export"
-                class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
-                <svg viewBox="0 0 32 32">
-                    <use href="/assets/icons/Download.svg"></use>
-                </svg>
-                <p class="fw-medium fs-6 p-0 m-0">Ventas</p>
-            </a>
-            <form action="/login/salir" method="POST">
-                <button type="submit"
-                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
-                    <svg viewBox="0 0 36 36">
-                        <use href="/assets/icons/LogOut.svg"></use>
+
+            <% if( typeof nologin === 'undefined' ){ %>
+
+                <a href="/api/ventas/export"
+                    class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    <svg viewBox="0 0 32 32">
+                        <use href="/assets/icons/Download.svg"></use>
                     </svg>
-                    <p class="fw-medium fs-6 p-0 m-0">Salir</p>
-                </button>
-            </form>
+                    <p class="fw-medium fs-6 p-0 m-0">Ventas</p>
+                </a>
+                <form action="/login/salir" method="POST">
+                    <button type="submit"
+                        class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2 ms-3">
+                        <svg viewBox="0 0 36 36">
+                            <use href="/assets/icons/LogOut.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0">Salir</p>
+                    </button>
+                </form>
+
+
+            <% } %>
+
+            
 
             <!-- Separator -->
             <div class="vr mx-1 my-2"></div>

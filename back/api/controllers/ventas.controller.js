@@ -52,7 +52,10 @@ export async function exportarVentas(req, res) {
             "Content-Type",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         );
-        res.setHeader("Content-Disposition", "attachment; filename=PokeTCGService-Ventas.xlsx");
+
+        const currentDateTime = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 15);
+
+        res.setHeader("Content-Disposition", `attachment; filename=PokeTCGService-Ventas_${currentDateTime}.xlsx`);
 
         // 6. Enviar el archivo Excel
         await workbook.xlsx.write(res);

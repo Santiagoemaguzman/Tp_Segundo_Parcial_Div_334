@@ -9,7 +9,8 @@ export function mostrarLogin(req, res) {
     res.render('login', {
         title: 'Iniciar sesión',
         error: null,
-        email: ''
+        email: '',
+        nologin:true
     });
 }
 

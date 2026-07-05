@@ -10,10 +10,18 @@
     gap: 20px;
 }
 
-.ticket-panel {
-    position: relative;
+iframe#ticket-panel {
+    /* position: relative;
     width: min(520px, 100%);
-    aspect-ratio: 942 / 1675;
+    aspect-ratio: 942 / 1675; */
+
+    /* width: 500px;
+    height: 1700px; */
+    /* aspect-ratio: 1 / 1.4 */
+    width: 100%; 
+    max-width: 800px; 
+    aspect-ratio: 1 / 1.5;
+
 }
 
 .ticket-imagen {
