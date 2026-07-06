@@ -73,7 +73,7 @@
 ### Base de Datos
 - 🟢 Los Productos deben tener una propiedad de activo
 - 🟢 El Sistema debe tener productos cargados al momento de evaluar	
-- 🟢El Sistema debe persistir las Ventas
+- 🟢 El Sistema debe persistir las Ventas
 - 🟢 El Sistema debe tener Relacion Muchos a Muchos entre Productos y Ventas
 
 ### API
@@ -94,8 +94,8 @@
 - 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
 - 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
 - 🟢 Persistencia del tema elegido al recargar
-- ⚪ Formulario de credenciales (correo y contraseña)
-- ⚪ Validacion contra la Base de Datos
+- 🟢 Formulario de credenciales (correo y contraseña)
+- 🟢 Validacion contra la Base de Datos
 - 🟢 Botón discreto de Acceso Rápido Tester,que autocompleta los campos de login
 - 🟢 Al completar el **Login**, redirigir al **Dashboard**
 
