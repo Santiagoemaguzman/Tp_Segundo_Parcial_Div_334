@@ -18,7 +18,7 @@
 - 🟢 Input para ingresar únicamente el nombre del cliente
 - 🟢 Validación del input (bloquear acceso si está vacío)
 - 🟢 Botón **Continuar** que redirige a la **Pantalla de Productos**
-- 🟡 Botón oculto/discreto que redirige al **Login del Administrador**
+- 🟢 Botón oculto/discreto que redirige al **Login del Administrador**
 
 ### Pantalla de Productos
 - 🟢 Interfaz con estilos CSS cuidados y consistentes
@@ -32,11 +32,10 @@
 - 🟢 Persistencia del tema elegido al recargar
 - 🟢 El cliente nunca debe escribir una ruta a mano en la URL
 - 🟢 Visualización de productos divididos explícitamente en dos categorías
-- 🟡 Mostrar solo los productos que tengan el estado activo
+- 🟢 Mostrar solo los productos que tengan el estado activo
 - 🟢 Renderizar todos los datos del producto junto con su imagen
 - 🟢 Paginación funcional de los productos *(YA TIENE SCROLL INFINITO)*
-- 🟡 Botón para agregar un producto al carrito *(SE ME OCURRIO HACERLO EN DOS PARTES, EN UNA PRIMERA SOLO "AGREGAR AL CARRITO", YA SI AGREGASTE 1, EL BOTON CAMBIA A ( - | 1 | + ))*
-- 🟡 Botón para quitar completamente el productos del carrito
+- 🟢 Botón para agregar un producto al carrito *(SE ME OCURRIO HACERLO EN DOS PARTES, EN UNA PRIMERA SOLO "AGREGAR AL CARRITO", YA SI AGREGASTE 1, EL BOTON CAMBIA A ( - | 1 | + ))*
 
 ### Pantalla de Carrito
 - 🟢 Interfaz con estilos CSS cuidados y consistentes
@@ -57,7 +56,7 @@
 
 ### Pantalla de Ticket
 - 🟢 Interfaz con estilos CSS cuidados y consistentes
-- 🟡 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
 - 🟢 Favicon configurado en el navegador
 - 🟢 Logo de la aplicación visible
 - 🟢 Nombre de la aplicación visible
@@ -67,7 +66,7 @@
 - 🟢 Persistencia del tema elegido al recargar
 - 🟢 El cliente nunca debe escribir una ruta a mano en la URL
 - 🟢 Muestra del ticket con: Nombre de la empresa, Nombre del Cliente, productos comprados, subtotales y total, fecha actual del sistema
-- ⚪ Botón para descargar el Ticket en formato PDF
+- 🟢 Botón para descargar el Ticket en formato PDF
 - 🟢 Botón de "Salir" / "Volver a empezar" que limpia la sesión, reinicia el flujo y vuelve a la **Pantalla de Bienvenida**  
 
 ## ⚙️ Proyecto Backend (API & Backoffice)
@@ -78,55 +77,55 @@
 - 🟢 El Sistema debe tener Relacion Muchos a Muchos entre Productos y Ventas
 
 ### API
-- ⚪ La API debe permitir traer los Productos en forma de pagina
+- 🟢 La API debe permitir traer los Productos en forma de pagina
 - 🟢Las Rutas y Endpoints deben estar estructurados de forma lógica MVC
 - 🟢 Debe validar los datos por Middlewares
-- ⚪ Utilizar un ORM *(¿ES OPCIONAL?)*/No hay que integrarlo/
-- ⚪ CRUD
+- 🟢 Utilizar un ORM *(NO SE INTEGRA)*
+- 🟢 CRUD
 - 🟢 Las imagenes se deben almacenar en el Servidor
 - ⚪ Encriptacion de Contraseñas
 
 ### Pantalla de Login (VISTA EJS)
-- ⚪ Interfaz con estilos CSS cuidados y consistentes
-- ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- ⚪ Favicon configurado en el navegador
-- ⚪ Logo de la aplicación visible
-- ⚪ Nombre de la aplicación visible
-- ⚪ Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- ⚪ Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- ⚪ Persistencia del tema elegido al recargar
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
+- 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
 - ⚪ Formulario de credenciales (correo y contraseña)
 - ⚪ Validacion contra la Base de Datos
-- ⚪ Botón discreto de Acceso Rápido Tester,que autocompleta los campos de login
-- ⚪ Al completar el **Login**, redirigir al **Dashboard**
+- 🟢 Botón discreto de Acceso Rápido Tester,que autocompleta los campos de login
+- 🟢 Al completar el **Login**, redirigir al **Dashboard**
 
 ### Pantalla de Dashboard (VISTA EJS) 
-- ⚪ Interfaz con estilos CSS cuidados y consistentes
-- ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- ⚪ Favicon configurado en el navegador
-- ⚪ Logo de la aplicación visible
-- ⚪ Nombre de la aplicación visible
-- ⚪ Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- ⚪ Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- ⚪ Persistencia del tema elegido al recargar
-- ⚪ Listado completo de productos de la base de datos agrupados/separados por tipo
-- ⚪ Capacidad de dar de Alta un nuevo Producto (reidirigir al **ABM**)
-- ⚪ Capacidad de Modificar un Producto (reidirigir al **ABM**)
-- ⚪ Botón para descargar el reporte de ventas en Excel (.xlsx)
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
+- 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
+- 🟢 Listado completo de productos de la base de datos agrupados/separados por tipo
+- 🟢 Capacidad de dar de Alta un nuevo Producto (reidirigir al **ABM**)
+- 🟢 Capacidad de Modificar un Producto (reidirigir al **ABM**)
+- 🟢 Botón para descargar el reporte de ventas en Excel (.xlsx)
 
 ### ABM (VISTA EJS) 
-- ⚪ Interfaz con estilos CSS cuidados y consistentes
-- ⚪ Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
-- ⚪ Favicon configurado en el navegador
-- ⚪ Logo de la aplicación visible
-- ⚪ Nombre de la aplicación visible
-- ⚪ Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
-- ⚪ Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
-- ⚪ Persistencia del tema elegido al recargar
-- ⚪ Alta: Formulario para nuevos productos (campos requeridos + carga de archivo de imagen al servidor). Estado activo por defecto
-- ⚪ Modificación: formulario dinámico que toma el ID del producto y permite editar sus datos e imagen
-- ⚪ Baja Lógica (Desactivar), debe abrir un Modal de Confirmacion, y cambia de Estado, deja de verse en el Front
-- ⚪ Reactivación, debe abrir un Modal de Confirmacion, y cambia de Estado, deja de verse en el Front
+- 🟢 Interfaz con estilos CSS cuidados y consistentes
+- 🟢 Diseño Responsivo adaptable y completamente funcional tanto en PC como en dispositivos móviles
+- 🟢 Favicon configurado en el navegador
+- 🟢 Logo de la aplicación visible
+- 🟢 Nombre de la aplicación visible
+- 🟢 Nombre de los alumnos visible *(IMAGINO EN EL FOOTER)*
+- 🟢 Selector para cambiar el tema de la aplicación (Claro / Oscuro / Otros)
+- 🟢 Persistencia del tema elegido al recargar
+- 🟢 Alta: Formulario para nuevos productos (campos requeridos + carga de archivo de imagen al servidor). Estado activo por defecto 
+- 🟢 Modificación: formulario dinámico que toma el ID del producto y permite editar sus datos e imagen
+- 🟢 Baja Lógica (Desactivar), debe abrir un Modal de Confirmacion, y cambia de Estado, deja de verse en el Front
+- 🟢 Reactivación, debe abrir un Modal de Confirmacion, y cambia de Estado, deja de verse en el Front
 
 ## 🏆 EXTRA
 ### Frontend : Pantalla de Encuesta

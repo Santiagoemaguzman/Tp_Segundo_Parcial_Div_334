@@ -57,10 +57,9 @@ function imprimirTicket(venta) {
 
         venta.productos.forEach(producto => {
 
-            doc.text(`${producto.nombre} :  ${producto.precioIndividual.toFixed(2)} AR$ x  ${producto.cantidad}`, margenIzquierdo, y, { align: "left" });
+            doc.text(`${producto.nombre} . . . . . . . . . . ${producto.precioIndividual.toFixed(2)} AR$ x  ${producto.cantidad} unidades`, margenIzquierdo, y, { align: "left" });
 
             doc.text(`${producto.subtotal.toFixed(2)} AR$`, margenDerecho, y, { align: "right" });
-
 
             total += producto.subtotal;
 

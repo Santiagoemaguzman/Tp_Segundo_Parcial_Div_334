@@ -75,8 +75,8 @@
                                     const formData = new FormData(event.target);
                                     const data = Object.fromEntries(formData.entries());
 
-                                    // Normalizacion 
-                                    data.Importe = Number(data.Importe);
+                                    // // Normalizacion 
+                                    // data.Importe = Number(data.Importe);
 
                                     // Validaciones 
                                     const errores = validarFormulario(data);
@@ -90,10 +90,10 @@
                                     try {
                                         const response = await fetch("http://localhost:3000/api/productos/", {
                                             method: "PUT",
-                                            headers: {
-                                                "Content-Type": "application/json",
-                                            },
-                                            body: JSON.stringify(data)
+                                            // headers: {
+                                            //     "Content-Type": "application/json",
+                                            // },
+                                            body: formData//JSON.stringify(data)
                                         });
 
                                         const result = await response.json();
@@ -172,15 +172,17 @@
 
                                 <div class="d-flex row m-0 p-0 my-4">
                                     <label for="ImagenPath" class="form-label mx-0 px-0 ps-1">Imagen</label>
-                                    <!-- <input type="file" name="ImagenPath" class="form-control"></input> -->
-                                    <input type="text" name="ImagenPath" value="<%= producto.ImagenPath %>"
-                                        class="form-control" readonly disabled></input>
+                                    <input type="file" name="image" class="form-control"></input>
+                                    <input type="hidden" name="ImagenPath" value="<%= producto.ImagenPath.replace('../../back','') %>"></input>
                                 </div>
 
                             </div>
 
                             <div class="col-5 d-flex row m-0 p-0  d-flex justify-content-center align-items-center p-5">
-                                <div class="myProductItemImg rounded w100"></div>
+                                <div class="myProductItemImg rounded w100">
+                                    <img src=" <%= producto.ImagenPath.replace('../../back','') %>"
+                                        alt=" <%= producto.ImagenPath.replace('../../back','') %>">
+                                </div>
                             </div>
 
                         </form>

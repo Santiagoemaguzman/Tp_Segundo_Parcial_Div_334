@@ -63,7 +63,6 @@ app.use(loggerURL);
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware para servir archivos estaticos
-app.use('/assets', express.static(path.join(currentDirectory, '..', 'assets')));
 app.use('/css', express.static(path.join(currentDirectory, 'css')));
 app.use('/shared', express.static(path.join(currentDirectory, '..', 'shared')));
 app.use('/productos-imgs', express.static(path.join(currentDirectory, 'productos-imgs')));

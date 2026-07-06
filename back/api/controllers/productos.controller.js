@@ -47,7 +47,9 @@ export async function createProducto(req, res) {
 
     try {
 
-        const { Producto, IDTipoProducto, Importe, ImagenPath } = req.body;
+        const { Producto, IDTipoProducto, Importe } = req.body;
+
+        const ImagenPath = req.file.filename ? "../../back/productos-imgs/" + req.file.filename : undefined;
 
         if (!Producto || !IDTipoProducto || !Importe || !ImagenPath) {
             return res.status(400).json({
@@ -55,9 +57,7 @@ export async function createProducto(req, res) {
             });
         }
 
-        //ImagenPath
-
-        const [row] = await productosModel.insertProductos({ producto: Producto.trim(), tipoProducto: IDTipoProducto, importe: Importe });
+        const [row] = await productosModel.insertProductos({ producto: Producto.trim(), tipoProducto: IDTipoProducto, importe: Importe, imgPath: ImagenPath });
 
         res.status(201).json({
             message: `Producto creado con exito con id ${row.insertId}`,
@@ -77,15 +77,19 @@ export async function updateProducto(req, res) {
 
         const { Producto, IDTipoProducto, Importe, ImagenPath, IDProducto } = req.body;
 
+        let ImagenPathFinal = ImagenPath;
+        if (req.file) {
+            console.log(req.file);
+            ImagenPathFinal = "../../back/productos-imgs/" + req.file.filename;
+        }
+
         if (!Producto || !IDTipoProducto || !Importe || !IDProducto) {
             return res.status(400).json({
                 message: "Datos invalidos, asegurate de incluir todas las categorias"
             });
         }
 
-        //ImagenPath
-
-        const [row] = await productosModel.updateProductosWhereIDProducto({ id: IDProducto, producto: Producto.trim(), tipoProducto: IDTipoProducto, importe: Importe });
+        const [row] = await productosModel.updateProductosWhereIDProducto({ id: IDProducto, producto: Producto.trim(), tipoProducto: IDTipoProducto, importe: Importe, imgPath: ImagenPathFinal });
 
         res.status(201).json({
             message: `Producto con ID ${IDProducto} modificado con exito`,
@@ -143,7 +147,7 @@ export async function deleteProducto(req, res) {
 
         //ImagenPath
 
-        await productosModel.deleteProductosWhereIDProducto({ id: IDProducto});
+        await productosModel.deleteProductosWhereIDProducto({ id: IDProducto });
 
         res.status(200).json({
             message: `Producto con ID ${IDProducto} eliminado con exito`,

@@ -77,7 +77,7 @@
 
                                     <label for="ImagenPath" class="form-label mx-0 px-0 ps-1">Imagen</label>
 
-                                    <input type="text" name="ImagenPath" value="<%= producto.ImagenPath %>"
+                                    <input type="text" name="ImagenPath" value="<%= producto.ImagenPath.replace('../../back','') %>"
                                         class="form-control" readonly disabled></input>
 
                                 </div>
