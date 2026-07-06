@@ -11,7 +11,7 @@
             <img src="/assets/icono.png " class="h-100" alt="logo">
             <div class="ms-5 mt-3 d-flex align-items-center">
                 <p class="fw-medium myClientName">
-                    <%= (typeof usuario !== 'undefined' && usuario) ? "Bienvenido/a " + usuario + "!" : '' %>
+                    <%= (typeof usuario !=='undefined' && usuario) ? "Bienvenido/a " + usuario + "!" : '' %>
                 </p>
             </div>
         </div>
@@ -40,51 +40,59 @@
             <!-- Menus -->
             <nav class="w-50 d-flex flex-column gap-4 mt-5">
 
-                <% if( typeof nologin === 'undefined' ){ %>
+                <% if( typeof nologin==='undefined' ){ %>
 
-                <a href="/api/ventas/export"
-                    class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
-                    <svg viewBox="0 0 41 36">
-                        <use href="/assets/icons/Download.svg"></use>
-                    </svg>
-                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Ventas</p>
-                </a>
-
-                <form action="/login/salir" method="POST">
-                    <button type="submit"
+                    <a href="/api/ventas/export"
                         class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
-                        <svg viewBox="0 0 36 36">
-                            <use href="/assets/icons/LogOut.svg"></use>
+                        <svg viewBox="0 0 41 36">
+                            <use href="/assets/icons/Download.svg"></use>
                         </svg>
-                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
-                    </button>
-                </form>
-                
-                <% } %>
+                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Ventas</p>
+                    </a>
 
-                <!-- Separator -->
-                <hr />
+                    <form action="/login/salir" method="POST">
+                        <button type="submit"
+                            class="myMenuItem d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                            <svg viewBox="0 0 36 36">
+                                <use href="/assets/icons/LogOut.svg"></use>
+                            </svg>
+                            <p class="fw-medium fs-6 p-0 m-0 ms-5">Salir</p>
+                        </button>
+                    </form>
 
-                <!-- Theme -->
-                <button
-                    class="myMenuItem myButtonToDarkMode btn d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
-                    <svg viewBox="0 0 44 44">
-                        <use href="/assets/icons/LightMode.svg"></use>
-                    </svg>
-                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Light</p>
-                </button>
+                    <% } %>
 
-                <button
-                    class="myMenuItem myButtonToLightMode d-none flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
-                    <svg viewBox="0 0 36 36">
-                        <use href="/assets/icons/DarkMode.svg"></use>
-                    </svg>
-                    <p class="fw-medium fs-6 p-0 m-0 ms-5">Dark</p>
-                </button>
+                        <!-- Separator -->
+                        <hr />
 
-                <div class="position-fixed w-50 d-flex flex-row justify-content-center text-center">
-                    Desarrollado por Santiago Guzman y Carlos Mendéz
-                </div>
+                        <!-- Theme -->
+                        <button
+                            class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                            <svg viewBox="0 0 44 44">
+                                <use href="/assets/icons/LightMode.svg"></use>
+                            </svg>
+                            <p class="fw-medium fs-6 p-0 m-0">Light</p>
+                        </button>
+
+                        <button
+                            class="myMenuItem myButtonToForestMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                            <svg viewBox="0 0 36 36">
+                                <use href="/assets/icons/DarkMode.svg"></use>
+                            </svg>
+                            <p class="fw-medium fs-6 p-0 m-0">Dark</p>
+                        </button>
+
+                        <button
+                            class="myMenuItem myButtonToLightMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                            <svg viewBox="0 0 32 40">
+                                <use href="/assets/icons/ForestMode.svg"></use>
+                            </svg>
+                            <p class="fw-medium fs-6 p-0 m-0">Forest</p>
+                        </button>
+
+                        <div class="position-fixed w-50 d-flex flex-row justify-content-center text-center">
+                            Desarrollado por Santiago Guzman y Carlos Mendéz
+                        </div>
 
             </nav>
 
@@ -95,7 +103,7 @@
 
             <!-- Menus -->
 
-            <% if( typeof nologin === 'undefined' ){ %>
+            <% if( typeof nologin==='undefined' ){ %>
 
                 <a href="/api/ventas/export"
                     class="myMenuItem d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
@@ -115,29 +123,37 @@
                 </form>
 
 
-            <% } %>
+                <% } %>
 
-            
 
-            <!-- Separator -->
-            <div class="vr mx-1 my-2"></div>
 
-            <!-- Theme -->
-            <button
-                class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
-                <svg viewBox="0 0 44 44">
-                    <use href="/assets/icons/LightMode.svg"></use>
-                </svg>
-                <p class="fw-medium fs-6 p-0 m-0">Light</p>
-            </button>
+                    <!-- Separator -->
+                    <div class="vr mx-1 my-2"></div>
 
-            <button
-                class="myMenuItem myButtonToLightMode d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
-                <svg viewBox="0 0 36 36">
-                    <use href="/assets/icons/DarkMode.svg"></use>
-                </svg>
-                <p class="fw-medium fs-6 p-0 m-0">Dark</p>
-            </button>
+                    <!-- Theme -->
+                    <button
+                        class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                        <svg viewBox="0 0 44 44">
+                            <use href="/assets/icons/LightMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0">Light</p>
+                    </button>
+
+                    <button
+                        class="myMenuItem myButtonToForestMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                        <svg viewBox="0 0 36 36">
+                            <use href="/assets/icons/DarkMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0">Dark</p>
+                    </button>
+
+                    <button
+                        class="myMenuItem myButtonToLightMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                        <svg viewBox="0 0 32 40">
+                            <use href="/assets/icons/ForestMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0">Forest</p>
+                    </button>
         </nav>
 
     </div>
@@ -154,6 +170,7 @@
             , ORDEN_PRECIO_DESC
             , THEME_LIGHT
             , THEME_DARK
+            , THEME_FOREST
         } from '/shared/constantes.js';
 
         // ==========================================================================
@@ -212,31 +229,65 @@
             const _body = document.querySelector('body');
             const _arrButtonToDarkMode = document.querySelectorAll('header div nav button.myButtonToDarkMode');
             const _arrButtonToLightMode = document.querySelectorAll('header div nav button.myButtonToLightMode');
+            const _arrButtonToForestMode = document.querySelectorAll('header div nav button.myButtonToForestMode');
 
             // Set el Atributo data-theme, y la visibilidad de los Botones
             switch (Number(temaSitio)) {
+                case THEME_LIGHT:
+                    _body.setAttribute('data-theme', 'light');
+
+                    _arrButtonToDarkMode.forEach(b => {
+                        b.classList.add('d-flex');
+                        b.classList.remove('d-none');
+                    });
+
+                    _arrButtonToForestMode.forEach(b => {
+                        b.classList.add('d-none');
+                        b.classList.remove('d-flex');
+                    });
+
+                    _arrButtonToLightMode.forEach(b => {
+                        b.classList.add('d-none');
+                        b.classList.remove('d-flex');
+                    });
+                    break;
+
                 case THEME_DARK:
                     _body.setAttribute('data-theme', 'dark');
-                    _arrButtonToDarkMode.forEach(function (boton) {
-                        boton.classList.add('d-none');
-                        boton.classList.remove('d-flex');
-                    })
-                    _arrButtonToLightMode.forEach(function (boton) {
-                        boton.classList.add('d-flex');
-                        boton.classList.remove('d-none');
-                    })
+
+                    _arrButtonToDarkMode.forEach(b => {
+                        b.classList.add('d-none');
+                        b.classList.remove('d-flex');
+                    });
+
+                    _arrButtonToForestMode.forEach(b => {
+                        b.classList.add('d-flex');
+                        b.classList.remove('d-none');
+                    });
+
+                    _arrButtonToLightMode.forEach(b => {
+                        b.classList.add('d-none');
+                        b.classList.remove('d-flex');
+                    });
                     break;
-                case THEME_LIGHT:
-                    //default:
-                    _body.setAttribute('data-theme', 'light');
-                    _arrButtonToDarkMode.forEach(function (boton) {
-                        boton.classList.add('d-flex');
-                        boton.classList.remove('d-none');
-                    })
-                    _arrButtonToLightMode.forEach(function (boton) {
-                        boton.classList.add('d-none');
-                        boton.classList.remove('d-flex');
-                    })
+
+                case THEME_FOREST:
+                    _body.setAttribute('data-theme', 'forest');
+
+                    _arrButtonToDarkMode.forEach(b => {
+                        b.classList.add('d-none');
+                        b.classList.remove('d-flex');
+                    });
+
+                    _arrButtonToForestMode.forEach(b => {
+                        b.classList.add('d-none');
+                        b.classList.remove('d-flex');
+                    });
+
+                    _arrButtonToLightMode.forEach(b => {
+                        b.classList.add('d-flex');
+                        b.classList.remove('d-none');
+                    });
                     break;
             }
 
@@ -260,6 +311,7 @@
             // Recupero los Botones de Cambio de Tema
             const _arrButtonToDarkMode = document.querySelectorAll('header div nav button.myButtonToDarkMode');
             const _arrButtonToLightMode = document.querySelectorAll('header div nav button.myButtonToLightMode');
+            const _arrButtonToForestMode = document.querySelectorAll('header div nav button.myButtonToForestMode');
 
             // Les agrego Listeners para Cambiar el Tema
             _arrButtonToDarkMode.forEach(function (boton) {
@@ -275,8 +327,14 @@
                     setTheme(THEME_LIGHT);
                 });
             })
-        }
 
+            _arrButtonToForestMode.forEach(function (boton) {
+                boton.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    setTheme(THEME_FOREST);
+                });
+            })
+        }
 
         // MANEJO DEL MENU
         handlerMenu();

@@ -19,3 +19,4 @@ export const ORDEN_PRECIO_DESC = 4;
 // ==========================================================================
 export const THEME_LIGHT = 1;
 export const THEME_DARK = 2;
+export const THEME_FOREST = 3;

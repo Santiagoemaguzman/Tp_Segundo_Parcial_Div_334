@@ -8,6 +8,7 @@ import {
     , ORDEN_PRECIO_DESC
     , THEME_LIGHT
     , THEME_DARK
+    , THEME_FOREST
 } from '/shared/constantes.js';
 
 import { initPantallaBienvenida } from './bienvenida.js';
@@ -48,7 +49,7 @@ function handlerMenu() {
 
         _buttonToExpandMenu.classList.replace('d-none', 'd-flex');
         _buttonToCollapseMenu.classList.replace('d-flex', 'd-none');
-        
+
         _menuResponsiveExpanded.classList.replace('myContainerIn', 'myContainerOut');
 
         // Termina la animacion y queda oculto
@@ -72,31 +73,65 @@ function setTheme(temaSitio) {
     const _body = document.querySelector('body');
     const _arrButtonToDarkMode = document.querySelectorAll('header div nav button.myButtonToDarkMode');
     const _arrButtonToLightMode = document.querySelectorAll('header div nav button.myButtonToLightMode');
+    const _arrButtonToForestMode = document.querySelectorAll('header div nav button.myButtonToForestMode');
 
     // Set el Atributo data-theme, y la visibilidad de los Botones
     switch (Number(temaSitio)) {
+        case THEME_LIGHT:
+            _body.setAttribute('data-theme', 'light');
+
+            _arrButtonToDarkMode.forEach(b => {
+                b.classList.add('d-flex');
+                b.classList.remove('d-none');
+            });
+
+            _arrButtonToForestMode.forEach(b => {
+                b.classList.add('d-none');
+                b.classList.remove('d-flex');
+            });
+
+            _arrButtonToLightMode.forEach(b => {
+                b.classList.add('d-none');
+                b.classList.remove('d-flex');
+            });
+            break;
+
         case THEME_DARK:
             _body.setAttribute('data-theme', 'dark');
-            _arrButtonToDarkMode.forEach(function (boton) {
-                boton.classList.add('d-none');
-                boton.classList.remove('d-flex');
-            })
-            _arrButtonToLightMode.forEach(function (boton) {
-                boton.classList.add('d-flex');
-                boton.classList.remove('d-none');
-            })
+
+            _arrButtonToDarkMode.forEach(b => {
+                b.classList.add('d-none');
+                b.classList.remove('d-flex');
+            });
+
+            _arrButtonToForestMode.forEach(b => {
+                b.classList.add('d-flex');
+                b.classList.remove('d-none');
+            });
+
+            _arrButtonToLightMode.forEach(b => {
+                b.classList.add('d-none');
+                b.classList.remove('d-flex');
+            });
             break;
-        case THEME_LIGHT:
-            //default:
-            _body.setAttribute('data-theme', 'light');
-            _arrButtonToDarkMode.forEach(function (boton) {
-                boton.classList.add('d-flex');
-                boton.classList.remove('d-none');
-            })
-            _arrButtonToLightMode.forEach(function (boton) {
-                boton.classList.add('d-none');
-                boton.classList.remove('d-flex');
-            })
+
+        case THEME_FOREST:
+            _body.setAttribute('data-theme', 'forest');
+
+            _arrButtonToDarkMode.forEach(b => {
+                b.classList.add('d-none');
+                b.classList.remove('d-flex');
+            });
+
+            _arrButtonToForestMode.forEach(b => {
+                b.classList.add('d-none');
+                b.classList.remove('d-flex');
+            });
+
+            _arrButtonToLightMode.forEach(b => {
+                b.classList.add('d-flex');
+                b.classList.remove('d-none');
+            });
             break;
     }
 
@@ -120,6 +155,7 @@ function handlerTheme() {
     // Recupero los Botones de Cambio de Tema
     const _arrButtonToDarkMode = document.querySelectorAll('header div nav button.myButtonToDarkMode');
     const _arrButtonToLightMode = document.querySelectorAll('header div nav button.myButtonToLightMode');
+    const _arrButtonToForestMode = document.querySelectorAll('header div nav button.myButtonToForestMode');
 
     // Les agrego Listeners para Cambiar el Tema
     _arrButtonToDarkMode.forEach(function (boton) {
@@ -133,6 +169,13 @@ function handlerTheme() {
         boton.addEventListener('click', function (event) {
             event.stopPropagation();
             setTheme(THEME_LIGHT);
+        });
+    })
+
+    _arrButtonToForestMode.forEach(function (boton) {
+        boton.addEventListener('click', function (event) {
+            event.stopPropagation();
+            setTheme(THEME_FOREST);
         });
     })
 }

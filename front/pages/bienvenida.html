@@ -92,19 +92,27 @@
 
                     <!-- Theme -->
                     <button
-                        class="myMenuItem myButtonToDarkMode btn d-flex flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        class="myMenuItem myButtonToDarkMode btn d-flex flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                         <svg viewBox="0 0 44 44">
                             <use href="/assets/icons/LightMode.svg"></use>
                         </svg>
-                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Light</p>
+                        <p class="fw-medium fs-6 p-0 m-0">Light</p>
                     </button>
 
                     <button
-                        class="myMenuItem myButtonToLightMode d-none flex-row align-items-center justify-content-center link-dark text-decoration-none rounded p-1 w-100">
+                        class="myMenuItem myButtonToForestMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                         <svg viewBox="0 0 36 36">
                             <use href="/assets/icons/DarkMode.svg"></use>
                         </svg>
-                        <p class="fw-medium fs-6 p-0 m-0 ms-5">Dark</p>
+                        <p class="fw-medium fs-6 p-0 m-0">Dark</p>
+                    </button>
+
+                    <button
+                        class="myMenuItem myButtonToLightMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                        <svg viewBox="0 0 32 40">
+                            <use href="/assets/icons/ForestMode.svg"></use>
+                        </svg>
+                        <p class="fw-medium fs-6 p-0 m-0">Forest</p>
                     </button>
 
                     <div class="position-fixed w-50 d-flex flex-row justify-content-center text-center">
@@ -156,12 +164,21 @@
                 </button>
 
                 <button
-                    class="myMenuItem myButtonToLightMode d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    class="myMenuItem myButtonToForestMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
                     <svg viewBox="0 0 36 36">
                         <use href="/assets/icons/DarkMode.svg"></use>
                     </svg>
                     <p class="fw-medium fs-6 p-0 m-0">Dark</p>
                 </button>
+
+                <button
+                    class="myMenuItem myButtonToLightMode btn  d-none flex-column align-items-center justify-content-around link-dark text-decoration-none rounded pt-2">
+                    <svg viewBox="0 0 32 40">
+                        <use href="/assets/icons/ForestMode.svg"></use>
+                    </svg>
+                    <p class="fw-medium fs-6 p-0 m-0">Forest</p>
+                </button>
+
             </nav>
 
         </div>
@@ -173,7 +190,7 @@
 
         <div class="myContainer shadow rounded d-flex flex-column px-5 py-5 mt-5">
             <img src="/assets/logo.png" class="myLogo mb-5" alt="logo">
-            
+
             <!-- Input -->
             <div class="position-relative mb-3">
                 <input type="text" class="form-control myClientLoginInput" maxlength="25"
@@ -182,7 +199,7 @@
                     Debe tener entre 5 y 25 caracteres.
                 </div>
             </div>
-            
+
             <!-- Boton Continuar -->
             <button type="button" class="btn w-100 myClientLoginButton mt-3 mb-2">
                 <strong>Continuar</strong>
