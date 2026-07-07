@@ -90,7 +90,7 @@ function handlerAbrirModalCompra() {
 
 async function handlerConfirmarCompra() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const cliente = localStorage.getItem('nombreCliente') || '';
+    const cliente = sessionStorage.getItem('nombreCliente') || '';
     const modal = document.querySelector('#Modal-confirmar-compra');
     const errorMensaje = modal.querySelector('.myPurchaseError');
     const botonConfirmar = modal.querySelector('#Boton-confirmar-compra');

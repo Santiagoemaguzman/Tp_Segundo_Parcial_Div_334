@@ -83,7 +83,7 @@
 - 🟢 Utilizar un ORM *(NO SE INTEGRA)*
 - 🟢 CRUD
 - 🟢 Las imagenes se deben almacenar en el Servidor
-- ⚪ Encriptacion de Contraseñas
+- 🟢 Encriptacion de Contraseñas
 
 ### Pantalla de Login (VISTA EJS)
 - 🟢 Interfaz con estilos CSS cuidados y consistentes
