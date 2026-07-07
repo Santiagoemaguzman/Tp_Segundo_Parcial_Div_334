@@ -81,8 +81,6 @@ CREATE TABLE VentasProductosEliminados (
     , ProductoCantidad INT NOT NULL DEFAULT 1
 );
 
-
-
 CREATE TABLE Usuarios (
     Mail VARCHAR(255) PRIMARY KEY
     , Password VARCHAR(255) NOT NULL

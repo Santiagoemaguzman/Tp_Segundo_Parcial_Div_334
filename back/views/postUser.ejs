@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include("partials/head.ejs") %>
+
+    <body data-theme="light">
+
+        <%- include("partials/header.ejs") %>
+
+            <main class="vw-100 d-flex flex-row justify-content-center row m-0 mb-5">
+                <section class="col-12 col-lg-10 col-xxl-8 mb-1 pt-3">
+
+                    <div
+                        class="myProductsFilterBar rounded shadow row align-items-center justify-content-between px-3 mx-0 ">
+
+                        <a href="/dashboard"
+                            class="btn myButtonAtras col-12 col-lg-1 my-lg-3 d-flex justify-content-center align-items-center">
+                            <!-- <svg viewBox="0 0 28 28" class="me-2">
+                                <use href="/assets/icons/Add.svg"></use>
+                            </svg> -->
+                            Atras
+                        </a>
+
+                        <button
+                            class="btn myButtonCrear col-12 col-lg-1 my-lg-3 d-flex justify-content-center align-items-center"
+                            type="submit" form="myForm">
+                            Confirmar
+                        </button>
+                        <script>
+
+                            function mostrarMensaje(titulo, mensaje, callback) {
+
+                                const modal = document.querySelector("dialog.myModal");
+                                const modalTitulo = modal.querySelector("h2");
+                                const modalMensaje = modal.querySelector("p");
+                                const modalButton = modal.querySelector("button");
+
+                                modalTitulo.textContent = titulo;
+                                modalMensaje.textContent = mensaje;
+
+                                if (callback) {
+                                    modalButton.addEventListener('click', callback);
+                                } else {
+                                    modalButton.addEventListener('click', () => modal.close());
+                                }
+                                modal.showModal();
+                            }
+
+                            function validarFormulario(data) {
+
+                                const errores = [];
+
+                                if (!data.NombreApellido || data.NombreApellido.trim().length < 5) {
+                                    errores.push("El nombre debe tener al menos 5 caracteres");
+                                }
+
+                                if (!data.Mail || data.Mail.trim().length < 5) {
+                                    errores.push("El nombre debe tener al menos 5 caracteres");
+                                }
+
+                                if (!data.Password || data.Password.trim().length < 5) {
+                                    errores.push("El nombre debe tener al menos 5 caracteres");
+                                }
+
+                                return errores;
+                            }
+
+                            document.addEventListener('DOMContentLoaded', () => {
+
+                                const productoForm = document.getElementById("myForm");
+
+                                productoForm?.addEventListener("submit", async (event) => {
+                                    event.preventDefault();
+
+                                    const formData = new FormData(event.target);
+                                    const data = Object.fromEntries(formData.entries());
+
+                                    console.log(data);
+
+                                    // Validaciones 
+                                    const errores = validarFormulario(data);
+                                    if (errores.length > 0) {
+                                        //mostrarMensaje("error", errores.join("\n"));
+                                        mostrarMensaje("Error", errores.join("\n"))
+                                        return;
+                                    }
+
+                                    // Fetch
+                                    try {
+                                        const response = await fetch("http://localhost:3000/users/", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                            body: JSON.stringify(data)
+                                        });
+
+                                        const result = await response.json();
+
+                                        // Optimizacion 5: Manejamos respuestas no ok del servidor
+                                        if (!response.ok) {
+                                            mostrarMensaje("Error", result.message)
+                                            return;
+                                        };
+
+                                        mostrarMensaje("Exito", result.message, () => {
+                                            window.location.href = "http://localhost:3000/dashboard/";
+                                        });
+
+                                    } catch (error) {
+                                        console.error("Error al enviar los datos: ", error);
+                                        // mostrarMensaje("error", "Error al procesar la solcitud")
+                                    }
+                                });
+                            });
+
+                        </script>
+                    </div>
+                    <div class="myProductsContainer m-0 mt-3 row gap-3 justify-content-center">
+
+                        <form id="myForm" class="myForm rounded shadow row px-3 py-4">
+
+                            <div class="col-7 d-flex row m-0 p-0">
+
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <div class="col-12 m-0 p-0 ps-1">
+                                        <label for="NombreApellido" class="form-label">Nombre de Usuario</label>
+                                        <input type="text" name="NombreApellido" class="form-control"
+                                            placeholder="Nombre de Usuario"></input>
+                                    </div>
+                                </div>
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <div class="col-12 m-0 p-0 ps-1">
+                                        <label for="Mail" class="form-label">Correo electronico</label>
+                                        <input type="email" name="Mail" class="form-control"
+                                            placeholder="Correo electronico"></input>
+                                    </div>
+                                </div>
+                                <div class="d-flex row m-0 p-0 my-4">
+                                    <div class="col-12 m-0 p-0 ps-1">
+                                        <label for="Password" class="form-label">Contraseña</label>
+                                        <input type="password" name="Password" class="form-control"
+                                            placeholder="Contraseña"></input>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </section>
+
+
+
+                <dialog class="myModal">
+                    <h2></h2>
+                    <p class=""></p>
+                    <!-- <p class="myPurchaseError" role="alert"></p> -->
+                    <button type="button">Aceptar</button>
+                </dialog>
+
+            </main>
+
+            <%- include("partials/footer.ejs") %>
+
+    </body>
+
+</html>

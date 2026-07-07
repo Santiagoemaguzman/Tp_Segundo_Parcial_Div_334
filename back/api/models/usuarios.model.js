@@ -16,27 +16,33 @@ function selectUsuariosWhereMail(params) {
         AND Mail = ?`;
 
     return connection.query(query, [Mail]);
-
-    //console.log("selectProductosWhereIDProducto");
 }
 
-// =======
-// import connection from "../config/database/database.js";
+function insertUsuarios(params) {
 
-// export async function buscarUsuarioPorMail(mail) {
-//     const [usuarios] = await connection.query(
-//         `SELECT Mail, Password, NombreApellido
-//          FROM Usuarios
-//          WHERE Mail = ? AND Estado = 1
-//          LIMIT 1`,
-//         [mail]
-//     );
+    // Destruc de Parametros
+    const {
+        mail
+        , password
+        , nombreApellido
+        , usuarioAlta = 'admin'
+    } = params;
 
-//     return usuarios[0] ?? null;
-// }
-// >>>>>>> feature/santiago
+    const query = `
+    INSERT INTO Usuarios
+    (
+        Mail
+        , Password
+        , NombreApellido
+        , UsuarioAlta        
+    ) VALUES ( 
+        ?, ?, ?, ?
+    )`;
 
+    return connection.query(query, [mail, password, nombreApellido, usuarioAlta]);
+}
 
 export default {
     selectUsuariosWhereMail
+    , insertUsuarios
 }

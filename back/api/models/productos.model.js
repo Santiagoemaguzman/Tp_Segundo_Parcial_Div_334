@@ -137,8 +137,6 @@ function insertProductos(params) {
         , usuarioAlta = 'admin'
     } = params;
 
-    console.log(params);
-
     const query = `INSERT INTO 
         Productos
         (

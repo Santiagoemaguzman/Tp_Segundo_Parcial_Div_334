@@ -162,3 +162,20 @@ export async function deleteView(req, res) {
         res.status(500).send("Error interno del servidor");
     }
 }
+
+// Vista POST
+export async function createUserView(req, res) {
+
+    const nombreUsuario = req.session.usuario.nombre;
+
+    try {
+
+        res.status(200).render("postUser", {
+            usuario: nombreUsuario
+        });
+
+    } catch (error) {
+        console.error("Error al renderizar el dashboard:", error);
+        res.status(500).send("Error interno del servidor");
+    }
+}

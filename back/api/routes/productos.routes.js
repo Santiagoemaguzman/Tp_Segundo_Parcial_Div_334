@@ -6,10 +6,7 @@ import { multerUploader } from "../middlewares/multer.js";
 // Inicializamos el modulo router
 const router = Router();
 
-
 router.get("/", validarConsultaProductos, getProductos);
-
-// router.post("/", multerUploader.single("image"), createProducto);
 
 router.post("/", multerUploader.single("image"), createProducto );
 
