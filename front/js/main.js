@@ -187,7 +187,7 @@ function handlerTheme() {
 function imprimirNombreCliente() {
 
     // Recupero nombreCliente del localStorage
-    const _nombreCliente = localStorage.getItem('nombreCliente');
+    const _nombreCliente = sessionStorage.getItem('nombreCliente');
 
     // Actualizo etiqueta HTML
     let _pNombreCliente = document.querySelector('p.myClientName');
@@ -203,6 +203,7 @@ function init() {
     // MANEJO DEL INIT
     // Recuperamos el data-page del Body
     const _pantallaActual = document.body.getAttribute('data-page');
+
     // Se ejecuta el Init en funcion del data-page
     switch (_pantallaActual) {
         case 'bienvenida':

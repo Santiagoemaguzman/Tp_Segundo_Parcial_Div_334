@@ -18,7 +18,7 @@ function handlerLoginCliente(event) {
     _clientLoginInput.classList.remove('is-invalid');
 
     // Persistencia
-    localStorage.setItem('nombreCliente', _nombreCliente);
+    sessionStorage.setItem("nombreCliente", _nombreCliente);
 
     // Redireccion a Productos
     window.location.href = '/front/pages/productos.html';
@@ -34,8 +34,8 @@ function handlerLoginAdmin(event) {
 // ==========================================================================
 export function initPantallaBienvenida() {
 
-    // Reset localStorage
-    localStorage.removeItem('nombreCliente');
+    // Reset localStorage && localStorage
+    sessionStorage.removeItem('nombreCliente');
 
     localStorage.removeItem('carrito');
 
